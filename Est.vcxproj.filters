@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="AbrirMedicao.cpp" />
+    <ClCompile Include="AlaSarPasView.cpp" />
+    <ClCompile Include="arqnovo.cpp" />
+    <ClCompile Include="CadLib\Interface\VC\CadLib.cpp" />
+    <ClCompile Include="CAlargamentos.cpp" />
+    <ClCompile Include="CalcNota.cpp" />
+    <ClCompile Include="CalculaNota.cpp" />
+    <ClCompile Include="CalcularMedicao.cpp" />
+    <ClCompile Include="CalculaTerreno.cpp" />
+    <ClCompile Include="CalcVolumes.cpp" />
+    <ClCompile Include="CArqAlargamentos.cpp" />
+    <ClCompile Include="CArqCanteiros.cpp" />
+    <ClCompile Include="CArqCurHorizontais.cpp" />
+    <ClCompile Include="CArqCurVerticais.cpp" />
+    <ClCompile Include="CArqGradientes.cpp" />
+    <ClCompile Include="CArqHPavimento.cpp" />
+    <ClCompile Include="CArqIgualdades.cpp" />
+    <ClCompile Include="CArqLimpeza.cpp" />
+    <ClCompile Include="CArqNivelamento.cpp" />
+    <ClCompile Include="CArqOAC.cpp" />
+    <ClCompile Include="CArqOAE.cpp" />
+    <ClCompile Include="CArqPerfis.cpp" />
+    <ClCompile Include="CArqPistasFixas.cpp" />
+    <ClCompile Include="CArqSecoesAvulsas.cpp" />
+    <ClCompile Include="CArqSecTipo.cpp" />
+    <ClCompile Include="CArqTalAterro.cpp" />
+    <ClCompile Include="CArqTalCorte.cpp" />
+    <ClCompile Include="CArqTaludesPavim.cpp" />
+    <ClCompile Include="CArqTerreno.cpp" />
+    <ClCompile Include="CArqTerrPontos.cpp" />
+    <ClCompile Include="CCalcAreaTaludes.cpp" />
+    <ClCompile Include="CCanteiros.cpp" />
+    <ClCompile Include="CConfigProj.cpp" />
+    <ClCompile Include="CCurHorizontais.cpp" />
+    <ClCompile Include="CCurHorizontal.cpp" />
+    <ClCompile Include="CCurVerticais.cpp" />
+    <ClCompile Include="CDCalAreaTaludes.cpp" />
+    <ClCompile Include="CDeltaSuperficie.cpp" />
+    <ClCompile Include="CDiaCalcLimpeza.cpp" />
+    <ClCompile Include="CDiaGerarCN.cpp" />
+    <ClCompile Include="CDPopUpPontos.cpp" />
+    <ClCompile Include="cedNomeProj.cpp" />
+    <ClCompile Include="CEstacasACalcular.cpp" />
+    <ClCompile Include="CGradientes.cpp" />
+    <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="CHPavimento.cpp" />
+    <ClCompile Include="CIgualdade.cpp" />
+    <ClCompile Include="ClassSetPontos.cpp" />
+    <ClCompile Include="CLimpeza.cpp" />
+    <ClCompile Include="CListaPerfis.cpp" />
+    <ClCompile Include="CListaSecoes.cpp" />
+    <ClCompile Include="CLPontos.cpp" />
+    <ClCompile Include="COAC.cpp" />
+    <ClCompile Include="COACView.cpp" />
+    <ClCompile Include="COAE.cpp" />
+    <ClCompile Include="ComboProcDesSecao.cpp" />
+    <ClCompile Include="confdesmedicao.cpp" />
+    <ClCompile Include="CPistasFixas.cpp" />
+    <ClCompile Include="CPonto.cpp" />
+    <ClCompile Include="CRegAreaTaludes.cpp" />
+    <ClCompile Include="CriarMedicao.cpp" />
+    <ClCompile Include="CSecao.cpp" />
+    <ClCompile Include="CSecaoAvulsa.cpp" />
+    <ClCompile Include="CSeccionar.cpp" />
+    <ClCompile Include="CSecoesAvulsas.cpp" />
+    <ClCompile Include="CSecoesAvulsasView.cpp" />
+    <ClCompile Include="CSectipo.cpp" />
+    <ClCompile Include="CSStack.cpp" />
+    <ClCompile Include="CTalAterro.cpp" />
+    <ClCompile Include="CTalCorte.cpp" />
+    <ClCompile Include="CTerreno.cpp" />
+    <ClCompile Include="CTerrPontos.cpp" />
+    <ClCompile Include="CurHorView.cpp" />
+    <ClCompile Include="CurVerview.cpp" />
+    <ClCompile Include="CVisada.cpp" />
+    <ClCompile Include="DCalcGeometrico.cpp" />
+    <ClCompile Include="DCalcGeoSeccDireto.cpp" />
+    <ClCompile Include="DCalcNotaVolumesDireto.cpp" />
+    <ClCompile Include="DCalcSuperf.cpp" />
+    <ClCompile Include="DconfDesGeom.cpp" />
+    <ClCompile Include="DCoordenadas.cpp" />
+    <ClCompile Include="DCoresDesGeometrico.cpp" />
+    <ClCompile Include="DcoresGreide.cpp" />
+    <ClCompile Include="DDeslizantes.cpp" />
+    <ClCompile Include="DEditaCurhoriz.cpp" />
+    <ClCompile Include="DEntraPonto.cpp" />
+    <ClCompile Include="DEntraPontoGreide.cpp" />
+    <ClCompile Include="DeslizantesGeom.cpp" />
+    <ClCompile Include="DesPerfilView.cpp" />
+    <ClCompile Include="DesPontosGeomView.cpp" />
+    <ClCompile Include="DesSecaoView.cpp" />
+    <ClCompile Include="DEstacaCota.cpp" />
+    <ClCompile Include="DGerarDXF.cpp" />
+    <ClCompile Include="DGerarDXFGreide.cpp" />
+    <ClCompile Include="DGerarDXFSecoes.cpp" />
+    <ClCompile Include="DiaAbrirCriarArea.cpp" />
+    <ClCompile Include="DiaCalcSecAvulsas.cpp" />
+    <ClCompile Include="Dialogo.cpp" />
+    <ClCompile Include="DiaMonologo.cpp" />
+    <ClCompile Include="DiapontosGeom.cpp" />
+    <ClCompile Include="DlgGetPath.cpp" />
+    <ClCompile Include="DRotacionar.cpp" />
+    <ClCompile Include="DSecionar.cpp" />
+    <ClCompile Include="DSelGreide.cpp" />
+    <ClCompile Include="DSelSecao.cpp" />
+    <ClCompile Include="DVolumes.cpp" />
+    <ClCompile Include="EditPopUp.cpp" />
+    <ClCompile Include="est.cpp" />
+    <ClCompile Include="Estaca.cpp" />
+    <ClCompile Include="estDoc.cpp" />
+    <ClCompile Include="EstRel.cpp" />
+    <ClCompile Include="estView.cpp" />
+    <ClCompile Include="GradienteView.cpp" />
+    <ClCompile Include="igualdades.cpp" />
+    <ClCompile Include="LimpezaView.cpp" />
+    <ClCompile Include="ListaMedicoes.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="Mat.cpp" />
+    <ClCompile Include="MelEditBox.cpp" />
+    <ClCompile Include="Monologo.cpp" />
+    <ClCompile Include="MyToolBar.cpp" />
+    <ClCompile Include="OAEView.cpp" />
+    <ClCompile Include="palette.cpp" />
+    <ClCompile Include="PedirProj.cpp" />
+    <ClCompile Include="Perfil.cpp" />
+    <ClCompile Include="projeto.cpp" />
+    <ClCompile Include="Relatorios.cpp" />
+    <ClCompile Include="SecTriangulacao.cpp" />
+    <ClCompile Include="Splash.cpp" />
+    <ClCompile Include="StdAfx.cpp" />
+    <ClCompile Include="SuperCString.cpp" />
+    <ClCompile Include="Superficie.cpp" />
+    <ClCompile Include="TaludesPavim.cpp" />
+    <ClCompile Include="TaludesPavimView.cpp" />
+    <ClCompile Include="TaludesView.cpp" />
+    <ClCompile Include="TresPontosView.cpp" />
+    <ClCompile Include="Typlstvw.cpp" />
+    <ClCompile Include="XYGreide.cpp" />
+    <ClCompile Include="xyMouse.cpp" />
+    <ClCompile Include="DistribuiCotas.cpp" />
+    <ClCompile Include="CDDEfineFronteira.cpp" />
+    <ClCompile Include="CAciTopografico.cpp" />
+    <ClCompile Include="CRetangulo.cpp" />
+    <ClCompile Include="CAcidentesTopograficos.cpp" />
+    <ClCompile Include="DiaRemAciTopog.cpp" />
+    <ClCompile Include="CDPedeDescricao.cpp" />
+    <ClCompile Include="CDiaLembretes.cpp" />
+    <ClCompile Include="CSegmento.cpp" />
+    <ClCompile Include="CTiposSolosView.cpp" />
+    <ClCompile Include="CArqTiposSolos.cpp" />
+    <ClCompile Include="CFurosSondagemView.cpp" />
+    <ClCompile Include="CArqFurosSondagem.cpp" />
+    <ClCompile Include="CPerfilSolo.cpp" />
+    <ClCompile Include="CCamadaSolo.cpp" />
+    <ClCompile Include="CPerfilSolos.cpp" />
+    <ClCompile Include="CFuroSondagem.cpp" />
+    <ClCompile Include="CTipoSolos.cpp" />
+    <ClCompile Include="FurosSondagem.cpp" />
+    <ClCompile Include="CTipoSoloSondagem.cpp" />
+    <ClCompile Include="DesPerfilGeologicoView.cpp" />
+    <ClCompile Include="DConfGeologico.cpp" />
+    <ClCompile Include="CPerfilGeologico.cpp" />
+    <ClCompile Include="ImageListBox.cpp" />
+    <ClCompile Include="IconComboBox.cpp" />
+    <ClCompile Include="VerfNeoKey.cpp" />
+    <ClCompile Include="DGerarDXFPerfGeol.cpp" />
+    <ClCompile Include="CDSelTipoSolo.cpp" />
+    <ClCompile Include="CEditEx.cpp" />
+    <ClCompile Include="CRadar.cpp" />
+    <ClCompile Include="CDConfigRadar.cpp" />
+    <ClCompile Include="CDiaInsereRua.cpp" />
+    <ClCompile Include="CDiaRemoverRua.cpp" />
+    <ClCompile Include="CExComboBox.cpp" />
+    <ClCompile Include="CDiaCriarProjeto.cpp" />
+    <ClCompile Include="EdiAciTopogView.cpp" />
+    <ClCompile Include="CArqAciTopograficos.cpp" />
+    <ClCompile Include="RadioListBox.cpp" />
+    <ClCompile Include="CDDiaNomePerfAvulso.cpp" />
+    <ClCompile Include="DesPerfilAvulsoView.cpp" />
+    <ClCompile Include="CCalcTerraplProjeto.cpp" />
+    <ClCompile Include="CAlinhamento.cpp" />
+    <ClCompile Include="CAlinhamentos.cpp" />
+    <ClCompile Include="CDCalcTerraplProjeto.cpp" />
+    <ClCompile Include="DGerarDXFTerraplanagem.cpp" />
+    <ClCompile Include="CDiaGravarAltSecoes.cpp" />
+    <ClCompile Include="CDMensagem.cpp" />
+    <ClCompile Include="CDEditarSecAvulsa.cpp" />
+    <ClCompile Include="CDiaImportarArqKmlKmz.cpp" />
+    <ClCompile Include="CLerKML.cpp" />
+    <ClCompile Include="CDFormatarRelatorio.cpp" />
+    <ClCompile Include="CTrecho.cpp" />
+    <ClCompile Include="CTrechos.cpp" />
+    <ClCompile Include="CArqTrechos.cpp" />
+    <ClCompile Include="Picture.cpp" />
+    <ClCompile Include="CDiaAmpliarMapa.cpp" />
+    <ClCompile Include="CDiaTipoGeoref.cpp" />
+    <ClCompile Include="CDiaImportarArqCtrlDrones.cpp" />
+    <ClCompile Include="CDiaImpArqCNDrones.cpp" />
+    <ClCompile Include="CLerKMLCN.cpp" />
+    <ClCompile Include="DesCroquisView.cpp" />
+    <ClCompile Include="CDiaThread.cpp" />
+    <ClCompile Include="CDiaAreaPerimetro.cpp" />
+    <ClCompile Include="CDiaGravarPonInsSecoes.cpp" />
+    <ClCompile Include="CDiaDesinstalar.cpp" />
+    <ClCompile Include="CBacia.cpp" />
+    <ClCompile Include="CDiaDadosBaciaHidrologica.cpp" />
+    <ClCompile Include="CDiaDadosHidrologicos.cpp" />
+    <ClCompile Include="CSecoesTerrap.cpp" />
+    <ClCompile Include="CEquipDrenagem.cpp" />
+    <ClCompile Include="CdiaEditarEquipDrenagem.cpp" />
+    <ClCompile Include="CPontoAnte.cpp" />
+    <ClCompile Include="CDiaConvCND.cpp" />
+    <ClCompile Include="CCamadaDGN.cpp" />
+    <ClCompile Include="CLerDXFCN.cpp" />
+    <ClCompile Include="CDAjustDeclinacao.cpp" />
+    <ClCompile Include="CTextoMapaIBGE.cpp" />
+    <ClCompile Include="CCNMapaIGBE.cpp" />
+    <ClCompile Include="CMapaCNIBGE.cpp" />
+    <ClCompile Include="CDCotarCNDGN.cpp" />
+    <ClCompile Include="CTriangulacao.cpp" />
+    <ClCompile Include="CTriangulo.cpp" />
+    <ClCompile Include="CImportaDXFTopog.cpp" />
+    <ClCompile Include="CDiaImpArqTopografia.cpp" />
+    <ClCompile Include="CCriaSuperfIgualTopog.cpp" />
+    <ClCompile Include="CDAlterDescPonto.cpp" />
+    <ClCompile Include="CRelACADAciTopogView.cpp" />
+    <ClCompile Include="CDInicial.cpp" />
+    <ClCompile Include="CMListBox.cpp" />
+    <ClCompile Include="CDialogoInicialView.cpp" />
+    <ClCompile Include="CVetortGotaAgua.cpp" />
+    <ClCompile Include="CDSelecionarCNs.cpp" />
+    <ClCompile Include="CMEdit.cpp" />
+    <ClCompile Include="CDImportarArqSIG.cpp" />
+    <ClCompile Include="CCriaSuperfSIS.cpp" />
+    <ClCompile Include="CDiaIniciaTalvPrincipal.cpp" />
+    <ClCompile Include="CNoTalvegue.cpp" />
+    <ClCompile Include="CArvoreN.cpp" />
+    <ClCompile Include="CNoArvoreN.cpp" />
+    <ClCompile Include="DGerarDXFBaciasHidrog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CadLib\Interface\VC\CadLib.h" />
+    <ClInclude Include="CCurHorizontal.h" />
+    <ClInclude Include="CTerrPontos.h" />
+    <ClInclude Include="DCalcSuperf.h" />
+    <ClInclude Include="DiaAbrirCriarArea.h" />
+    <ClInclude Include="DiaMonologo.h" />
+    <ClInclude Include="Perfil.h" />
+    <ClInclude Include="AbrirMedicao.h" />
+    <ClInclude Include="AlaSarPasview.h" />
+    <ClInclude Include="arqnovo.h" />
+    <ClInclude Include="CAlargamentos.h" />
+    <ClInclude Include="calcnota.h" />
+    <ClInclude Include="CalculaMedicao.h" />
+    <ClInclude Include="CalculaNota.h" />
+    <ClInclude Include="CalculaTerreno.h" />
+    <ClInclude Include="CalcVolumes.h" />
+    <ClInclude Include="CArqAlargamentos.h" />
+    <ClInclude Include="CArqCanteiros.h" />
+    <ClInclude Include="carqcurhorizontais.h" />
+    <ClInclude Include="CArqCurVerticais.h" />
+    <ClInclude Include="CArqGradientes.h" />
+    <ClInclude Include="carqhpavimento.h" />
+    <ClInclude Include="CArqIgualdades.h" />
+    <ClInclude Include="CArqLimpeza.h" />
+    <ClInclude Include="carqnivelamento.h" />
+    <ClInclude Include="carqoac.h" />
+    <ClInclude Include="carqoae.h" />
+    <ClInclude Include="carqPerfis.h" />
+    <ClInclude Include="CArqSecoesAvulsas.h" />
+    <ClInclude Include="carqsectipo.h" />
+    <ClInclude Include="carqTalAterro.h" />
+    <ClInclude Include="carqtalcorte.h" />
+    <ClInclude Include="cArqTaludesPavim.h" />
+    <ClInclude Include="CArqTerreno.h" />
+    <ClInclude Include="carqterrpontos.h" />
+    <ClInclude Include="CCalcAreaTaludes.h" />
+    <ClInclude Include="CCanteiros.h" />
+    <ClInclude Include="CConfigProj.h" />
+    <ClInclude Include="ccurhorizontais.h" />
+    <ClInclude Include="CCurverticais.h" />
+    <ClInclude Include="CDCalAreaTaludes.h" />
+    <ClInclude Include="CDeltaSuperficie.h" />
+    <ClInclude Include="CDiaCalcLimpeza.h" />
+    <ClInclude Include="CDiaGerarCN.h" />
+    <ClInclude Include="cdpopuppontos.h" />
+    <ClInclude Include="cedNomeProj.h" />
+    <ClInclude Include="CEstacasACalcular.h" />
+    <ClInclude Include="cgradientes.h" />
+    <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="chpavimento.h" />
+    <ClInclude Include="cIgualdade.h" />
+    <ClInclude Include="ClassSetPontos.h" />
+    <ClInclude Include="CLimpeza.h" />
+    <ClInclude Include="clistaperfis.h" />
+    <ClInclude Include="clistasecoes.h" />
+    <ClInclude Include="CLPontos.h" />
+    <ClInclude Include="coac.h" />
+    <ClInclude Include="COACView.h" />
+    <ClInclude Include="coae.h" />
+    <ClInclude Include="ComboProcDesSecao.h" />
+    <ClInclude Include="CPistasFixas.h" />
+    <ClInclude Include="CPonto.h" />
+    <ClInclude Include="CRegAreaTaludes.h" />
+    <ClInclude Include="CriarMedicao.h" />
+    <ClInclude Include="csecao.h" />
+    <ClInclude Include="CSecaoAvulsa.h" />
+    <ClInclude Include="CSeccionar.h" />
+    <ClInclude Include="CSecoesAvulsas.h" />
+    <ClInclude Include="CSecoesAvulsasView.h" />
+    <ClInclude Include="csectipo.h" />
+    <ClInclude Include="CSStack.h" />
+    <ClInclude Include="cTalAterro.h" />
+    <ClInclude Include="ctalcorte.h" />
+    <ClInclude Include="cterreno.h" />
+    <ClInclude Include="curhorview.h" />
+    <ClInclude Include="CurVerview.h" />
+    <ClInclude Include="cvisada.h" />
+    <ClInclude Include="DCalcGeometrico.h" />
+    <ClInclude Include="DCalcGeoSeccDireto.h" />
+    <ClInclude Include="DCalcNotaVolumesDireto.h" />
+    <ClInclude Include="DconfDesGeom.h" />
+    <ClInclude Include="DCoordenadas.h" />
+    <ClInclude Include="dcoresdesgeometrico.h" />
+    <ClInclude Include="DcoresGreide.h" />
+    <ClInclude Include="DDeslizantes.h" />
+    <ClInclude Include="DEditaCurhoriz.h" />
+    <ClInclude Include="DEntraPonto.h" />
+    <ClInclude Include="DEntraPontoGreide.h" />
+    <ClInclude Include="DeslizantesGeom.h" />
+    <ClInclude Include="DesPerfilView.h" />
+    <ClInclude Include="DesPontosGeomView.h" />
+    <ClInclude Include="DesSecaoView.h" />
+    <ClInclude Include="DGerarDXF.h" />
+    <ClInclude Include="DGerarDXFGre.h" />
+    <ClInclude Include="DGerarDXFGreide.h" />
+    <ClInclude Include="DGerarDXFSecoes.h" />
+    <ClInclude Include="DiaCalcSecAvulsas.h" />
+    <ClInclude Include="Dialogo.h" />
+    <ClInclude Include="DiapontosGeom.h" />
+    <ClInclude Include="DlgGetPath.h" />
+    <ClInclude Include="DPontoGreide.h" />
+    <ClInclude Include="..\dxf\dxf\cadlib\cadlib\Interface\VC\DrawingDef.h" />
+    <ClInclude Include="DRotacionar.h" />
+    <ClInclude Include="DSecionar.h" />
+    <ClInclude Include="DSelGreide.h" />
+    <ClInclude Include="DSelSecao.h" />
+    <ClInclude Include="DVolumes.h" />
+    <ClInclude Include="..\dxf\dxf\cadlib\cadlib\Interface\VC\DXFDef.h" />
+    <ClInclude Include="EditPopUp.h" />
+    <ClInclude Include="est.h" />
+    <ClInclude Include="Estaca.h" />
+    <ClInclude Include="estDoc.h" />
+    <ClInclude Include="EstRel.h" />
+    <ClInclude Include="estView.h" />
+    <ClInclude Include="gradienteview.h" />
+    <ClInclude Include="igualdades.h" />
+    <ClInclude Include="LimpezaView.h" />
+    <ClInclude Include="ListaMedicoes.h" />
+    <ClInclude Include="Mainfrm.h" />
+    <ClInclude Include="Mat.h" />
+    <ClInclude Include="MelEditBox.h" />
+    <ClInclude Include="Monologo.h" />
+    <ClInclude Include="MyToolBar.h" />
+    <ClInclude Include="OAEView.h" />
+    <ClInclude Include="palette.h" />
+    <ClInclude Include="PedirProj.h" />
+    <ClInclude Include="projeto.h" />
+    <ClInclude Include="Relatorios.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="resource2.h" />
+    <ClInclude Include="SecTriangulacao.h" />
+    <ClInclude Include="Splash.h" />
+    <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="SuperCString.h" />
+    <ClInclude Include="Superficie.h" />
+    <ClInclude Include="TaludesPavim.h" />
+    <ClInclude Include="taludespavimview.h" />
+    <ClInclude Include="Taludesview.h" />
+    <ClInclude Include="trespontosview.h" />
+    <ClInclude Include="typedefs.h" />
+    <ClInclude Include="typlstvw.h" />
+    <ClInclude Include="XYGreide.h" />
+    <ClInclude Include="xyMouse.h" />
+    <ClInclude Include="DistribuiCotas.h" />
+    <ClInclude Include="CMemDC.h" />
+    <ClInclude Include="CDDEfineFronteira.h" />
+    <ClInclude Include="CAciTopografico.h" />
+    <ClInclude Include="CRetangulo.h" />
+    <ClInclude Include="CAcidentesTopograficos.h" />
+    <ClInclude Include="DiaRemAciTopog.h" />
+    <ClInclude Include="CDPedeDescricao.h" />
+    <ClInclude Include="CDiaLembretes.h" />
+    <ClInclude Include="CSegmento.h" />
+    <ClInclude Include="CArqTiposSolos.h" />
+    <ClInclude Include="CArqFurosSondagem.h" />
+    <ClInclude Include="CFurosSondagemView.h" />
+    <ClInclude Include="CPerfilSolo.h" />
+    <ClInclude Include="CCamadaSolo.h" />
+    <ClInclude Include="CPerfilSolos.h" />
+    <ClInclude Include="CFuroSondagem.h" />
+    <ClInclude Include="CTipoSolos.h" />
+    <ClInclude Include="FurosSondagem.h" />
+    <ClInclude Include="CTipoSoloSondagem.h" />
+    <ClInclude Include="DesPerfilGeologicoView.h" />
+    <ClInclude Include="DConfGeologico.h" />
+    <ClInclude Include="CPerfilGeologico.h" />
+    <ClInclude Include="ImageListBox.h" />
+    <ClInclude Include="IconComboBox.h" />
+    <ClInclude Include="VerfNeoKey.h" />
+    <ClInclude Include="DGerarDXFPerfGeol.h" />
+    <ClInclude Include="CDSelTipoSolo.h" />
+    <ClInclude Include="CRadar.h" />
+    <ClInclude Include="CDConfigRadar.h" />
+    <ClInclude Include="CDiaInsereRua.h" />
+    <ClInclude Include="CDiaRemoverRua.h" />
+    <ClInclude Include="CExComboBox.h" />
+    <ClInclude Include="CDiaCriarProjeto.h" />
+    <ClInclude Include="EdiAciTopogView.h" />
+    <ClInclude Include="CArqAciTopograficos.h" />
+    <ClInclude Include="RadioListBox.h" />
+    <ClInclude Include="CDDiaNomePerfAvulso.h" />
+    <ClInclude Include="DesPerfilAvulsoView.h" />
+    <ClInclude Include="CCalcTerraplProjeto.h" />
+    <ClInclude Include="CAlinhamento.h" />
+    <ClInclude Include="CAlinhamentos.h" />
+    <ClInclude Include="CDCalcTerraplProjeto.h" />
+    <ClInclude Include="DGerarDXFTerraplanagem.h" />
+    <ClInclude Include="CDiaGravarAltSecoes.h" />
+    <ClInclude Include="CDMensagem.h" />
+    <ClInclude Include="CDEditarSecAvulsa.h" />
+    <ClInclude Include="CDiaImportarArqKmlKmz.h" />
+    <ClInclude Include="CLerKML.h" />
+    <ClInclude Include="CDFormatarRelatorio.h" />
+    <ClInclude Include="CTrecho.h" />
+    <ClInclude Include="CTrechos.h" />
+    <ClInclude Include="CArqTrechos.h" />
+    <ClInclude Include="Picture.h" />
+    <ClInclude Include="CDiaAmpliarMapa.h" />
+    <ClInclude Include="CDiaTipoGeoref.h" />
+    <ClInclude Include="CDiaImportarArqCtrlDrones.h" />
+    <ClInclude Include="CDiaImpArqCNDrones.h" />
+    <ClInclude Include="CLerKMLCN.h" />
+    <ClInclude Include="DesCroquisView.h" />
+    <ClInclude Include="CDiaThread.h" />
+    <ClInclude Include="CDiaAreaPerimetro.h" />
+    <ClInclude Include="CDiaGravarPonInsSecoes.h" />
+    <ClInclude Include="CDiaDesinstalar.h" />
+    <ClInclude Include="CBacia.h" />
+    <ClInclude Include="CDiaDadosBaciaHidrologica.h" />
+    <ClInclude Include="CDiaDadosHidrologicos.h" />
+    <ClInclude Include="CSecoesTerrap.h" />
+    <ClInclude Include="CEquipDrenagem.h" />
+    <ClInclude Include="CdiaEditarEquipDrenagem.h" />
+    <ClInclude Include="CPontoAnte.h" />
+    <ClInclude Include="CDiaConvCND.h" />
+    <ClInclude Include="CCamadaDGN.h" />
+    <ClInclude Include="CLerDXFCN.h" />
+    <ClInclude Include="CDAjustDeclinacao.h" />
+    <ClInclude Include="CTextoMapaIBGE.h" />
+    <ClInclude Include="CCNMapaIGBE.h" />
+    <ClInclude Include="CMapaCNIBGE.h" />
+    <ClInclude Include="CDCotarCNDGN.h" />
+    <ClInclude Include="CTriangulacao.h" />
+    <ClInclude Include="CTriangulo.h" />
+    <ClInclude Include="CImportaDXFTopog.h" />
+    <ClInclude Include="CDiaImpArqTopografia.h" />
+    <ClInclude Include="CCriaSuperfIgualTopog.h" />
+    <ClInclude Include="CDAlterDescPonto.h" />
+    <ClInclude Include="CRelACADAciTopogView.h" />
+    <ClInclude Include="CDInicial.h" />
+    <ClInclude Include="CMListBox.h" />
+    <ClInclude Include="CDialogoInicialView.h" />
+    <ClInclude Include="CVetortGotaAgua.h" />
+    <ClInclude Include="psimpl_v7\psimpl.h" />
+    <ClInclude Include="CDSelecionarCNs.h" />
+    <ClInclude Include="CMEdit.h" />
+    <ClInclude Include="CDImportarArqSIG.h" />
+    <ClInclude Include="CCriaSuperfSIS.h" />
+    <ClInclude Include="CDiaIniciaTalvPrincipal.h" />
+    <ClInclude Include="CNoTalvegue.h" />
+    <ClInclude Include="CArvoreN.h" />
+    <ClInclude Include="CNoArvoreN.h" />
+    <ClInclude Include="DGerarDXFBaciasHidrog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="est.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="hlp\est.hpj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource.hm" />
+    <None Include="res\Bmp00001.bmp" />
+    <None Include="res\bmp00002.bmp" />
+    <None Include="res\bmp00003.bmp" />
+    <None Include="res\bmp00004.bmp" />
+    <None Include="res\bmp00005.bmp" />
+    <None Include="res\bmp00006.bmp" />
+    <None Include="RES\cursor1.cur" />
+    <None Include="RES\desenhos.bmp" />
+    <None Include="Res\desgreid.bmp" />
+    <None Include="res\dessecao.bmp" />
+    <None Include="Res\filetypes.bmp" />
+    <None Include="res\Icon1.ico" />
+    <None Include="res\idr_estt.ico" />
+    <None Include="RES\imagelis.bmp" />
+    <None Include="res\projetos.bmp" />
+    <None Include="Splsh16.bmp" />
+    <None Include="res\subtitul.bmp" />
+    <None Include="RES\toolbar1.bmp" />
+    <None Include="hlp\Est.hhc" />
+    <None Include="hlp\Est.hhk" />
+    <None Include="hlp\Est.hhp" />
+    <None Include="hlp\hid_app_about.htm" />
+    <None Include="hlp\hid_app_exit.htm" />
+    <None Include="hlp\hid_context_help.htm" />
+    <None Include="hlp\hid_edit_clear.htm" />
+    <None Include="hlp\hid_edit_clear_all.htm" />
+    <None Include="hlp\hid_edit_copy.htm" />
+    <None Include="hlp\hid_edit_cut.htm" />
+    <None Include="hlp\hid_edit_find.htm" />
+    <None Include="hlp\hid_edit_paste.htm" />
+    <None Include="hlp\hid_edit_redo.htm" />
+    <None Include="hlp\hid_edit_repeat.htm" />
+    <None Include="hlp\hid_edit_replace.htm" />
+    <None Include="hlp\hid_edit_undo.htm" />
+    <None Include="hlp\hid_file_close.htm" />
+    <None Include="hlp\hid_file_mru_file1.htm" />
+    <None Include="hlp\hid_file_new.htm" />
+    <None Include="hlp\hid_file_open.htm" />
+    <None Include="hlp\hid_file_page_setup.htm" />
+    <None Include="hlp\hid_file_print.htm" />
+    <None Include="hlp\hid_file_print_preview.htm" />
+    <None Include="hlp\hid_file_print_setup.htm" />
+    <None Include="hlp\hid_file_save.htm" />
+    <None Include="hlp\hid_file_save_as.htm" />
+    <None Include="hlp\hid_file_send_mail.htm" />
+    <None Include="hlp\hid_help_index.htm" />
+    <None Include="hlp\hid_help_using.htm" />
+    <None Include="hlp\hid_ht_caption.htm" />
+    <None Include="hlp\hid_ht_nowhere.htm" />
+    <None Include="hlp\hid_next_pane.htm" />
+    <None Include="hlp\hid_prev_pane.htm" />
+    <None Include="hlp\hid_sc_close.htm" />
+    <None Include="hlp\hid_sc_maximize.htm" />
+    <None Include="hlp\hid_sc_minimize.htm" />
+    <None Include="hlp\hid_sc_move.htm" />
+    <None Include="hlp\hid_sc_nextwindow.htm" />
+    <None Include="hlp\hid_sc_prevwindow.htm" />
+    <None Include="hlp\hid_sc_restore.htm" />
+    <None Include="hlp\hid_sc_size.htm" />
+    <None Include="hlp\hid_sc_tasklist.htm" />
+    <None Include="hlp\hid_view_ruler.htm" />
+    <None Include="hlp\hid_view_status_bar.htm" />
+    <None Include="hlp\hid_view_toolbar.htm" />
+    <None Include="hlp\hid_window_all.htm" />
+    <None Include="hlp\hid_window_arrange.htm" />
+    <None Include="hlp\hid_window_cascade.htm" />
+    <None Include="hlp\hid_window_new.htm" />
+    <None Include="hlp\hid_window_split.htm" />
+    <None Include="hlp\hid_window_tile.htm" />
+    <None Include="hlp\hid_window_tile_horz.htm" />
+    <None Include="hlp\hid_window_tile_vert.htm" />
+    <None Include="hlp\hidr_doc1type.htm" />
+    <None Include="hlp\main_index.htm" />
+    <None Include="hlp\menu_edit.htm" />
+    <None Include="hlp\menu_file.htm" />
+    <None Include="hlp\menu_help.htm" />
+    <None Include="hlp\menu_view.htm" />
+    <None Include="hlp\menu_window.htm" />
+    <None Include="hlp\scrollbars.htm" />
+    <None Include="hlp\Acoes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Acoes1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Acoes2.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\AlargamentosSargetasePasseios.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\AreadeTaludes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\AreadeTaludes1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\AreaqdeTaludes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\BarradeFerramentas.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\BarradeFerramentas1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\BarradeFerramentas2.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Botoes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CalcularaNotadeServico.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CalcularAreadosTaludes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CalcularAreaeVolumesLimpeza.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CalcularaSuperficie.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CalcularoProjetoGeometrico.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CalcularosVolumes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Calculos.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Campos.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CanteirosCentrais.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CriarArquivosDXF.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CriarProjeto.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CriarsecaoTipo.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CriarTarefasAdicionais.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CurvasHorizontais.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CurvasVerticais.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\CurvasVerticais1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DefinirAcidentesTopograficos.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DefinirAreasEspeciais.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DesenhodoGreide.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Desenhos.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Desenhos1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DesenhoSecoes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\diagoloEdicaodoPIV.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DialogoConfiguracao.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DialogoCriarProjeto.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DialogodeConfiguracao.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DialogodeConfiguracao1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DialogodeEdicaodoPI.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DialogodeRotacaodoDesenho.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\dialogoEdicaodoPIV.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DialogoPontos.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\DialogoVolumes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\EditarasSecoes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\EditarosBordos.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\EmitirRelatorios.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Empolamentos.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\EspessurasdoPavimento.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Est.chm">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\EstWin2013.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\EtapasdeumProjeto.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Generalidades.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Generalidades1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Geometrico.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Geometrico1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Geometrico2.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\GerarArquivosDXF.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Gettinghelp.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\GettingStarted.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Greide.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Greide1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Igualdades.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\ImportarArquivoxyz.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Introduction.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Limpeza.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Limpeza1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Limpeza2.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Newtopic.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\NotadeServico.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\NotadeServico1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\NotadeServicoDetalhada.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\NotadeServicoPavimentacao.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\NotadeServicoTerraplanagem.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\PistasFixas.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\ProjetarGreide.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\ProjetaroGeometrico.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\ProjetoGeometrico.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\ProjetoGeometrico1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\ProjetoGeometricoDetalhado.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Relatorios.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Seccionar.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\SeccionarTerreno.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Secoes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Secoes1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\SecoesTipo.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Superficie.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Systemrequirements.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Taludes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\TaludesdeAterro.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\TaludesdeCorte.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\TaludesdoPavimento.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Tarefasdedigitacao.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\TerrenoPrimitivo.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\TerrenoPrimitivo1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\toc.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\VisualizacaoSimultaneadassecoese.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Volumes.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Volumes1.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Volumes2.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\VolumesdeLimpeza.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Welcome.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\Whatsnew.html">
+      <Filter>HTML Help Topics</Filter>
+    </None>
+    <None Include="hlp\EstWin.hhc">
+      <Filter>HTML Help Files</Filter>
+    </None>
+    <None Include="hlp\EstWin.hhk">
+      <Filter>HTML Help Files</Filter>
+    </None>
+    <None Include="hlp\EstWin.hhp">
+      <Filter>HTML Help Files</Filter>
+    </None>
+    <None Include="Help\EstWinDoc.chm" />
+    <None Include="res\bmp00007.bmp" />
+    <None Include="res\bitmap1.bmp" />
+    <None Include="res\flag.bmp" />
+    <None Include="res\flagmask.bmp" />
+    <None Include="res\bitmap2.bmp" />
+    <None Include="res\bmp00008.bmp" />
+    <None Include="res\bitmap.bmp" />
+    <None Include="res\bmp00009.bmp" />
+    <None Include="res\bmpcor.bmp" />
+    <None Include="res\bittraco.bmp" />
+    <None Include="..\..\..\..\Downloads\Temp\res\bitmap.bmp" />
+    <None Include="res\bitmap3.bmp" />
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="HTML Help Topics">
+      <UniqueIdentifier>{8c79fb79-81b5-4283-8c8f-a902d1746757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HTML Help Files">
+      <UniqueIdentifier>{f973fdc5-d06e-48b8-8892-b08385426f88}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\ico00001.ico" />
+    <Image Include="res\IconeVUE.png" />
+    <Image Include="RES\VUE50.ico" />
+    <Image Include="res\EstWin50.ico" />
+    <Image Include="res\bmp00010.bmp" />
+    <Image Include="res\VUE50.bmp" />
+    <Image Include="res\IconeVUE50.bmp" />
+    <Image Include="res\IconeVUE.bmp" />
+    <Image Include="res\VUE50Icon.ico" />
+    <Image Include="res\icon2.ico" />
+    <Image Include="res\bmp00011.bmp" />
+    <Image Include="VUE50.bmp" />
+    <Image Include="res\bitvue50_128.bmp" />
+    <Image Include="res\vue50_128.bmp" />
+    <Image Include="res\icovue51.ico" />
+    <Image Include="res\bitmap4.bmp" />
+    <Image Include="res\icovue52.ico" />
+    <Image Include="res\bitmap5.bmp" />
+    <Image Include="res\bitbueiro.bmp" />
+    <Image Include="res\bitvaleta.bmp" />
+    <Image Include="res\bittubulacao.bmp" />
+    <Image Include="res\bitcanaleta.bmp" />
+    <Image Include="res\bitsarjeta.bmp" />
+    <Image Include="res\bitdescidadagua.bmp" />
+    <Image Include="res\bitmap6.bmp" />
+    <Image Include="res\bitvaletaoffset.bmp" />
+    <Image Include="res\bitbaciadissipacao.bmp" />
+    <Image Include="res\bitcaixacoletora.bmp" />
+    <Image Include="RES\bitcanaletaoff.bmp" />
+    <Image Include="RES\bitcanaletatn.bmp" />
+    <Image Include="RES\FormulasTc.bmp" />
+    <Image Include="res\bitmap8.bmp" />
+    <Image Include="res\bitmap9.bmp" />
+    <Image Include="res\bitmap7.bmp" />
+    <Image Include="res\FormulasQc.bmp" />
+    <Image Include="RES\FormulaBueiro.bmp" />
+  </ItemGroup>
+</Project>

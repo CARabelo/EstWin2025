@@ -1,0 +1,51 @@
+HTTPresult = HTTP.GetConnectionState()
+if HTTPresult.Connected  == false then 
+  result = Dialog.Message("Aviso", "INTERNET ERROR - Para instalar o Vias Urbanas & EStradas, é preciso uma conexão com a internet.", MB_OK, MB_ICONINFORMATION, MB_DEFBUTTON1)
+  Application.Exit()
+else
+  local strMSerial = SessionVar.Expand("%SerialNumber%");
+  SerialMD5 = Crypto.MD5DigestFromString(strMSerial);
+  
+  Titulo = " Vias Urbanas & Estradas "
+  
+  parametros = {acao = 1,codigo_cliente = 1,chave = strMSerial};
+ 
+  submit = "http://ip-148-72-64-68.ip.secureserver.net/webservice-viasurbanas-estradas/webservice/1/1/" .. SerialMD5; 
+    
+  Resp = HTTP.Submit(submit, parametros);
+  
+  --ParamErro = HTTP.GetHTTPErrorInfo(); 
+  --Dialog.Message("Param==========:", ParamErro.Message, MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+  --Erro = Application.GetLastError();
+
+  pos = String.Find(Resp,"codigo_resposta");
+
+  if(pos > 0) then
+    Status = String.Mid(Resp,pos+17,1); 
+    if(Status == "1") then
+      Dialog.Message(Titulo, "Esta chave está vencida.", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+      Application.Exit();
+    elseif(Status == "2") then
+      Dialog.Message(Titulo, "Esta chave foi cancelada e não pode mais ser instalada.", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+      Application.Exit();  
+    elseif(Status == "3") then
+      Dialog.Message(Titulo, "Esta chave foi bloqueada.", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+      Application.Exit();   
+    elseif(Status == "4") then
+      Dialog.Message(Titulo, "Esta chave já está instalada e não pode ser instalada novamente.", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+      Application.Exit();      
+    elseif(Status == "5") then
+      Dialog.Message("Vias Urbanas & Estradas - Instalação: ", "Chave inválida. Certifique-se de tê-la digitado corretamente.", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+      Application.Exit(); 
+    elseif(Status == "6") then
+      Dialog.Message(Titulo, "Esta chave não corresponde a esta cópia", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+      Application.Exit();  
+    elseif(Status ~= "0") then  
+     Dialog.Message(Titulo, "Houve um erro na instalação da chave (-4)", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+     Application.Exit();  
+    end
+  else
+   Dialog.Message(Titulo, "Houve um erro na instalação da chave (-5)", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+   Application.Exit();  
+  end
+end

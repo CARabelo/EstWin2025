@@ -1,0 +1,157 @@
+ESPECIFICAÇÃO DAS ALTERAÇÕES NO WEBSERVICE DA BOOLE SOFTWARE
+=================================================================================================================
+
+O Web Service não mais enviará emails, então os gets existentes ficarão os mesmos só que sem o envio de email. 
+Deverá ser feita uma alteração em alguns para que enviem para o site uma resposta para que o site envie o email
+(acho q vc já fez isso)
+
+Novo funcionamento de mensagens  existentes:
+
+1 Post para o cadastro de interessados  (existente)
+  não retornará resposta apanas cadastrará o interessado
+  Este post será enviado quando o cliente solicitar uma copia de demonstração, fizer uma compra e houver um 
+  problema no cartão de credito:
+  
+  1 - O site eviará os dados do cliente para o webservice (não me lembro quais eram, favor me enviar)
+  2 - O webservice cadastrará o cliente na tabela de interessados.
+  3 - Fim.
+  
+2 Get para o cadastro de clientes que compraram o programa Vias Urbanas & Estradas  (existente)
+  Este get será enviado ao webservice quando houver uma compra efetuada com sucesso:
+  
+  1 - O site eviará os dados do cliente para o webservice (não me lembro quais eram, favor me enviar)
+  2 - O webservice cadastrará o cliente na tabela de clientes.
+  3 - Como resposta o webservice enviara para o site a chave e o numero do cliente cadastrados
+  3 - Fim.
+  
+ ===> AS OUTRAS MENSAGENS  PARA  INSTALAÇÃO E VERIFICAÇÃO DO PROGRAMA VIAS URBANAS & ESTRADAS NÃO MUDAM <===
+ 
+ Alteração no banco de dados:
+
+1- Criar a tabela de mensalidades:
+
+  Eu já criei mas é preciso verificar e fazer algum ajuste final
+  
+2 - Criar o campo data_vencimento na tabela de chaves (ja criei).
+    Este campo deverá conter a data de vencimento da chave.
+	Valor default: 5 dias apos a data de criação da chave.
+	
+3 - Nova rotina no web service :
+
+   Criar uma rotina para verificação dos pagamentos das mensalidades. já criei uma procedure mas precisa de verificar e fazer algum ajuste.
+   Todos os dias as 2 horas da madrugada devera rodar um script para verificação das mensalidades pagas no pagseguro.
+   Caso haja algum erro no processamento deverá ser feito um roolback  de todos os registros e o script deverá rodar de novo 
+   nos proximos 5 minutos. Estas tentativas deverão ser feitas atá as 5 horas da madrugada.
+   Cada tentativa deverá ser logada no arquivo de log e o erro reportado no maior detalhe possível.
+   O pag seguro possui um get para fazer estas solicitações ele retorna um arquivo jason (ou html) com os dados das mensalidades pagas 
+   no dia anterior.
+   As chaves destes clientes deverão ser validadas para mais um mes de uso, ou seja a data de vencimento da chave (campo novo  
+   criado na tabela de chaves) deverá ser alterada para  + 1 mes a partir da data do processamento
+   Eventuais erros deverão ser logados em um arquivo texto que deverá ser criado diariamente com da data no nome por exemplo
+   logmensalidades15032020.log.
+   
+   Eu dividi esta tarefa em 2 partes: 
+   
+   A primeira faz o get no pagseguro e grava a resposta em um arquivo texto
+   A segundo varre o arquivo texto gerado e atualiza a tabela de mensalidades
+   
+   A segunda parte eu ja fiz, é a procedure que citei acima.
+   a primeira tem que fazer
+   
+   Linha do arquivo texto resultante:
+   
+   11111111111,22222222222222222222222222222222,3333333333,444444,5555555,66666,7777777777,8888888,9
+   Plano-Teste,5FA2AC01B2B2ECBFF433CFA73C159320,2019-08-09,123966,PENDING,Teste,2019-08-09,PENDING,0
+   Plano-Teste,6CBA5E8337375875542ACFAC82968367,2019-08-09,735C41,ACTIVE,Teste,2019-08-09,AUTO,0
+   
+   os campos são:
+   
+   1 Nome do plano
+   2 chave
+   3 data
+   4 tracker (pin)
+   5 status pag seguro
+   6 referencia
+   7 data ultimo evento
+   8 tipo de pagamento
+   9 erro
+   
+   Somente os registros com o tipo de pagamento AUTO deverão ser considerados os outros deverão ser descartados
+   O que a procedure faz e:
+   
+Inicio   
+     Ir na tabela de chaves e pegar o registro com a chave do campo 2
+     alterar a data de vencimento para + 1 mes 
+	 (Pecisa incluir tratamento para os dias 29 e 30 de fevereiro)
+	   se for 29 ou 30 de fevereiro passar a data para 1 de Marco)
+Fim
+
+O que tem q ser feito agora é:
+  um script (1)  que envia um get para o  pagseguro e grava o arquivo texto no formato acima	   
+  um script (2)que rode diariamente a partir das 2 da madrugada ( conforme especificação acima)
+  este script (2) (baseado na cron ou em outro temporizador)  tera que:
+  inicio
+    ir no pagseguro e pegar as mensalidades pagas e gerar o arquivo texto  (script 1)
+	rodar a procedure (que eu fiz) que atualiza a tabela de mensalidades baseado neste arquivo texto
+  fim
+	
+  
+   Exemplo do texto do get do pagseguro é:
+   
+   https://ws.sandbox.pagseguro.uol.com.br/pre-approvals/?email=email&token=token&initialDate=2019-08-09T01:00&finalDate=2019-08-10T00:00
+   
+Especificação do script 2
+
+INICIO 
+  Rodar o script 1 ( que le o get do pagseguro e grava o arquivo texto no formato acima)
+  Chamar a procedure SQL (que eu fiz) e atualiza a tabela de mensalidades
+FIM
+ 
+ RESUMINDO O QUE VC VAI TER Q FAZER:
+ 
+  o script (1)  que le o get do pagseguro e grava o arquivo texto no formato acima	
+  O script (2) 
+  Os ajustes necessários testes e implantação das rotinas 
+  
+  Procedure SQL que fiz para atualização da tabela de mensalidades
+   
+  CREATE PROCEDURE `atualiza_mensalidades`()
+BEGIN
+  DECLARE hoje date default curdate();
+  DECLARE nome_arq_mensalidades varchar(255) default '/home/carlos/pag_seguro/arqtranspagseguro' + hoje + '.txt';
+  DECLARE mensalidades_cursor CURSOR  for SELECT * FROM mensalidades  WHERE data > HOJE;
+  DECLARE data_processamento datetime;
+  DECLARE nomeplano varchar(32); 
+  DECLARE chave_lida varchar(36);
+  DECLARE data date;
+  DECLARE tracker varchar(32); 
+  DECLARE status_lido varchar(32); 
+  DECLARE referencia varchar(32); 
+  DECLARE data_ult_evento date;
+  DECLARE tipo_pagamento varchar(32); 
+  DECLARE erro varchar(16);  
+  
+  SELECT CONCAT('/home/carlos/pag_seguro/arqtranspagseguro',hoje,'.txt') as temp;
+  LOAD DATA LOCAL INFILE '/home/carlos/pag_seguro/arqtranspagsegurohoje.txt' INTO TABLE mensalidades;
+    
+  OPEN mensalidades_cursor;  
+  FETCH NEXT FROM vend_cursor INTO data_processamento, nomeplano, chave_lida, data, tracker, status_lido, referencia, data_ult_evento, tipo_pagamento, erro;
+ 
+  WHILE @@FETCH_STATUS = 0 DO
+    IF 	tipo_pagamento = 'AUTO' THEN
+	  UPDATE mensalidades
+	    SET data_vencimento = prox_vencimento , data_ult_atualizacao = HOJE
+	  WHERE chave = chave_lida;
+    END IF;
+  END WHILE;
+  CLOSE mensalidades_cursor;
+END  
+  
+  
+ KBÔ!!!
+  
+   
+   
+   
+   
+   

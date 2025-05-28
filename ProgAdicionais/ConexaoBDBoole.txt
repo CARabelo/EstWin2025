@@ -1,0 +1,15 @@
+db_vias_ue
+root
+S3gur4nc@
+
+string de conexão: root@ip-148-72-64-68.ip.secureserver.net:3306
+
+workbench:
+connection name:	db_vias_ue
+conection method : TCPIP
+hostname: ip-148-72-64-68.ip.secureserver.net
+Port:3306
+username: root
+passwd: S3gur4nc@
+
+http://ip-148-72-64-68.ip.secureserver.net/webservice-viasurbanas-estradas/webservice?acao=1&codigo_cliente=69&chave=5857f684a87ad75f1cdb2da82f7f184d

@@ -1,0 +1,1306 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "..\resource.h"
+
+// Generated Help ID header file
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "resource.hm"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_EXLINHA,             VIRTKEY, CONTROL, NOINVERT
+    "Y",            ID_NOVALINHA,           VIRTKEY, ALT, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "EST MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "EST\0"
+            VALUE "LegalCopyright", "Copyright © 1997\0"
+            VALUE "OriginalFilename", "EST.EXE\0"
+            VALUE "ProductName", "Vias Urbanas e Estradas\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+BEGIN
+    POPUP "&Projeto"
+    BEGIN
+        MENUITEM "&Novo\tCtrl+N",               ID_PROJ_NOVO
+        MENUITEM "&Abrir...\tCtrl+O",           ID_PROJ_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM SEPARATOR
+        MENUITEM "&Sair\tALT+F4",               ID_APP_EXIT
+    END
+    POPUP "&Arquivo"
+    BEGIN
+        MENUITEM "&Novo\tCtrl+N",               ID_ARQ_NOVO
+        MENUITEM "&Abrir...\tCtrl+O",           ID_ARQ_ABRIR
+        MENUITEM "&Fechar",                     ID_FILE_CLOSE
+        MENUITEM "&Salvar\tCtrl+S",             ID_FILE_SAVE
+        MENUITEM "Salvar &como...",             ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Imprimir...\tCtrl+P",        ID_FILE_PRINT
+        MENUITEM "A&ntever Impressão",          ID_FILE_PRINT_PREVIEW
+        MENUITEM "Configurar impressão...",     ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Arquivos recentes",           ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Procurar...",                ID_PROCURAR
+    END
+    POPUP "&Visualizar"
+    BEGIN
+        MENUITEM "&Barra de ferramentas ",      ID_VIEW_TOOLBAR
+        MENUITEM "&Barra de status",            ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Edição"
+    BEGIN
+        MENUITEM "&Reiniciar campo\tCtrl+R",    ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "&Incluir linha\tAlt+Y",       ID_NOVALINHA
+        MENUITEM "&Excluir linha\tCtrl+Y",      ID_EXLINHA
+    END
+    POPUP "Cálculos"
+    BEGIN
+        MENUITEM "&Terreno    ",                ID_CALCTERRENO
+        MENUITEM "&Nota de serviço",            ID_CLCULOS_CALCULATANOTADESERVIO
+
+        MENUITEM "&Geométrico          ",       ID_CLCULOS_CALCULAROSDADOSGEOMTRICOS
+
+    END
+    POPUP "&Medição"
+    BEGIN
+        MENUITEM "&Nova \tCTRL+N",              ID_MEDIO_NOVA
+        MENUITEM "&Calcular       \tCTRL+C",    ID_MEDIO_CALCULARAMEDIO
+        MENUITEM "&Abrir  \tCTRL+O",            ID_MEDIO_ABRIR
+        MENUITEM "&Fechar",                     ID_MEDIO_FECHAR
+    END
+    POPUP "&Janela"
+    BEGIN
+        MENUITEM "&Centralizadas",              ID_JANELA_CENTRAR
+        MENUITEM "&Em cascata",                 ID_WINDOW_CASCADE
+        MENUITEM "Lado a lado verticalmente",   ID_WINDOW_TILE_VERT
+        MENUITEM "&Lado a lado horizontalmente", ID_WINDOW_TILE_HORZ
+        MENUITEM "&Organizar ícones",           ID_WINDOW_ARRANGE
+    END
+    POPUP "&Ajuda"
+    BEGIN
+        MENUITEM "&Tópicos de ajuda",           ID_HELP_FINDER
+        MENUITEM SEPARATOR
+        MENUITEM "&Sobre o Vias Urbanas ...",   ID_APP_ABOUT
+    END
+    //POPUP "&Testar classes"
+    //BEGIN
+      //  MENUITEM "Testar Curvas Verticais",     ID_TESTARCLASSES_TESTARCURVASVERTICAIS
+
+      //  MENUITEM "Testar Alargamentos",         ID_TESTARCLASSES_TESTARALARGAMENTOS
+
+      //  MENUITEM "Testar Calculo da nota",      ID_TESTARCLASSES_TESTARCALCULODANOTA
+
+      //  MENUITEM "Gerar novo rquivo de terreno", 
+        //                                        ID_TESTARCLASSES_GERARNOVORQUIVODETERRENO
+
+       // MENUITEM "Ler Terreno",                 ID_TESTARCLASSES_LERTERRENO
+   // END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    IDR_MAINFRAME           " Vias Urbanas & Estradas"
+    IDR_ESTTYPE             "\nEst\nEst\n\n\nEst.Document\nEst Document"
+END
+
+STRINGTABLE PRELOAD DISCARDABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       " Vias Urbanas & Estradas"
+    AFX_IDS_IDLEMESSAGE     "Para ajuda pressione F1."
+    AFX_IDS_HELPMODEMESSAGE "Selecione o objeto do qual deseja obter ajuda."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_NEW             "Cria um novo arquivo.\nNovo"
+    ID_FILE_OPEN            "Abre um arquivo existente\nAbrir"
+    ID_FILE_CLOSE           "Fecha o arquivo atual\nFechar"
+    ID_FILE_SAVE            "Salva o arquivo atual\nSalvar"
+    ID_FILE_SAVE_AS         "Salva o arquivo atual com outro nome\nSalvar como"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Muda as opções de impressão."
+    ID_FILE_PRINT           "Imprime o arquivo atual\nImprimir"
+    ID_FILE_PRINT_PREVIEW   "Mostra as páginas de impressão no vídeo.\nAntever impressão"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_APP_ABOUT            "Mostra imformações sobre número da versão e direitos autorais\nSobre..."
+    ID_APP_EXIT             "Sai desta aplicação, avisa para salvar os arquivos modificados.\nSair"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "Lista os tópicos de ajuda.\nTópicos de ajuda"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+    ID_FINDCOMBO            "Procurar texto.\nProcurar texto."
+    ID_FINDCOMBO2           "Projetos\nProjetos"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Mostra uma lista dos projetos abertos  mais recentemente\nRecentes"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_NEW           "Aabre outra janela para o documento atual\nNova janela"
+    ID_WINDOW_ARRANGE       "Reorganiza os ícones ao fundo da janela.\nOrganizar ícones"
+    ID_WINDOW_CASCADE       "Rearranja as janelas para serem sobrepostas em cascata.\nEm cascata"
+    ID_WINDOW_TILE_HORZ     "Reposiciona as janelas sem sobreposição lado a lado.\nLado a lado : Horizontal"
+    ID_WINDOW_TILE_VERT     "Reposiciona as janelas justapondo-as verticalmente.\nLado a lado : Vertical"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copia o texto selecionado para a área de armazenamento.\nCopiar"
+    ID_EDIT_CUT             "Corta o texto selecionado.\nCortar"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insere o texto da área de transferencia.\\Inserir"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Restaura o conteúdo do campo.\nRestaurar campo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Mostra ou esconde a barra de ferramentas.\nBarra de ferramentas"
+    ID_VIEW_STATUS_BAR      "Mostra ou esconde a barra de Status\nBarra de status"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_ARQ_NOVO             "Cria um novo arquivo."
+    ID_PROJ_NOVO            "Cria um novo projeto."
+    ID_BUTTON32798          "Configurar o projeto.\nConfigurar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PROJ_NEW             "Cria um novo projeto."
+    ID_PROJ_OPEN            "Abre um projeto existente."
+    ID_ARQ_ABRIR            "Abre um arquivo existente."
+    ID_NOVALINHA            "Incluir uma linha na posição atual do cursor."
+    ID_EXLINHA              "Excluir a linha na posição atual do cursor."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_JANELA_CENTRAR       "Redispõe as janelas centralizando-as."
+    ID_PROCURAR             "Procura por um arquivo de dados para ser editado.\nProcurar..."
+    ID_CALCTERRENO          "Calcula as cardenetas de nivelamento das seções e/ou de terreno por pontos "
+    ID_MEDIO_CALCULARAMEDIO "Calcula a medição atual."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_MEDIO_NOVA           "Cria uma nova medição"
+    ID_MEDIO_ABRIR          "Abre uma determinada medição"
+    ID_MEDIO_FECHAR         "Fecha a medição atual."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Portuguese (Brazil) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_PTB)
+#ifdef _WIN32
+LANGUAGE LANG_PORTUGUESE, SUBLANG_PORTUGUESE_BRAZILIAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_PROJREC MENU DISCARDABLE 
+BEGIN
+    POPUP "   ", GRAYED
+    BEGIN
+        MENUITEM "projrec1",                    ID_PROJREC1
+        MENUITEM "projrec2",                    ID_PROJREC2
+        MENUITEM "projrec3",                    ID_PROJREC3
+        MENUITEM "projrec4",                    ID_PROJREC4
+        MENUITEM "projrec5",                    ID_PROJREC5
+        MENUITEM "projrec6",                    ID_PROJREC6
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\est.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "Icon1.ico"
+IDR_ESTTYPE             ICON    DISCARDABLE     "idr_estt.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_EDITAR              BITMAP  DISCARDABLE     "Bmp00001.bmp"
+IDR_PROJETOS            BITMAP  DISCARDABLE     "projetos.bmp"
+IDR_SUBTITULO           BITMAP  DISCARDABLE     "toolbar1.bmp"
+IDB_BITMAP1             BITMAP  DISCARDABLE     "bitmap1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_EDITAR TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_ARQ_NOVO
+    BUTTON      ID_ARQ_ABRIR
+    BUTTON      ID_FILE_CLOSE
+    BUTTON      ID_FILE_SAVE
+    BUTTON      ID_FILE_SAVE_ALL
+    SEPARATOR
+    BUTTON      ID_AJUDAESPECIFICA
+    BUTTON      ID_AJUDAGERAL
+    SEPARATOR
+    BUTTON      ID_CORTAR
+    BUTTON      ID_COPIAR
+    BUTTON      ID_COLAR
+    BUTTON      ID_NOVALINHA
+    BUTTON      ID_EXLINHA
+    SEPARATOR
+    BUTTON      ID_MARCAR
+    BUTTON      VS_VERSION_INFO
+    BUTTON      VS_VERSION_INFO
+    BUTTON      ID_EXCUIRMARCAS
+    SEPARATOR
+    BUTTON      ID_PROC_ANTE
+    BUTTON      ID_PROC_PROX
+    BUTTON      ID_BUTTON32804
+    BUTTON      ID_BUTTON32803
+    SEPARATOR
+    BUTTON      ID_PRINT
+    SEPARATOR
+    BUTTON      ID_WINDOW_CASCADE
+    BUTTON      ID_WINDOW_TILE_VERT
+    BUTTON      ID_WINDOW_TILE_HORZ
+    BUTTON      ID_JANELA_CENTRAR
+    BUTTON      ID_PROX_JANELA
+END
+
+IDR_PROJETOS TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_BUTTON32822
+    BUTTON      ID_BUTTON32823
+    BUTTON      ID_BUTTON32773
+    BUTTON      ID_PROJ_NOVO
+    BUTTON      ID_PROJ_ABRIR
+    BUTTON      ID_PROJ_CLOSE
+    BUTTON      ID_CONFIG_PROJ
+END
+
+IDR_SUBTITULO TOOLBAR DISCARDABLE  16, 29
+BEGIN
+    BUTTON      ID_BUTTON32797
+    BUTTON      ID_BUTTON32815
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIASNC, DIALOG
+    BEGIN
+        RIGHTMARGIN, 192
+        BOTTOMMARGIN, 72
+    END
+
+    IDD_MONOLOGO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 229
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 57
+    END
+
+    IDD_CONFIG_PROJ, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 297
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 260
+    END
+
+    IDD_PEGADIR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 214
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 89
+    END
+
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 219
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_ARQNOVO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 209
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+
+    IDD_IGUAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 83
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 186
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 8
+    END
+
+    IDD_TERPON, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 215
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_SECTIPO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 215
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_NIVELAM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 120
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_CURVER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 126
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_GRADI, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 75
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_OAE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 187
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_TALUDES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 223
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_ALASAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 234
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_OAC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 143
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_PAVIM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 75
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_TALPAVI, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 136
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_CANTCEN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 215
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_CURHOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 231
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 5
+    END
+
+    IDD_PROJETO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 221
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+
+    IDD_CALCTERR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 319
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 211
+    END
+
+    IDD_CALCNOTA, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 215
+    END
+
+    IDD_INSTALAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 256
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 133
+    END
+
+    IDD_CALCMEDICAO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 189
+    END
+
+    IDD_ABRIRMEDICAO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 238
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 146
+    END
+
+    IDD_CRIARMEDICAO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 200
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 128
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIASNC DIALOG DISCARDABLE  0, 0, 250, 73
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION " Vias Urbanas & Estradas - Diálogo"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Não",IDNAO,104,50,35,15
+    PUSHBUTTON      "Sim",IDSIM,35,50,35,15
+    CTEXT           "",IDC_STATICO,6,10,238,10
+    PUSHBUTTON      "Ajuda",ID_AJUDA,173,50,35,15
+    CTEXT           "",IDC_STATICO2,6,29,238,10
+END
+
+IDD_MONOLOGO DIALOG DISCARDABLE  0, 0, 236, 65
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Vias Urbanas & Estradas - Mensagem:"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,55,43,50,14
+    CTEXT           "Static",IDC_STATICO,10,8,213,11
+    PUSHBUTTON      "Ajuda",IDC_AJUDA,130,43,50,14
+    CTEXT           "Static",IDC_STATICO2,9,23,213,11
+END
+
+IDD_CONFIG_PROJ DIALOGEX 0, 0, 304, 267
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION
+CAPTION "Vias Urbanas & Estradas - Configurar Projeto:"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Nome do projeto:",IDC_STATIC,5,7,53,8
+    EDITTEXT        IDC_NOMEPROJ,86,5,44,14,ES_AUTOHSCROLL | NOT WS_BORDER,
+                    WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE,HIDC_NOMEPROJ
+    PUSHBUTTON      "Procurar...",IDC_PROCURAR,136,5,44,14
+    LTEXT           "Diretório de trabalho: ",IDC_STATIC,5,28,65,8
+    EDITTEXT        IDC_DIR,82,30,165,14,ES_AUTOHSCROLL
+   // PUSHBUTTON      "Procurar...",IDC_PROCURARDIR,252,30,44,14
+    LTEXT           "Nome do logradouro: ",IDC_STATIC,6,46,67,8
+    EDITTEXT        IDC_NOMELOGRA,82,48,215,14,ES_AUTOHSCROLL,0,
+                    HIDC_NOMELOGRA
+    LTEXT           "Subtítulo:     Linha 1:",IDC_STATIC,6,69,58,8
+    EDITTEXT        IDC_LINHA1,82,66,215,14,ES_AUTOHSCROLL,0,HIDC_LINHA1
+    LTEXT           "Linha 2:",IDC_STATIC,41,89,24,8
+    EDITTEXT        IDC_LINHA2,82,84,215,14,ES_AUTOHSCROLL,0,HIDC_LINHA2
+    LTEXT           "Linha 3:",IDC_STATIC,41,109,24,8
+    EDITTEXT        IDC_LINHA3,82,102,215,14,ES_AUTOHSCROLL,0,HIDC_LINHA3
+    LTEXT           "Equidistâncias de cálculo da nota de serviço (m) :",
+                    IDC_STATIC,4,123,147,8
+    LTEXT           "Parábolas:",IDC_STATIC,5,140,34,8
+    EDITTEXT        IDC_EQUIPAR,86,138,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_EQUIPAR
+    LTEXT           "Curvas horizontais:",IDC_STATIC,5,158,57,8
+    EDITTEXT        IDC_EQUICURHOR,86,155,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_EQUICURHOR
+    LTEXT           "Tangentes:",IDC_STATIC,5,178,35,8
+    EDITTEXT        IDC_EQUITAN,86,172,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_EQUITAN
+    LTEXT           "O.A.E.",IDC_STATIC,5,193,35,8
+    EDITTEXT        IDC_EQUIOAE,86,189,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_EQUIOAE
+    LTEXT           "Dados de partida: ",IDC_STATIC,182,123,57,8
+    LTEXT           "Coordenada  Norte:",IDC_STATIC,163,138,60,8
+    EDITTEXT        IDC_COORN,250,137,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_COORN
+    LTEXT           "Coordenada Este:",IDC_STATIC,163,158,56,8
+    EDITTEXT        IDC_COORE,250,154,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_COORE
+    LTEXT           "Azimute (G.M.S.SS) :",IDC_STATIC,163,176,67,8
+    EDITTEXT        IDC_AZIMUTE,250,172,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_AZIMUTE
+    LTEXT           "Valor da estaca em metros:",IDC_STATIC,163,192,83,8
+    EDITTEXT        IDC_VALEST,250,189,47,14,ES_AUTOHSCROLL,0,HIDC_VALEST
+    LTEXT           "Empresa:",IDC_STATIC,5,209,36,8,0,0,HIDC_STATIC
+    EDITTEXT        IDC_EMPRESA,42,207,256,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,70,248,50,14
+    PUSHBUTTON      "Cancelar",IDCANCEL,140,248,50,14
+    PUSHBUTTON      "Ajuda",IDC_AJUDA,205,248,50,14,0,0,HIDC_AJUDA
+    LTEXT           "Estaca Inicial:",IDC_STATIC,5,229,50,8
+    EDITTEXT        IDC_EQUIOAE2,86,225,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_EQUIOAE2
+    LTEXT           "Estaca Final:",IDC_STATIC,166,228,48,8
+    EDITTEXT        IDC_VALEST2,250,225,47,14,ES_AUTOHSCROLL | ES_NUMBER,0,
+                    HIDC_VALEST2
+END
+
+IDD_PEGADIR DIALOG DISCARDABLE  0, 0, 221, 96
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,130,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,130,24,50,14
+    CONTROL         "List1",IDC_LIST1,"SysListView32",WS_BORDER | WS_TABSTOP,
+                    22,26,60,50
+    COMBOBOX        IDC_COMBO1,71,8,48,30,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Check1",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,101,70,39,10
+END
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 226, 82
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sobre o Vias Urbanas & Estradas: "
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,12,20,21,20
+    CTEXT           "Vias Urbanas & Estradas",IDC_STATIC,49,7,119,8,
+                    SS_NOPREFIX
+    CTEXT           "Versão 4.0 - 1997",IDC_STATIC,50,24,119,8
+    DEFPUSHBUTTON   "OK",IDOK,187,34,32,14,WS_GROUP
+    LTEXT           "Todos os direitos autorais reservados",IDC_STATIC,54,58,
+                    121,8
+    CTEXT           "Projeto e programação : Carlos A. Rabelo",IDC_STATIC,46,
+                    41,133,8
+END
+
+IDD_ARQNOVO DIALOGEX 0, 0, 216, 175
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION
+CAPTION " Vias Urbanas & Estradas - Arquivo novo:"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,161,70,50,14
+    PUSHBUTTON      "&Cancelar",IDCANCEL,161,89,50,14
+    LTEXT           "Selecione o arquivo que deseja criar:",IDC_SUBTITULO,8,
+                    7,143,8
+    LISTBOX         IDC_ARQUIVOS,6,20,144,143,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP,
+                    WS_EX_DLGMODALFRAME
+END
+
+IDD_IGUAL DIALOGEX 0, 0, 90, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "     Estaca             Estaca",IDC_STATIC,2,1,85,8
+END
+
+IDD_PROGRESS DIALOG DISCARDABLE  0, 0, 193, 11
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",0x0,92,1,98,
+                    7
+    CTEXT           "",IDC_TXTPROG,0,0,88,8,NOT WS_GROUP
+END
+
+IDD_TERPON DIALOGEX 0, 0, 222, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "     Estaca       Ig     Afast.     Cota        Afast.       Cota       Afast.       Cota",
+                    IDC_STATIC,0,0,222,8
+END
+
+IDD_SECTIPO DIALOGEX 0, 0, 222, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "Estaca Inicial  Ig         x             y            x              y            x             y",
+                    IDC_STATIC,0,1,222,8
+END
+
+IDD_NIVELAM DIALOGEX 0, 0, 127, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "   Visada    Ig  Pl. Ref.    Leitura    Cota       Y1       Y2",
+                    IDC_STATIC,0,1,127,8
+END
+
+IDD_CURVER DIALOGEX 0, 0, 133, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "     Estaca       Ig     Cota       Y1           Y2",
+                    IDC_STATIC,0,1,132,8
+END
+
+IDD_GRADI DIALOGEX 0, 0, 82, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "  Estaca           Ig    Afast.",IDC_STATIC,2,1,78,8
+END
+
+IDD_OAE DIALOGEX 0, 0, 194, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           " Estaca Inicial Ig Estaca Final  Ig                   Descrição",
+                    IDC_STATIC,0,1,191,8
+END
+
+IDD_TALUDES DIALOGEX 0, 0, 230, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           " Estaca Final  Ig  L Delta x    Delta y    Delta x     Delta y    Delta x     Delta y     ",
+                    IDC_STATIC,1,1,228,8
+END
+
+IDD_ALASAR DIALOGEX 0, 0, 241, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           " Estaca Final   Ig  L T Delta x    Delta y     Delta x    Delta y    Delta x    Delta y",
+                    IDC_STATIC,0,0,240,8
+END
+
+IDD_OAC DIALOGEX 0, 0, 150, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "     Estaca       Ig                 Descrição",
+                    IDC_STATIC,0,1,145,8
+END
+
+IDD_PAVIM DIALOGEX 0, 0, 82, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "   Estaca        Ig        h",IDC_STATIC,2,1,78,8
+END
+
+IDD_TALPAVI DIALOGEX 0, 0, 143, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           " Estaca Final  Ig  C. esq.  A. esq. C. dir.  A. dir.",
+                    IDC_STATIC,1,1,140,8
+END
+
+IDD_CANTCEN DIALOGEX 0, 0, 222, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           "Estaca Final  Ig   Xini        Xfim        Xini         Xfim       Xini         Xfim",
+                    IDC_STATIC,4,0,209,8
+END
+
+IDD_CURHOR DIALOGEX 0, 0, 238, 12
+STYLE DS_ABSALIGN | WS_CHILD | WS_VISIBLE
+EXSTYLE WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_STATICEDGE
+FONT 16, "Times New Roman", 0, 0, 0x1
+BEGIN
+    LTEXT           " Estaca Ts/Pc Ig  Estaca St/Pt  Ig  L T    AC         Raio            Lc         Se       Sl",
+                    IDC_STATIC,1,1,234,8
+END
+
+IDD_PROJETO DIALOGEX 0, 0, 228, 76
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION " Vias Urbanas & Estradas :  Projeto "
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,138,52,50,14
+    EDITTEXT        IDC_NOMEPROJ,40,52,61,14,ES_AUTOHSCROLL,
+                    WS_EX_DLGMODALFRAME
+    CTEXT           "específico, digite aqui o nome do projeto e pressione Ok para continuar, ou simplesmente pressione Ok para continuar",
+                    IDC_STATIC,7,20,214,8
+    CTEXT           "Caso deseje procurar um arquivo de algum projeto ",
+                    IDC_STATIC,28,5,172,8
+    CTEXT           "Caso contrario simplesmente pressione Ok para continuar.",
+                    IDC_STATIC,18,34,193,8
+END
+
+IDD_CALCTERR DIALOGEX 0, 0, 326, 218
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_MINIMIZEBOX | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CONTEXTHELP | WS_EX_APPWINDOW
+CAPTION " Vias Urbanas  & Estradas - Cálculo do terreno :"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Parâmetros para cálculo das cotas das estacas :",
+                    IDC_STATIC,8,1,177,85,0,0,HIDC_STATIC
+    CONTROL         "&Usar as cotas atuais. ",IDC_RADATUAIS,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,13,14,81,10
+    CONTROL         "&Recalcular as cotas nas estacas.",IDC_RADRECALC,
+                    "Button",BS_AUTORADIOBUTTON | WS_TABSTOP,13,34,116,10
+    CONTROL         "U&sar nivelamento do eixo para cotar as estacas.",
+                    IDC_RADUSRNIV,"Button",BS_AUTORADIOBUTTON | WS_DISABLED,
+                    13,52,160,10
+    GROUPBOX        "Trecho a ser calculado : ",IDC_STATIC,188,1,130,86,0,0,
+                    HIDC_STATIC
+    CONTROL         "    &Completo",IDC_COMPLETO,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,230,15,56,10
+    LTEXT           "Estaca &Inicial  :",IDC_STAESTINI,192,40,45,8,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIESTINI,241,37,40,14,ES_AUTOHSCROLL | WS_DISABLED
+    CTEXT           "Ig",IDC_STAIGINI,281,39,12,8,WS_DISABLED
+    EDITTEXT        IDC_EDIIGINI,294,37,18,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Estaca &final :",IDC_STAESTFIM,192,67,39,8,WS_DISABLED
+    EDITTEXT        IDC_EDIESTFIM,241,64,40,14,ES_AUTOHSCROLL | WS_DISABLED
+    CTEXT           "Ig",IDC_STAIGFIM,281,66,12,8,WS_DISABLED
+    EDITTEXT        IDC_EDIIGFIM,294,63,18,14,ES_AUTOHSCROLL | WS_DISABLED
+    GROUPBOX        "Arquivos a serem usados :",IDC_STAARQUIVOS,8,89,177,51,
+                    0,0,HIDC_STAARQUIVOS
+    CONTROL         "&Nivelamento das seções",IDC_CHENIV,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,102,91,10
+    CONTROL         "&Terreno por pontos",IDC_CHETER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,123,74,10
+    GROUPBOX        "Prioridade de cálculo :",IDC_STAPRIORI,188,90,129,50,0,
+                    0,HIDC_STAPRIORI
+    CONTROL         "N&ivelamento das seções",IDC_RADPRINIV,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,194,118,91,10
+    CONTROL         "T&erreno por pontos",IDC_RADPRITER,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,194,128,74,10
+    GROUPBOX        "Progresso :",IDC_STATIC,30,142,267,45
+    CONTROL         "Progress1",IDC_PROGRESSO,"msctls_progress32",WS_BORDER,
+                    43,155,241,13,WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "&Iniciar",IDC_INICIAR,16,195,50,14
+    PUSHBUTTON      "&Cancelar",IDC_CANCELAR,77,195,50,14
+    PUSHBUTTON      "&Ajuda",IDC_AJUDA2,138,195,50,14
+    PUSHBUTTON      "&Pausa",IDC_PAUSA,199,195,50,14
+    PUSHBUTTON      "&Ok",IDC_OK,260,195,50,14
+    LTEXT           "as  cotas das estacas foram digitadas)",IDC_STATIC,20,
+                    24,151,8
+    LTEXT           "quando as seções  e o eixo foram nivelados juntos)",
+                    IDC_STATIC,20,44,164,8
+    LTEXT           "( Deve  ser  usado quando  o  eixo  foi  nivelado ",
+                    IDC_STATIC,20,65,147,8,WS_DISABLED
+    LTEXT           "separamente)",IDC_STATIC,23,75,59,8,WS_DISABLED
+    LTEXT           "(Deve ser usado quando ",IDC_STATIC,92,14,82,8
+    LTEXT           "(Deve ser usado",IDC_STATIC,130,35,53,8
+    LTEXT           "(Caso ocorra seções iguais, qual dos ",IDC_STATIC,194,
+                    98,119,8
+    LTEXT           "arquivos terá prioridade de cálculo?)",IDC_STATIC,196,
+                    107,113,8
+    CTEXT           "",IDC_EXECUTANDO,88,173,150,8
+END
+
+IDD_CALCNOTA DIALOGEX 0, 0, 314, 222
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION " Vias Urbanas & Estradas - Cálculo da nota de serviço :"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Opções de cálculo :",IDC_STATIC,9,4,147,120,BS_LEFT
+    CONTROL         "&Calcular a seção-tipo e as cotas. (Deve ser usada quando você desejar  que os valores de afastamentos e cotas sejam calculados, nesta opção, caso tenham sido feitas edições nas seções estas edições serão  perdidas) ",
+                    IDC_CALCTUDO,"Button",BS_AUTORADIOBUTTON | BS_LEFT | 
+                    BS_TOP | BS_MULTILINE | WS_TABSTOP,13,16,134,53
+    CONTROL         "&Manter as seções-tipo atuais e recalcular apenas as cotas. (Deve ser usada quando as seções foram editas e você deseja manter as edições feitas alterando somente as cotas dos pontos)",
+                    IDC_CALCSOCOTA,"Button",BS_AUTORADIOBUTTON | BS_TOP | 
+                    BS_MULTILINE | WS_DISABLED | WS_TABSTOP,13,70,132,51
+    CONTROL         "    &Completo",IDC_COMPLETO,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,209,14,56,10
+    LTEXT           "Estaca &Inicial  :",IDC_STAESTINI,171,33,45,8,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIESTINI,220,30,40,14,ES_AUTOHSCROLL | WS_DISABLED
+    CTEXT           "Ig",IDC_STAIGINI,260,32,12,8,WS_DISABLED
+    EDITTEXT        IDC_EDIIGINI,273,30,18,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Estaca &final :",IDC_STAESTFIM,171,58,39,8,WS_DISABLED
+    EDITTEXT        IDC_EDIESTFIM,220,55,40,14,ES_AUTOHSCROLL | WS_DISABLED
+    CTEXT           "Ig",IDC_STAIGFIM,260,57,12,8,WS_DISABLED
+    EDITTEXT        IDC_EDIIGFIM,273,54,18,14,ES_AUTOHSCROLL | WS_DISABLED
+    CONTROL         " &Incluir as seções existentes que  ",IDC_CHEINCLUIR,
+                    "Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,183,
+                    86,111,10
+    LTEXT           "        estiverem fora do trecho.",IDC_STAINCLUIR,184,
+                    99,108,8,WS_DISABLED
+    GROUPBOX        "Trecho : ",IDC_STATIC,161,4,144,120,BS_LEFT
+    CONTROL         "Progress1",IDC_PROGRESSO,"msctls_progress32",WS_BORDER,
+                    39,144,241,13,WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+ //   DEFPUSHBUTTON   "&Iniciar",IDC_INICIAR2,10,199,50,14
+    PUSHBUTTON      "&Cancelar",IDC_CANCELAR,71,199,50,14
+    PUSHBUTTON      "&Ajuda",IDC_AJUDA2,132,199,50,14
+    PUSHBUTTON      "&Pausa",IDC_PAUSA,193,199,50,14
+    PUSHBUTTON      "&Ok",IDC_OK,254,199,50,14
+    CTEXT           "",IDC_EXECUTANDO,39,165,236,8
+    GROUPBOX        "Progresso :",IDC_STATIC,23,129,267,53
+END
+
+IDD_INSTALAR DIALOGEX 0, 0, 263, 140
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vias Urbanas e Estradas - Instalação :  "
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        " Parâmetros para instalação :",IDC_STATIC,9,3,249,53,
+                    WS_GROUP
+    LTEXT           "Diretório de origem :",IDC_STATIC,14,17,62,8
+    EDITTEXT        IDC_ORIGEM,84,15,118,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Procurar...",IDC_BUTTON2,208,15,45,14
+    LTEXT           "Diretório de destino :",IDC_STATIC,14,36,62,8
+    EDITTEXT        IDC_DESTINO,84,33,118,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Procurar...",IDC_BUTTON1,208,33,45,14
+    GROUPBOX        " Progresso da instalação : ",IDC_STATIC,10,60,249,49,
+                    WS_GROUP
+    RTEXT           "0 ",IDC_STATIC,100,69,29,8
+    LTEXT           "%",IDC_STATIC,129,69,8,8
+    CONTROL         "Progress1",IDC_PROGRESS1,"msctls_progress32",0x0,50,80,
+                    168,14,WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "&Cancelar",IDCANCEL2,45,118,50,14
+    DEFPUSHBUTTON   "&Instalar",IDOK,106,118,50,14
+    DEFPUSHBUTTON   "&Ajuda",2,167,118,50,14
+END
+
+IDD_CALCMEDICAO DIALOGEX 0, 0, 309, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Cálculo da medição :"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Número",IDC_STATIC,33,15,33,15
+    EDITTEXT        IDC_NUMMEDICAO,73,10,40,20,ES_AUTOHSCROLL,
+                    WS_EX_DLGMODALFRAME
+    GROUPBOX        "Tipo de cálculo : ",IDC_STATIC,171,1,131,45
+    CONTROL         "Calcular a medição acumulada.",IDC_RADACUMULADA,
+                    "Button",BS_AUTORADIOBUTTON,180,14,111,10
+    CONTROL         "Calcular a medição Parcial. ",IDC_RADPARCIAL,"Button",
+                    BS_AUTORADIOBUTTON | BS_MULTILINE,180,27,111,17,
+                    WS_EX_RTLREADING
+    EDITTEXT        IDC_EDIIGINI,277,79,18,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Estaca &final :",IDC_STAESTFIM,177,102,39,8,WS_DISABLED
+    GROUPBOX        "Parâmatros para cálculo :",IDC_STATIC,9,48,158,72
+  //  CONTROL         "Usar as seções editadas.",IDC_RADUSARSECEDI,"Button",
+   //                 BS_AUTORADIOBUTTON | WS_GROUP,14,63,93,10
+    //CONTROL         "Considerar as seções conforme os dados de campo. Neste caso, serão perdidas quaisquer edições feitas nos desenhos das seções.",
+      //              IDC_RADUSADADCAMPO,"Button",BS_AUTORADIOBUTTON | 
+        //            BS_MULTILINE,13,79,150,34
+    CONTROL         "    &Completo",IDC_COMPLETO,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,212,63,56,10
+    GROUPBOX        "Trecho a ser calculado : ",IDC_STATIC,171,48,131,72,0,0,
+                    HIDC_STATIC
+    EDITTEXT        IDC_EDIESTINI,223,79,40,14,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Estaca &Inicial  :",IDC_STAESTINI,177,82,45,8,
+                    WS_DISABLED
+    CTEXT           "Ig",IDC_STAIGINI,263,104,12,8,WS_DISABLED
+    EDITTEXT        IDC_EDIESTFIM,223,100,40,14,ES_AUTOHSCROLL | WS_DISABLED
+    CTEXT           "Ig",IDC_STAIGFIM,263,81,12,8,WS_DISABLED
+    EDITTEXT        IDC_EDIIGFIM,277,99,18,14,ES_AUTOHSCROLL | WS_DISABLED
+    DEFPUSHBUTTON   "&Iniciar",IDC_INICIARCALCMED,7,174,50,14
+    PUSHBUTTON      "&Cancelar",IDC_CANCELAR,68,174,50,14
+    PUSHBUTTON      "&Ajuda",IDC_AJUDA2,129,174,50,14
+    PUSHBUTTON      "&Pausa",IDC_PAUSA,190,174,50,14
+    PUSHBUTTON      "&Ok",IDC_OK,252,174,50,14
+    GROUPBOX        "Progresso :",IDC_STATIC,21,122,267,45
+ //   CONTROL         "Progress1",IDC_PROGRESSOMED,"msctls_progress32",
+   //                 WS_BORDER,34,134,241,13,WS_EX_DLGMODALFRAME | 
+     //               WS_EX_CLIENTEDGE | WS_EX_STATICEDGE
+    CTEXT           "",IDC_EXECUTANDO,55,153,198,8
+END
+
+IDD_ABRIRMEDICAO DIALOG DISCARDABLE  0, 0, 245, 153
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Abrir Medição :"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Selecione a medição que deseja abrir :",IDC_STATIC,8,5,
+                    229,87
+    LISTBOX         IDC_LISTMEDICAO,12,23,220,62,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Abrir somente para leitura",IDC_CHSOLEITURA,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,76,100,93,10
+    PUSHBUTTON      "Cancelar",IDCANCEL,60,122,50,14
+    DEFPUSHBUTTON   "OK",IDOK,135,122,50,14
+END
+
+IDD_CRIARMEDICAO DIALOG DISCARDABLE  0, 0, 207, 135
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Criar Medição :"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Selecione a medição que deseja criar :",IDC_STATIC,9,5,
+                    190,87
+    LISTBOX         IDC_LISTMEDICAO,10,23,187,60,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Cancelar",IDCANCEL,41,103,50,14
+    DEFPUSHBUTTON   "OK",IDOK,116,103,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PROJ_ABRIR           "Abrir um projeto existente.\nAbrir projeto"
+    ID_ARQ_ABRIR            "Abrir um arquivo existente.\nAbrir Arquivo"
+    ID_FECHAR               "Incluir uma linha na posição atual do cursor.\nIncluir linha (Alt+Y)"
+    ID_GRAVAR               "Excluir a linha na posição atual do cursor.\nExcluir linha (Ctrl+Y)"
+    ID_AJUDAESPECIFICA      "Mostra uma tela de ajuda sobre um determinado ítem.\nAjuda específica"
+    ID_AJUDAGERAL           "Mostra informações de ajuda geral.\nAjuda geral."
+    ID_CORTAR               "Remover o texto selecionado.\nRemover"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_COPIAR               "Copiar o texto selecionado para a memória.\nCopiar"
+    ID_COLAR                "Colar o texto anteriormente selecionado.\nColar"
+    ID_PROC_ANTE            "Procurar a ocorrência anterior da palavra.\nProcurar Anterior."
+    ID_ARQ_NOVO             "Criar um novo arquivo.\nArquivo novo."
+    ID_SALVARTUDO           "Salva todos os arquivos alterados no disco rígido.\nSalvar todos"
+    ID_PROJ_NOVO            "Criar um novo projeto.\nCriar projeto"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PROC_PROX            "Procurar a próxima ocorrência da palavra.\nProcuraar Próxima"
+    ID_CONFIG_PROJ          "Configurar um projeto existente.\nConfigurar projeto."
+    ID_PRINT                "Imprimir a tarefa atual.\nImprimir"
+    ID_MARCAR               "Marcar a posição atual do texto.\nMarcar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_PROJ_FECHAR          "Fechar um projeto.\nFechar projeto"
+    ID_FILE_ABRIR           "Peposiciona as janelas centralizando-as.\nCentralizadas"
+    ID_FILE_SAVE_ALL        "Salvar todos os arquivos abertos.\nSalvar todos"
+    ID_PROJ_CLOSE           "Fechar o projeto corrente.\nFechar projeto."
+    ID_PROX_JANELA          "Focaliza a próxima janela.\nPróxima janela"
+    ID_JANELA_ANTERIOR      "Focaliza a janela anterior.\nJanela anterior"
+    ID_JANELA_ANT           "asdasdasdasdasd"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILE_OPEN            "Abrir um arquivo.\nAbrir Arquivo."
+    ID_FILE_CLOSE           "Fechar um arquivo.\nFechar Arquivo"
+    ID_FILE_SAVE            "Salvar um arquivo aberto .\nSalvar"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_WINDOW_CASCADE       "Reposiciona as janelas oeganizadas em cascata.\nEm cascata"
+    ID_WINDOW_TILE_HORZ     "Reposiciona as janelas justapondo-as horizontalmente.\nLado a lado : horizontal"
+    ID_WINDOW_TILE_VERT     "Reposiciona as janelas justapondo-as verticalmente.\nLado a lado : vertical"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_NEXT_PANE            "Focaliza a próxima janela.\nPróxima"
+    ID_PREV_PANE            "Focaliza a janela anterior.\nAnterior"
+END
+
+#endif    // Portuguese (Brazil) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+//#include "res\est.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

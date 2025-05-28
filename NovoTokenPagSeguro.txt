@@ -1,0 +1,29 @@
+c845c20f-ac5d-4ab7-ba3f-dbda95587cfe7fccba794c07a23e4779b4e90e85a10426d2-783a-4b15-853c-63690445c39c
+
+https://ws.pagseguro.uol.com.br/v2/transactions?initialDate=2023-01-26T00:00@finalDate=2023-01-26T23:59&page=1&maxPageResults=100&email=carlosarabelo@yahoo.com.br@token=c845c20f-ac5d-4ab7-ba3f-dbda95587cfe7fccba794c07a23e4779b4e90e85a10426d2-783a-4b15-853c-63690445c39c
+@initialDate=2023-01-26T00:00@finalDate=2023-01-26T23:59
+
+CONSULTA OK
+https://ws.pagseguro.uol.com.br/v2/transactions?initialDate=2023-01-26T00:00&finalDate=2023-01-26T23:59&page=1&maxPageResults=100&email=carlosarabelo@yahoo.com.br&token=c845c20f-ac5d-4ab7-ba3f-dbda95587cfe7fccba794c07a23e4779b4e90e85a10426d2-783a-4b15-853c-63690445c39c
+
+9C447A68-67DB-4A67-BEDA-B2FC7342918A
+
+curl -X GET \consulta transaçoes por data Erro
+  'https://ws.pagseguro.uol.com.br/v2/transactions?email=email@email.com&token=token&initialDate=2018-11-07T00:00&finalDate=2018-11-14T00:00&page=1&maxPageResults=10&reference= \
+
+
+https://ws.sandbox.pagseguro.uol.com.br/pre-approvals/notifications/notification-code?email=email&token=token' \
+
+https://ws.pagseguro.uol.com.br/v2/transactions/9E884542-81B3-4419-9A75-BCC6FB495EF1
+?email=suporte@lojamodelo.com.br
+&token=95112EE828D94278BD394E91C4388F20
+
+https://ws.pagseguro.uol.com.br/v2/transactions/64F95C76-2515-4C35-8F47-7054DA0911C7?email=carlosarabelo@yahoo.com.br&token=c845c20f-ac5d-4ab7-ba3f-dbda95587cfe7fccba794c07a23e4779b4e90e85a10426d2-783a-4b15-853c-63690445c39c
+&token=95112EE828D94278BD394E91C4388F20
+
+vieira@luvicontabilidade.com.br
++ Adicionar aos contatos
+
+30-09-2023  compra de hoje
+https://ws.pagseguro.uol.com.br/v2/transactions/EF1605E3-4E59-4FD3-99BC-7C4CAAEFDEFB?email=carlosarabelo@yahoo.com.br&token=c845c20f-ac5d-4ab7-ba3f-dbda95587cfe7fccba794c07a23e4779b4e90e85a10426d2-783a-4b15-853c-63690445c39c
+08E2AC3C-DA8E-49B3-AB03-445CBE57FC22

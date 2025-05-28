@@ -1,0 +1,208 @@
+Starting build...
+29-Aug-23  07:36:07 PM
+Project file: F:\Temp\EstWin\SetupFactory\EstWinOKOK.suf
+
+Updating screen themes
+Creating build copy of data
+Locating build configuration
+> Using build configuration: Default
+> Target platform: 64-bit (x64)
+Expanding design time constants
+Excluding files not in current build configuration...
+> 0 files excluded from build
+Excluding dependency modules not in current build configuration...
+Performing pre-build checks...
+Verifying archive files...
+Verifying external files...
+Ordering file list...
+Expanding folder references...
+> Expanding folder reference: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\*.*
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\BaciasHidrograf.rel
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\CGAL.txt
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\EquipDrenagem.rel
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\est.rec
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\ProjetoGeom.rel
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\ProjGeomDet.rel
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.ato
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.bah
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.bor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.cat
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.chc
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.cns
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.cun
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.edr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.geo
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.gra
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.hor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.ini
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.lem
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.lic
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.lim
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.not
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.pas
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.pav
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.pea
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.pes
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.prg
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.ptp
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.ref
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.res
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.sbt
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.sec
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.sup
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.taa
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.tac
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.tal
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.tca
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.tpa
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.tpr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.tps
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1.ver
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1_PontosEditadosUsuario.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1_ProjTerraplanagem.log
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Rua1\Rua1_ProjTerraplanagem.rel
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Caderneta1.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Caderneta2.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Caderneta3.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\est.rec
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.aci
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\EXEMPLO40.ato
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.bah
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.bor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.cab
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.cns
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.cun
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.dtr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.ini
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.lsr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.prj
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.res
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40.sup
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40_CalcSuperficie.log
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40_CalcSuperficie.rel
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40_DefFronteira.log
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40_PonInsSec_Rua1.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40_PontosEditadosUsuario.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40_PontosInseridos.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\Exemplo40\Exemplo40_Seccionar.log
+> Expanding folder reference: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\*.*
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.ato
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.bah
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.bor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.cat
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.chc
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.cns
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.cun
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.edr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.geo
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.gra
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.hor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.ini
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.lem
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.lim
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.not
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.pas
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.pav
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.pea
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.pes
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.prg
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.ptp
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.res
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.sbt
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.sec
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.sup
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.taa
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.tac
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.tca
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.tpa
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.tpr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.tps
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1.ver
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1_PontosEditadosUsuario.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1_ProjTerraplanagem.log
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\Rua1\Rua1_ProjTerraplanagem.rel
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.aci
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.bah
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.bor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.cab
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.cns
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.cun
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.dtr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.ini
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.jpg
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.lsr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.pos
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.prj
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.res
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf.sup
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf_DefFronteira.log
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf_PontosEditadosUsuario.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\CampoGolf_Seccionar.log
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\est.rec
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\GolfCN.kml
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\GolfCN.kml.txt
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\CampoGolf\PCTRLCampoGolf.pct
+> Expanding folder reference: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\*.*
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.ato
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.bah
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.bor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.cat
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.chc
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.cns
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.cun
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.edr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.emp
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.geo
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.gra
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.hor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.ini
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.lem
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.lim
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.pav
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.pea
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.pes
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.res
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.sec
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.sup
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.taa
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.tac
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.tca
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.tpa
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1.tps
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Rua1\Rua1_PontosEditadosUsuario.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\est.rec
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\PCTRLTesteDrone3.pct
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Teste.kml
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\Teste.kml.txt
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.aci
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.bah
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.bor
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.cab
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.cns
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.cun
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.dtr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.ini
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.jpg
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.lsr
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.pos
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.prj
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.res
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3.sup
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3_DefBacias.log
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3_DefFronteira.log
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3_PontosEditadosUsuario.xyz
+>> File added: F:\Users\carlo\Documents\Visual Studio 2019\EstWin\Projetos\TesteDrone3\TesteDrone3_Seccionar.log
+Excluding global script files for build configuration...
+Including global script files...
+> Script file included: F:\Program Files (x86)\Setup Factory 9\Includes\Scripts\_SUF70_Global_Functions.lua
+Processing serial number lists...
+> Encrypting: New List (2 items)
+> Encrypting: New List [1] (1000 items)
+Initializing archive...
+> Using temporary build folder: C:\Users\CARLOS~1.RAB\AppData\Local\Temp\_ir_sf_build_0
+Gathering primer files...
+Warning 7010: Screen "Contrato de Licença:" uses a scrolling text control with the 'load from file' option enabled but the file does not exist: "" Language: English
+Warning 7010: Screen "Contrato de Licença:" uses a scrolling text control with the 'load from file' option enabled but the file does not exist: "C:\Users\carlo\Documents\Visual Studio 2019\EstWin\hlp\ContratoEstWin64_2rv.html" Language: Portuguese
+Error 2050: Primer file not found: C:\Users\Carlo\Documents\Visual Studio 2019\EstWin\RES\Icon1.ico
+
+Build failed - 1 Error(s), 2 Warning(s)

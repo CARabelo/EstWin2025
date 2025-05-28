@@ -1,0 +1,6 @@
+; CalcVL.def : Declares the module parameters for the DLL.
+
+LIBRARY      "CalcVL"
+
+EXPORTS
+    ; Explicit exports can go here

@@ -1,0 +1,58 @@
+HTTPresult = HTTP.GetConnectionState()
+if HTTPresult.Connected  == false then 
+  result = Dialog.Message("Aviso", "INTERNET ERROR - Para instalar o Vias Urbanas & EStradas, é preciso uma conexão com a internet.", MB_OK, MB_ICONINFORMATION, MB_DEFBUTTON1)
+  Application.Exit()
+else
+  local strMSerial = SessionVar.Expand("%SerialNumber%");
+  SerialMD5 = Crypto.MD5DigestFromString(strMSerial);
+
+  parametros = {acao = 1,codigo_cliente = 1,chave = strMSerial};
+  submit = "http://ip-148-72-64-68.ip.secureserver.net/webservice/2/1/" .. SerialMD5; 
+  
+  Resp = HTTP.Submit(submit, parametros);
+  pos = String.Find(Resp,"codigo_resposta");
+    
+  Titulo = " Vias Urbanas & Estradas - Instalação: ";
+ 
+  OK = false;  
+
+  if(pos > 0) then
+    Status = String.Mid(Resp,pos+17,1); 
+    if(Status == "4") then
+      local SerialMD5Rot127 = "";
+      Tam = string.len(SerialMD5) + 1;  
+      
+     -- for i = 1,Tam,1 
+     -- do
+       local CharAtual = string.byte(SerialMD5,i);
+   
+        
+        --if(string.byte(SerialMD5,i) > string.byte(" ")) then 
+       --   if(CharAtual > 128) then
+       --     CharAtual = CharAtual -  127;
+       --   elseif (CharAtual < 128) then
+       --     CharAtual = CharAtual + 127;
+        --  end
+       -- end            
+     --   SerialMD5Rot127 = SerialMD5Rot127 .. CharAtual;    
+   --   end
+      
+   --   Dialog.Message("FFFFF", SerialMD5Rot127, MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+   
+      local Arquivo = io.open("C:\\Windows\\system32\\ConPonIn.dll", "r+b")
+      Arquivo:seek("cur",1280);  
+      Arquivo:write(SerialMD5);  
+      Arquivo:flush();
+      Arquivo:close();
+      OK = true;     
+    else
+      Mensagem = "Status inválido: " .. Status;
+    
+      Dialog.Message(Titulo, "Houve um erro na instalação da chave (-1), tente novamente.", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+      Application.Exit();  
+    end
+  else
+   Dialog.Message(Titulo, "Houve um erro na instalação da chave(-2), tente novamente.", MB_OK, MB_ICONSTOP, MB_DEFBUTTON1);
+   Application.Exit();
+  end
+end

@@ -1,0 +1,49 @@
+Murilo,
+
+Segue abaixo um breve elatório do que pude analisar na conciliação até agora;
+
+O modulo de conciliação recebe o arquivo XML que é subdividido em varios tipos de registros que são:
+
+transações
+Cancelamentos
+Cobrança
+Prestações
+Extornos
+Eventos financeiros
+Pagamentos
+
+A medida que os registros são lidos são inseridos dados em diversas tabelas que são:
+
+12001 - Transações Stone
+12003 - Erros conciliação durante importação
+12006 - Transaçoes  Mtsol não stone
+13007 - cabeçalhos dos XML
+13008 - Trans Pagas MTSOL não stone
+13009 - Calcelamentos
+13010 - cobranças
+13011 - Prestações
+13012 - Eventos financeiros
+13013 - Pagamentos Stone
+13014 - MTSOL não STONE
+13015 - Stone não MTSOL
+13016 - Total conciliacao
+13017 - diferença trans STONE 
+13018 - Estôrnos
+
+No final da importação o programa faz as totalizações da importação e gera o extrato.
+Os relatórios de extrato são obtidos atraves de queries nas tabelas onde os dados foram inseridos.
+
+O Relatorios gerados são: 
+
+Transações agendadas mtsol não stone
+Transações agendadas stone não mtsol 
+Transações pagas mtsol não stone
+Transações stone não mtsol
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+VueB  
+https://pag.ae/7W7YF4Fb2
+<!-- INICIO DO BOTAO PAGSEGURO --><a href="https://pag.ae/7W7YF4Fb2/button" target="_blank" title="Pagar com PagSeguro"><img src="//assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar-azul.gif" alt="Pague com PagSeguro - é rápido, grátis e seguro!" /></a><!-- FIM DO BOTAO PAGSEGURO -->
+VueI
+https://pag.ae/7W7YG4oTP
+<!-- INICIO DO BOTAO PAGSEGURO --><a href="https://pag.ae/7W7YG4oTP/button" target="_blank" title="Pagar com PagSeguro"><img src="//assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar-azul.gif" alt="Pague com PagSeguro - é rápido, grátis e seguro!" /></a><!-- FIM DO BOTAO PAGSEGURO -->
+VueA
+https://pag.ae/7W7YGFCHK
+<!-- INICIO DO BOTAO PAGSEGURO --><a href="https://pag.ae/7W7YGFCHK/button" target="_blank" title="Pagar com PagSeguro"><img src="//assets.pagseguro.com.br/ps-integration-assets/botoes/pagamentos/205x30-pagar-azul.gif" alt="Pague com PagSeguro - é rápido, grátis e seguro!" /></a><!-- FIM DO BOTAO PAGSEGURO -->

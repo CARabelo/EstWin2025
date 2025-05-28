@@ -1,0 +1,3 @@
+As seçõews não são atualizadas quando movo o mouse sobre uma estaca no perfil longitudinal:
+Verifique que o botão sincronizar na barra de ferramentas esteja pressionado
+Verifique que a opção varrer terreno na configuração do desenho esteja marcada;

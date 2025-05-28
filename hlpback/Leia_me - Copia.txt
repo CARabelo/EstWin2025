@@ -1,0 +1,66 @@
+
+LEIA ATENTAMENTE ESTAS INSTRUÇÕES ANTES DE INSTALAR O PROGRAMA VIAS URBANAS & ESTRADAS:
+=======================================================================================
+
+  1 - INSTALAÇÃO:
+
+      Caso você esteja recebendo no CD de instalação um arquivo zipado (.zip) mova-o para um 
+      diretório no seu disco rígido (por exemplo <...\Downloads> e deszipe-o a partir deste diretório. 
+      A melhor opção é <deszipar para EstWin...> (unzip to EstWin...), será criada uma pasta com o nome 
+      do arquivo zip. O executável de instalação estará dentro desta pasta. Dê um click duplo nele e 
+      siga as instruções de instalação. Ao final deste processo o programa Vias Urbanas & Estradas estará 
+      instalado no seu computador. Esta pasta usada na instalação é temporária e pode ser removida 
+      após o processo de instalação bem como o arquivo .zip. 
+
+  2 - PROBLEMAS DURANTE A INSTALAÇÃO:
+      ------------------------------
+
+    Caso você esteja usando o Windows 8 e durante a instalação aparecer uma mensagem:
+       
+        "Visual C++ 2010 cannot be installed due to the followings requiriments    
+
+         The Visual C++ 2010 runtime cannot be installed on this operating system ....
+
+         ...
+
+         Click OK to abort the setup or Cancel to continue with the application install."
+
+
+    Selecione <Cancelar> e continue normalmente com a instalação do programa Vias Urbanas & Estradas. 
+    Esta mensagem ocorre devido a um problema na configuração no Windows 8. Isso não acarretará 
+    futuros problemas no uso do programa como também no windows 8.
+
+  3 - NÚMERO DE SÉRIE:
+      ---------------
+
+    O número de série encontra-se no verso da capa do CD e deve ser digitado na instalação do programa.
+    Ele deve ser digitado exatamente como está na etiqueta, em letras maiúsculas e com os hífens.
+
+  4 - CHAVE DE SEGURANÇA:
+      ------------------
+
+    O pendrive que acompanha o CD é uma chave de segurança e para o correto funcionamento do programa 
+    Vias Urbanas & Estradas esta chave deve estar conectada em qualquer porta usb do computador em que o 
+    programa estiver instalado. A não conexão ou a desconexão desta chave durante o uso do programa acarretará 
+    a inibição de algumas funções do programa que não poderão mais serem executadas. Enquanto o programa estiver 
+    sendo usado este pendrive deve estar conectado a uma das portas usb do computador.
+
+  5 - ARQUIVOS DE DEMONSTRAÇÃO:
+      ------------------------
+ 
+    - Os arquivos de demonstração encontram-se em "..\seu diretório local\Vias Urbanas & Estradas\", sendo 
+      "seu diretório local" o diretorio com o nome da pessoa que instalou o programa.  
+
+  5 - MAIS INFORMAÇÕES:  
+      ---------------- 
+
+    Para mais informações sobre ou programa, ou caso deseje informar algum problema, não hesite em entrar em 
+    contato conosco através do email suporte@boolesoftware.com.br
+
+    Assista aos vídeos de demonstração no nosso canal no YouTube:
+    
+      https://www.youtube.com/channel/UC7pFXmMYw8BQ00gySAhlp6g/videos
+
+    
+    visite-nos em www.boolesoftware.com.br.
+

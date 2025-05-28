@@ -1,0 +1,24 @@
+#define PS_DASH             1       /* -------  */
+#define PS_DOT              2       /* .......  */
+#define PS_DASHDOT          3       /* _._._._  */
+#define PS_DASHDOTDOT       4       /* _.._.._  */
+#define PS_NULL             5
+
+1 DASH_DOT         3
+2 DASH_DoTDoT      4
+3 DASH             1 
+4 DOT              2
+
+solid duplo             0                6
+      simples           1                0   
+      dot               2                2
+      dash              3                1 
+      dash dot dot      4                4
+      dash dot          5                3 
+
+
+                        {PS_SOLID,PS_SOLID,PS_DOT,PS_DASH,PS_DOTDOT,PS_DASHDOT}
+
+
+
+  int TAB[6] =  {PS_SOLID,PS_SOLID,PS_DOT,PS_DASH,PS_DASHDOTDOT,PS_DASHDOT};

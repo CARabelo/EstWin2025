@@ -1,0 +1,16 @@
+// Microsoft Visual C++ generated Help ID include file.
+// Used by est.rc
+//
+#define HIDC_AJUDA                      0x808e0402    // IDD_CONFIG_PROJ
+#define HIDC_EQUICURHOR                 0x808e0404    // IDD_CONFIG_PROJ
+#define HIDC_EQUIOAE                    0x808e040a    // IDD_CONFIG_PROJ
+#define HIDC_EQUIPAR                    0x808e0403    // IDD_CONFIG_PROJ
+#define HIDC_EQUITAN                    0x808e0406    // IDD_CONFIG_PROJ
+#define HIDC_ESTFIM                     0x808e040d    // IDD_CONFIG_PROJ
+#define HIDC_ESTINI                     0x808e040c    // IDD_CONFIG_PROJ
+#define HIDC_FORMARQPONTOS              0x808e040e    // IDD_CONFIG_PROJ
+#define HIDC_NOMEPROJ                   0x808e03e9    // IDD_CONFIG_PROJ
+#define HIDC_STAARQUIVOS                0x80c20404    // IDD_CALCTERR
+#define HIDC_STAPRIORI                  0x80c20407    // IDD_CALCTERR
+#define HIDC_STATIC                     0x8082ffff    // IDD_CALCMEDICAO
+#define HIDC_VALEST                     0x808e0408    // IDD_CONFIG_PROJ

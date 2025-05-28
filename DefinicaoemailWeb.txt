@@ -1,0 +1,22 @@
+formulário de contato:
+
+Quando o usuário pressionar o botão enviar:
+
+1 - enviar o email para a boole
+2 - enviar um post para o web-service da boole com os dados do formulário
+    Texto a definir.
+
+Ao receber to retorno do pagseguro com a resposta negativa:
+
+1 - Exibir a pagina Estamos aguardando o pagamento
+2 - enviar um post para o web-service da boole com os dados do usuario
+    Texto a definir.
+
+Ao receber to retorno do pagseguro com a resposta positiva:
+
+1 - Exibir a pagina parabéns
+2 - enviar um get para o web-service da boole com os dados da compra e do usuário
+    na resposta virá a chave e o numero do cliente
+    enviar um email para o cliente com os dados da chave e o numero do cliente
+    Texto a definir.
+

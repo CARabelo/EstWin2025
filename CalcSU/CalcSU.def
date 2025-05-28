@@ -1,0 +1,8 @@
+; CalcSU.def : Declares the module parameters for the DLL.
+
+LIBRARY      "CalcSU"
+
+EXPORTS
+    ; Explicit exports can go here
+	CalculaSU @1
+	;CalculaAS @2

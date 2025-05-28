@@ -1,0 +1,2 @@
+C:/Users/carlo/Documents/Visual Studio 2019/EstWin/CARabelo/Est/Triangulation_2/out/build/x64-Debug (padrão)/CMakeFiles/edit_cache.dir
+C:/Users/carlo/Documents/Visual Studio 2019/EstWin/CARabelo/Est/Triangulation_2/out/build/x64-Debug (padrão)/CMakeFiles/rebuild_cache.dir

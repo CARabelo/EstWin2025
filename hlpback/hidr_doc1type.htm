@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+
+<HEAD>
+
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=big5">
+
+<TITLE>(修改文件)</TITLE>
+
+</HEAD>
+
+
+
+<BODY>
+
+
+
+
+
+<P><A NAME="hidr_doc1type"></A><B>修改文件</B></P>
+
+
+
+<P>&lt;&lt;在此撰寫提供使用者應如何使用應用程式修改文件概觀的應用程式特定說明。  </P>
+
+
+
+<P>如果您的應用程式支援多種文件類型，而您希望每個文件類型都有特定的說明主題，請執行由應用程式精靈所產生的 MAKEHELP.BAT 檔，來產生說明主題代碼。此外，也可以用下列方式執行 MAKEHM:</P>
+
+
+
+<P>makehm IDR_HIDR_,0x2000 resource.h</P>
+
+
+
+<P>如果 IDR_ 符號是針對您的文件類型的其中之一，例如 IDR_CHARTTYPE，那麼由 MAKEHM 產生的說明主題代碼將是 HIDR_CHARTTYPE。</P>
+
+
+
+<P>注意: 應用程式精靈會針對您應用程式支援的第一種文件類型，定義此說明主題使用的 HIDR_DOC1TYPE 說明主題代碼。應用程式精靈會在 .hpj 檔中產生應用程式的別名，針對該文件類型將 HIDR_DOC1TYPE 對應至 MAKEHM 產生的 HIDR_。&gt;&gt;</P>
+
+
+
+</BODY>
+
+</HTML>
+

@@ -1,0 +1,7 @@
+; CalcNS.def : Declares the module parameters for the DLL.
+
+LIBRARY      "CalcNS"
+
+EXPORTS
+    ; Explicit exports can go here
+    

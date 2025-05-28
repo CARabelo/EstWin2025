@@ -1,0 +1,6 @@
+C:/Users/carlo/Documents/Visual Studio 2019/EstWin/CARabelo/Est/HTTPRequests/HTTPRequests/curlcpp/src/out/build/x64-Debug (padrão)/CMakeFiles/install/local.dir
+C:/Users/carlo/Documents/Visual Studio 2019/EstWin/CARabelo/Est/HTTPRequests/HTTPRequests/curlcpp/src/out/build/x64-Debug (padrão)/CMakeFiles/install.dir
+C:/Users/carlo/Documents/Visual Studio 2019/EstWin/CARabelo/Est/HTTPRequests/HTTPRequests/curlcpp/src/out/build/x64-Debug (padrão)/CMakeFiles/edit_cache.dir
+C:/Users/carlo/Documents/Visual Studio 2019/EstWin/CARabelo/Est/HTTPRequests/HTTPRequests/curlcpp/src/out/build/x64-Debug (padrão)/CMakeFiles/curlcpp.dir
+C:/Users/carlo/Documents/Visual Studio 2019/EstWin/CARabelo/Est/HTTPRequests/HTTPRequests/curlcpp/src/out/build/x64-Debug (padrão)/CMakeFiles/rebuild_cache.dir
+C:/Users/carlo/Documents/Visual Studio 2019/EstWin/CARabelo/Est/HTTPRequests/HTTPRequests/curlcpp/src/out/build/x64-Debug (padrão)/CMakeFiles/list_install_components.dir

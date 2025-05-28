@@ -1,0 +1,15 @@
+Dentro da pasta webservice-viasurbanas-estradas use os seguintes comandos:
+
+
+COMPILANDO E EXECUTANDO (AUTO-RELOAD) (DEV)
+cd aprenda-quarkus
+./mvnw compile quarkus:dev
+
+
+EMPACOTANDO OS ARQUIVOS (pasta target)
+./mvnw clean package
+
+
+ADICIONANDO EXTENSÃO
+./mvnw quarkus:add-extension -Dextension="nome da extensão"
+

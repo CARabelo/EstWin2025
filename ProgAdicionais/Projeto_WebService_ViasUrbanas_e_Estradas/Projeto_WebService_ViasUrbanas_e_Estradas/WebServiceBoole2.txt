@@ -1,0 +1,69 @@
+gENERALIDADES
+
+Este web service é monitorar a instalação de chaves no programa Vias Urbanas & Estradas
+
+tratamentos das chaves:
+
+Ao comprar o programa Vias Urbanas e Estradas (VU&E) uma chave será enviada para o cliente  por email. Esta chave deverá ser instalada no máximo em 2 dias, 
+será invalidada após este prazo. Outra chave deverá  ser fornecida via Help Desk – (Email)
+Para validar esta chave o usuário deverá estar conectado à internet. O programa VU&E na primeira instalação se comunicará com o site da Boole 
+que acessará um banco de dados e verificará a validade da chave fornecida. 
+
+Toda validação será feita na instalação do programa VU&E, no site será preciso apenas um serviço que pega as requisições consulta as tabelas e envia as respostas. 
+Na instalação o programa VU&E criará uma requisição JSON e a enviará para o webservice preferencialente via HTTP.Get (ou outro).
+
+Processo de instalação do programa Vias Urbanas & Estradas
+
+1 - O usuário  o solicita a instalação DO PROGRAMA VU&E.
+2- O Programa VU&E se conecta no serviço do site da Boole que verifica  no banco de dados os dados da chave enviada, e retorna o campo de status da chave.
+(Outras verificações de segurança devem ser feitas)
+3- caso tudo esteja ok o programa é instalado e o usuário poderá usá-lo normalmente, caso contrário o programa não será instalado.
+    Deverá ser usada um criptografia para o envio e recebimento da chave
+
+Status das chaves:
+
+0 – CHAVE CRIADA. -> status inicial da chave
+1 – CHAVE INSTALADA.
+2 – CHAVE DESINSTALADA.
+3 – CHAVE CANCELADA.
+
+=====================================================
+WEBSERVICE
+=====================================================
+
+Mensagens a serem tratadas:
+
+1 - Verificar ou instalar uma chave:
+
+Recebe:
+
+1 – A chave a ser verificada
+2 – Código do cliente.
+3 - ação  1 - verificar, 2 instalar
+ 
+
+Retorno: o código de resposta:  (Estarão na tabela de chaves)
+
+0 – Chave Criada -> (A chave pode ser instalada).
+1 – Chave vencida;
+2 – Chave cancelada
+3 – chave invalida
+4 - Chave instalada.
+5 - Chave não encontrada
+6 – outros erros.
+
+
+
+==================================================
+DEFINICÕES DO BD:
+==================================================
+
+TABELAS:
+Cadastro de Clientes:
+Código,Nome, endereço, telefone, CGC, Contato, CPF do contato, ramo de negócio, status,obs., email,data cadastro
+PK código
+
+Cadastro de chaves:
+Chave, status, cod cliente, cod do programa, obs., data criação, data ultima alteração
+PK Chave
+
