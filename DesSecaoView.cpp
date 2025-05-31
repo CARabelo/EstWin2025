@@ -1035,14 +1035,6 @@ void DesSecaoView::OnInitialUpdate()
   SecaoAtual = Secoes.Posiciona(CEstaca(Estaca));   
   if (!SecaoAtual) SecaoAtual = Secoes.PosicionaPrimeira();
 
-  /*
-  if(Estaca != INFINITO)
-  {
-    SecaoAtual = Secoes.Posiciona(CEstaca(Estaca));
-    if (!SecaoAtual) SecaoAtual = Secoes.PosicionaPrimeira();
-  }
-  */
-
   if (SecaoAtual) 
   {
     MostraSecao(SecaoAtual);
@@ -1090,7 +1082,7 @@ void DesSecaoView::OnInitialUpdate()
         EquiMalhaTalv = EquiMalha;
         EquiCotasTalv = EquiCotas;
 
-        DesenharTalvegues = false;
+        DesenharTalvegues = false;  //--- O ButTalvegues inverte o sentido
 
         OnButTalvegues();
       }
@@ -1163,8 +1155,6 @@ void DesSecaoView::OnInitialUpdate()
                    ((CComboProcurarDesSecao*)pComboFind)->SetCurSel(0);
 
                    DesenharHistogramas = DesenharTalvegues = false;
-
-                   OnButTalvegues();
                  }
                  else
                  {
@@ -1191,8 +1181,12 @@ void DesSecaoView::OnInitialUpdate()
 
     //--- Inicializa os valores da escala, da razão e da tolerância.
 
-    ChildFrame->Deslizantes.MudarEscala((int)Escala[Y]);
-    ChildFrame->Deslizantes.MudarRazao(RazaoHV);
+    if(!DesenharTalvegues)
+    {
+      ChildFrame->Deslizantes.MudarEscala(Escala[X]);
+      ChildFrame->Deslizantes.MudarRazao(RazaoHV);
+    }
+
     MainFrame->mpCDesTool1->GetToolBarCtrl().SetState(ID_TRANCARDESSECOES, !PermitirAlterar);
     MainFrame->mpCDesTool1->GetToolBarCtrl().SetState(ID_BUTPROPAGARALTERACOES, DesenharPerfisGeologicos);
     MainFrame->mpCDesTool1->GetToolBarCtrl().SetState(ID_BUTACITOPOG, DesenharAciTopog);
@@ -1982,14 +1976,15 @@ void DesSecaoView::MudarEscala(int Fator)
 
   if (DesenharTalvegues)
   {
-    Escala[Y] = EscalaRazaoTalvegue[Y] = Fator;
+    Escala[X] = EscalaTalv[X] = Fator / 1000.0;
+    Escala[Y] = EscalaTalv[Y] = EscalaTalv[X] * RazaoHV;
   }
   else
   {
     if (DesenharHistogramas)
     {
-      Escala[X] = Escala[Y] = EscalaSecoes[Y] = Fator;
-      Escala[X] *= RazaoHV;
+      Escala[X] = EscalaHipso[X] = Fator ;
+      Escala[Y] = EscalaHipso[Y] = EscalaHipso[X] / RazaoHV;  //10
     }
     else
     {
@@ -2006,25 +2001,14 @@ void DesSecaoView::MudarRazao(double Fator)
 {
   if (DesenharTalvegues)
   {
+    Escala[Y] = Escala[X] * Fator;
     RazaoHV = Fator;
-    EscalaRazaoTalvegue[X] = EscalaRazaoTalvegue[Y] * RazaoHV;
-
-    Escala[X] = EscalaRazaoTalvegue[X];
-    Escala[Y] = EscalaRazaoTalvegue[Y];
   }
   else
   {
     if (DesenharHistogramas)
     {
-      RazaoHV = Fator;
-      EscalaRazaoHpsometrica[X] = EscalaRazaoHpsometrica[Y] * Fator;
-
-      Escala[X] = EscalaRazaoHpsometrica[X];
-      Escala[Y] = EscalaRazaoHpsometrica[Y];
-      RazaoHV = 10;
-
-      Escala[X] = EscalaRazaoHpsometrica[X] = 1;
-      Escala[Y] = EscalaRazaoHpsometrica[Y] = 10;
+      Escala[Y] = Escala[X] / Fator;  //10
     }
     else
     {
@@ -2857,22 +2841,19 @@ void DesSecaoView::OnButvisualizartodasecao()
     if (DesenharTalvegues)
     {
       double Deltax(pSecAtual->Maiores[X] - pSecAtual->Menores[X]),
-        Deltay(pSecAtual->Maiores[Y] - pSecAtual->Menores[Y]);
+             Deltay(pSecAtual->Maiores[Y] - pSecAtual->Menores[Y]);
 
-      EscalaTalv[X] = Resolucao[X] / Deltax;
+      EscalaTalv[X] = Resolucao[X] / Deltax * 1000.0;
       EscalaTalv[Y] = Resolucao[Y] / Deltay;
-      RazaoTalvHV = 1.0;
+      RazaoTalvHV = 10.0;
 
-      if (EscalaTalv[X] > EscalaTalv[Y]) EscalaTalv[X] = EscalaTalv[Y];
+     // if (EscalaTalv[X] > EscalaTalv[Y]) EscalaTalv[X] = EscalaTalv[Y];
 
-      if (Deltay > 200.0) RazaoTalvHV = 10.0;
-
-      ((CChildFrame*)GetParentFrame())->Deslizantes.MudarEscala(EscalaTalv[X]);
+      ((CChildFrame*)GetParentFrame())->Deslizantes.MudarEscala(ceil(EscalaTalv[X]));
       ((CChildFrame*)GetParentFrame())->Deslizantes.MudarRazao(RazaoTalvHV);
 
-      DeltasTalvegues[X] = (pSecAtual->Maiores[X] - pSecAtual->Menores[X]) / 2.0 * EscalaTalv[X];
-      DeltasTalvegues[X] -= Resolucao[X] / 2.0;
-      DeltasTalvegues[Y] = (pSecAtual->Maiores[Y] - pSecAtual->Menores[Y]) / 2.0 * EscalaTalv[Y];
+      DeltasTalvegues[X] = -Resolucao[X] / 2.0;
+      DeltasTalvegues[Y] = 0.0;
 
       Deltas[X] = DeltasTalvegues[X];
       Deltas[Y] = DeltasTalvegues[Y];
@@ -2891,18 +2872,17 @@ void DesSecaoView::OnButvisualizartodasecao()
         double Deltax(pSecAtual->Maiores[X] - pSecAtual->Menores[X]),
                Deltay(pSecAtual->Maiores[Y] - pSecAtual->Menores[Y]);
 
-        EscalaHipso[X] = Resolucao[X] / Deltax;
-        EscalaHipso[Y] = Resolucao[Y] / Deltay;
+        EscalaHipso[X] = Resolucao[X] / Deltax * 10.0;
+        EscalaHipso[Y] = Resolucao[Y] / Deltay * 10.0;
         RazaoHipsoHV = 1.0;
 
         if (EscalaHipso[X] > EscalaHipso[Y]) EscalaHipso[X] = EscalaHipso[Y];
 
-        ((CChildFrame*)GetParentFrame())->Deslizantes.MudarEscala(EscalaHipso[X]);
+        ((CChildFrame*)GetParentFrame())->Deslizantes.MudarEscala(int(EscalaHipso[X]));
         ((CChildFrame*)GetParentFrame())->Deslizantes.MudarRazao(RazaoHipsoHV);
 
-        DeltasHipso[X] = (pSecAtual->Maiores[X] - pSecAtual->Menores[X]) / 2.0 * EscalaHipso[X];
-        DeltasHipso[X] -= Resolucao[X] / 2.0;
-        DeltasHipso[Y] = (pSecAtual->Maiores[Y] - pSecAtual->Menores[Y]) / 2.0 * EscalaHipso[Y];
+        DeltasHipso[X] = -Resolucao[X] / 2.0;
+        DeltasHipso[Y] = 0.0;
 
         Deltas[X] = DeltasHipso[X];
         Deltas[Y] = DeltasHipso[Y];
@@ -3727,14 +3707,13 @@ void DesSecaoView::OnButTalvegues()
 
       Posiciona(INFINITO, INFINITO, true, Tipo,&UltTalvegue);
 
-      RazaoHV = 10.0; //EscalaRazaoTalvegue[X];
-      Escala[X] = EscalaTalv[X];
-      Escala[Y] = EscalaTalv[Y];
-
       EquiMalha = EquiMalhaTalv;
       EquiCotas = EquiCotasTalv;
 
-      ((CChildFrame*)GetParentFrame())->Deslizantes.MudarEscala(Escala[X]);
+      Escala[X] = EscalaTalv[X];
+      Escala[Y] = EscalaTalv[Y];
+
+      ((CChildFrame*)GetParentFrame())->Deslizantes.MudarEscala(Escala[X] * 1000.0);
       ((CChildFrame*)GetParentFrame())->Deslizantes.MudarRazao(RazaoHV);
       CalculaParametros();
 
@@ -3760,8 +3739,6 @@ void DesSecaoView::OnButTalvegues()
     }
    
     CChildFrame* pChildFrame((CChildFrame*)GetParentFrame());
-
-    ((CComboProcurarDesSecao*)pComboFind)->GetLBText(((CComboProcurarDesSecao*)pComboFind)->GetCurSel(), UltimoTalvegue);
 
     PreencheComboProcurar(pChildFrame);
 

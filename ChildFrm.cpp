@@ -249,13 +249,16 @@ static void PASCAL NEAR WriteWindowPlacement(LPWINDOWPLACEMENT pwp,int NumTar)
 
   TCHAR szBuffer[sizeof("-32767")*8 + sizeof("65535")*2];
 
+  std::string NomeProfile((((CMainFrame*)AfxGetMainWnd())->PegaProjetoAtual()));
+  NomeProfile.append(".ini");
+  
   wsprintf(szBuffer, szFormat,
     pwp->flags, pwp->showCmd,
     pwp->ptMinPosition.x, pwp->ptMinPosition.y,
     pwp->ptMaxPosition.x, pwp->ptMaxPosition.y,
     pwp->rcNormalPosition.left, pwp->rcNormalPosition.top,
     pwp->rcNormalPosition.right, pwp->rcNormalPosition.bottom);
-  WritePrivateProfileString(Secao.str().c_str(), szWindowPos, szBuffer,(((CMainFrame*) AfxGetMainWnd())->PegaProjetoAtual() + std::string(".ini")).c_str());
+  WritePrivateProfileString(Secao.str().c_str(), szWindowPos, szBuffer,NomeProfile.c_str());
 }
 
 /////////////////////////////////////////////////////////////////////////////

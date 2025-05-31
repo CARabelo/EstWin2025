@@ -32,11 +32,11 @@ public:
   //{{AFX_DATA(CDDeslizantes)
   enum { IDD = IDD_DESLIZANTES};
   CEdit	m_EDRazao;
-  CEdit	m_CEEscala;
+  CEdit	m_EDEscala;
   CSliderCtrl	m_SLValorRazao;
   CSliderCtrl	m_SLValorEscala;
-  UINT	m_UIEscala;
-  double	m_DORazao;
+  double m_DOEscala;
+  double m_DORazao;
   //}}AFX_DATA
 
   void MouseWheelOn(UINT nFlags, short zDelta, CPoint pt);

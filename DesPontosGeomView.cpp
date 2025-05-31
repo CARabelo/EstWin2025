@@ -9662,7 +9662,7 @@ void DesPontosGeomView::CriaPenaRestriçao(CPen* PenaObjeto, unsigned int Objeto)
     case CAciTopografico::OFF_SETS: PenaObjeto->CreatePen(PS_DOT, 1, Cores[CORCN]); break;
     case CAciTopografico::TERRAPLANAGEM: PenaObjeto->CreatePen(PS_DASHDOTDOT, 1, Cores[CORCN]); break;
     case CAciTopografico::TALVEGUE: lb.lbColor = RGB(0, 0, 191); PenaObjeto->CreatePen(Style | PS_SOLID, 3,&lb); break;
-    case CAciTopografico::ESPIGAO: lb.lbColor = RGB(255, 128, 64); PenaObjeto->CreatePen(Style | PS_SOLID, 4,&lb); break;
+    case CAciTopografico::ESPIGAO: lb.lbColor = RGB(/*255, 128, 64*/164,16,16); PenaObjeto->CreatePen(Style | PS_SOLID, 4,&lb); break;
     case CAciTopografico::RAVINA: lb.lbColor = RGB(128, 0, 64); PenaObjeto->CreatePen(Style | PS_DASHDOTDOT, 2, &lb); break;
     case CAciTopografico::PVELETRICA: lb.lbColor = RGB(255,0,0 ); PenaObjeto->CreatePen(Style | PS_SOLID, 1, &lb); break;
     case CAciTopografico::PVESGOTO: lb.lbColor = RGB(128, 0, 64); PenaObjeto->CreatePen(Style | PS_SOLID, 1, &lb); break;
@@ -16795,7 +16795,7 @@ void DesPontosGeomView::SerializaTalveguePrincipal(int Tipo)
 void DesPontosGeomView::DesenhaTalveguePrincipalBacia(CBacia& Bacia, CDC* ppDC)
 {
   CPen PenaTalveguePrincipal;
-  PenaTalveguePrincipal.CreatePen(PS_SOLID, 4, RGB(0, 0, 200));
+  PenaTalveguePrincipal.CreatePen(PS_SOLID, 4, RGB(90, 90, 160));
 
   if (Bacia.PegaItTalveguePrincipal() != Bacia.Talvegues.end() && Bacia.PegaItTalveguePrincipal()->size() > 0)
   {

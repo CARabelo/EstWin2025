@@ -3194,7 +3194,7 @@ BEGIN
     PUSHBUTTON      ". . .",IDC_BUTPROCURARPROJ,624,11,23,12,BS_FLAT
     LISTBOX         IDC_LISPROJEXISTENTE,477,34,169,200,LBS_HASSTRINGS | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
     CONTROL         "Iniciar com o desenho da superfície",IDC_CHEINIDESSUPERF,
-                    "Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,523,244,123,10
+                    "Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,535,293,104,10
     PUSHBUTTON      "OK",IDOK,510,278,50,14
     PUSHBUTTON      "Cancelar",IDCANCEL,578,278,50,14
     CTEXT           "Urbanas && Estradas, neste caso as curvas de nível serão ajustadas para a triangulação escolhida.",IDC_STATIC,175,90,256,16

@@ -127,7 +127,7 @@ static char THIS_FILE[] = __FILE__;
 CDDeslizantes::CDDeslizantes(void* DesSec,CWnd* pParent,int GreSec) : CDialog(CDDeslizantes::IDD, pParent), m_pDesView(DesSec),m_INGreSec(GreSec)
 {
   //{{AFX_DATA_INIT(CDDeslizantes)
-  m_UIEscala = 1.0;
+  m_DOEscala = 1.0;
   m_DORazao = 0.1;
   //}}AFX_DATA_INIT
 }
@@ -137,10 +137,10 @@ void CDDeslizantes::DoDataExchange(CDataExchange* pDX)
   CDialog::DoDataExchange(pDX);
   //{{AFX_DATA_MAP(CDDeslizantes)
   DDX_Control(pDX, IDC_VALOR2, m_EDRazao);
-  DDX_Control(pDX, IDC_VALOR, m_CEEscala);
+  DDX_Control(pDX, IDC_VALOR, m_EDEscala);
   DDX_Control(pDX, IDC_DESLIZANTE2, m_SLValorRazao);
   DDX_Control(pDX, IDC_DESLIZANTE, m_SLValorEscala);
-  DDX_Text(pDX, IDC_VALOR, m_UIEscala);
+  DDX_Text(pDX, IDC_VALOR, m_DOEscala);
   DDX_Text(pDX, IDC_VALOR2, m_DORazao);
   //}}AFX_DATA_MAP
 }
@@ -194,7 +194,7 @@ BOOL CDDeslizantes::OnInitDialog()
     {
       //--- Deslizante da escala ---------------------
 
-      m_SLValorEscala.SetRange(10,500);
+      m_SLValorEscala.SetRange(1,500);
       m_SLValorEscala.SetPageSize(50);
 
       int i(0);
@@ -228,36 +228,31 @@ void CDDeslizantes::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 {
   if((CSliderCtrl *) pScrollBar == &m_SLValorEscala)
   {
-    m_UIEscala = m_SLValorEscala.GetPos();
+    m_DOEscala = m_SLValorEscala.GetPos();
     UpdateData(FALSE);
 
     switch(m_INGreSec)
     {
-      case SECOES :  ((DesSecaoView*) m_pDesView)->MudarEscala(m_UIEscala);break;
-      case GREIDE :  ((DesPerfilView*) m_pDesView)->MudarEscala(m_UIEscala); break;
-      case GEOLOGICO : ((DesPerfilGeoView*) m_pDesView)->MudarEscala(m_UIEscala); break;
+      case SECOES :  ((DesSecaoView*) m_pDesView)->MudarEscala(m_DOEscala);break;
+      case GREIDE :  ((DesPerfilView*) m_pDesView)->MudarEscala(m_DOEscala); break;
+      case GEOLOGICO : ((DesPerfilGeoView*) m_pDesView)->MudarEscala(m_DOEscala); break;
     }
   }
   else 
   {
     if((CSliderCtrl *) pScrollBar == &m_SLValorRazao)
     {
-      m_DORazao = m_SLValorRazao.GetPos() / 100.0;
+      m_DORazao =  (m_SLValorRazao.GetPos() / 10.0);// / 100.0;
+      
+      UpdateData(FALSE);
 
-      if (m_DORazao > 0.0009)
+      switch (m_INGreSec)
       {
-        UpdateData(FALSE);
-
-        switch (m_INGreSec)
-        {
-          case SECOES: ((DesSecaoView*)m_pDesView)->MudarRazao(m_DORazao); break;
-          case GREIDE: ((DesPerfilView*)m_pDesView)->MudarRazao(m_DORazao); break;
-          case GEOLOGICO: ((DesPerfilGeoView*)m_pDesView)->MudarRazao(m_DORazao); break;
-        }
+        case SECOES: ((DesSecaoView*)m_pDesView)->MudarRazao(m_DORazao); break;
+        case GREIDE: ((DesPerfilView*)m_pDesView)->MudarRazao(m_DORazao); break;
+        case GEOLOGICO: ((DesPerfilGeoView*)m_pDesView)->MudarRazao(m_DORazao); break;
       }
-      else CDialog::OnHScroll(nSBCode, nPos, pScrollBar);
     }
-    else	CDialog::OnHScroll(nSBCode, nPos, pScrollBar);
   }
 }
 
@@ -268,18 +263,17 @@ void CDDeslizantes::OnChangeEscala()
 //  // function to send the EM_SETEVENTMASK message to the control
 //  // with the ENM_CHANGE flag ORed into the lParam mask.
 //
-
   {
     if(UpdateData(TRUE))
     {
-      m_SLValorEscala.SetPos(m_UIEscala);	
-//
+      m_SLValorEscala.SetPos(m_DOEscala);	
+
       switch(m_INGreSec)
       { 
-        case SECOES: ((DesSecaoView*) m_pDesView)->MudarEscala(m_UIEscala);break;
-        case GREIDE: ((DesPerfilView*) m_pDesView)->MudarEscala(m_UIEscala);break;
-        case GEOMETRICO: ((DesPontosGeomView*) m_pDesView)->MudarEscala(m_UIEscala);break;
-        case GEOLOGICO: ((DesPerfilGeoView*) m_pDesView)->MudarEscala(m_UIEscala);break;
+        case SECOES: ((DesSecaoView*) m_pDesView)->MudarEscala(m_DOEscala);break;
+        case GREIDE: ((DesPerfilView*) m_pDesView)->MudarEscala(m_DOEscala);break;
+        case GEOMETRICO: ((DesPontosGeomView*) m_pDesView)->MudarEscala(m_DOEscala);break;
+        case GEOLOGICO: ((DesPerfilGeoView*) m_pDesView)->MudarEscala(m_DOEscala);break;
       }
     }
   }
@@ -304,7 +298,7 @@ void CDDeslizantes::OnChangeRazao()
       {
       case SECOES: ((DesSecaoView*) m_pDesView)->MudarRazao(m_DORazao);break;
       case GREIDE: ((DesPerfilView*) m_pDesView)->MudarRazao(m_DORazao);break;
-      case GEOLOGICO : ((DesPerfilGeoView*) m_pDesView)->MudarRazao(m_UIEscala); break;
+      case GEOLOGICO : ((DesPerfilGeoView*) m_pDesView)->MudarRazao(m_DOEscala); break;
       }
     }
   }
@@ -312,20 +306,18 @@ void CDDeslizantes::OnChangeRazao()
 
 void CDDeslizantes::MudarEscala(double Valor)
 {
- // m_UIEscala = Valor * 100.0;
-
   if(m_INGreSec == GREIDE) Valor *= 100.0;
 
-  m_UIEscala = Valor;
+  m_DOEscala = Valor;
 
-  m_SLValorEscala.SetPos(m_UIEscala);	
+  m_SLValorEscala.SetPos(m_DOEscala);	
   UpdateData(false);
 }
 
 void CDDeslizantes::MudarRazao(double Valor)
 {
   m_DORazao = Valor;
-  m_SLValorRazao.SetPos((int) (m_DORazao * 100.0));	
+  m_SLValorRazao.SetPos((m_DORazao * 100.0));	
   UpdateData(false);
 }
 
@@ -333,26 +325,57 @@ void CDDeslizantes::OnOK(){}    //--- Anula o OnOK
 
 void CDDeslizantes::MouseWheelOn(UINT nFlags, short zDelta, CPoint pt)
 {
-  unsigned int LimSup(m_INGreSec == SECOES ? 1000 : 1000);
+  CWnd* FocoAtual(GetFocus());
+  
+  if(FocoAtual != &m_SLValorRazao)
+    m_SLValorEscala.SetFocus();       
 
-  if ((zDelta < 0 && m_UIEscala > 0) || m_UIEscala < LimSup)
+  if(GetFocus() == &m_SLValorEscala)
   {
-    double Delta(ceil(m_UIEscala * (zDelta / 120.0 * .1)));
+    unsigned int LimSup(m_INGreSec == SECOES ? 1000 : 1000);
 
-    if(Delta == 0.0) Delta = 1.0 * Matem::Sgn(zDelta);
-    if(Delta > 0 || m_UIEscala > abs(Delta)) m_UIEscala +=  Delta;
-    if(m_UIEscala == 0) m_UIEscala = 1;
-
-    m_SLValorEscala.SetPos(m_UIEscala);	
-
-    switch(m_INGreSec)
+    if ((zDelta < 0 && m_DOEscala > 0) || m_DOEscala < LimSup)
     {
-    case SECOES :  ((DesSecaoView*) m_pDesView)->MudarEscala(m_UIEscala);break;
-    case GREIDE :  ((DesPerfilView*) m_pDesView)->MudarEscala(m_UIEscala); break;
-    case GEOLOGICO :  ((DesPerfilGeoView*) m_pDesView)->MudarEscala(m_UIEscala); break;
-    }
+      double Delta(ceil(m_DOEscala * (zDelta / 120.0 * .1)));
 
-    UpdateData(false);
+      if (Delta == 0.0) Delta = 1.0 * Matem::Sgn(zDelta);
+      if (Delta > 0 || m_DOEscala > abs(Delta)) m_DOEscala += Delta;
+
+      if (m_DOEscala == 0) m_DOEscala = 1.0;
+
+      m_SLValorEscala.SetPos(m_DOEscala);
+
+      switch (m_INGreSec)
+      {
+      case SECOES:  ((DesSecaoView*)m_pDesView)->MudarEscala(m_DOEscala); break;
+      case GREIDE:  ((DesPerfilView*)m_pDesView)->MudarEscala(m_DOEscala); break;
+      case GEOLOGICO:  ((DesPerfilGeoView*)m_pDesView)->MudarEscala(m_DOEscala); break;
+      }
+
+      UpdateData(false);
+    }
+  }
+  else
+  {
+    if (GetFocus() == &m_SLValorRazao)
+    {
+      double Delta(ceil(m_DOEscala * (zDelta / 120.0 * .1)));
+
+      if (Delta == 0.0) Delta = 1.0 * Matem::Sgn(zDelta);
+      if (Delta > 0 || m_DORazao > abs(Delta)) m_DORazao += Delta;
+      if (m_DORazao == 0) m_DOEscala = 1;
+
+      m_SLValorRazao.SetPos(m_DORazao);
+
+      switch (m_INGreSec)
+      {
+      case SECOES:  ((DesSecaoView*)m_pDesView)->MudarRazao(m_DORazao); break;
+      case GREIDE:  ((DesPerfilView*)m_pDesView)->MudarRazao(m_DORazao); break;
+      case GEOLOGICO:  ((DesPerfilGeoView*)m_pDesView)->MudarRazao(m_DORazao); break;
+      }
+
+      UpdateData(false);
+    }
   }
 }
 
@@ -364,9 +387,9 @@ void CDDeslizantes::OnSetFocus(CWnd* pOldWnd)
   
   CRect Rect;
 
-  m_CEEscala.GetWindowRect(&Rect);
+  m_EDEscala.GetWindowRect(&Rect);
 
-  if(Rect.PtInRect(PontoMouse)) m_CEEscala.SetFocus();
+  if(Rect.PtInRect(PontoMouse)) m_EDEscala.SetFocus();
 
   m_EDRazao.GetWindowRect(&Rect);
 
