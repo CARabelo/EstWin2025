@@ -2021,6 +2021,10 @@ void DesSecaoView::MudarRazao(double Fator)
 
       Escala[X] = EscalaRazaoHpsometrica[X];
       Escala[Y] = EscalaRazaoHpsometrica[Y];
+      RazaoHV = 10;
+
+      Escala[X] = EscalaRazaoHpsometrica[X] = 1;
+      Escala[Y] = EscalaRazaoHpsometrica[Y] = 10;
     }
     else
     {
