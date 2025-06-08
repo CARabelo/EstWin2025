@@ -1014,7 +1014,7 @@ void CEstRel::GeraRelatorio(std::strstream& steBuffer, int IDRelatorio, bool Ter
     break;
     case IDD_REL_BACIAS_HIDROGRAF:
     {
-      static std::array<std::string,5> ArrMetodosCalculoTc = {"Ven Te Chow ","Kirpick ", "Picking ","Kerby-Hataway ","D.N.O.S. "};
+      static std::array<std::string,17> ArrMetodosCalculoTc = {"California Culverts Practice","Kirpich","Picking","Kerby Hathaway","D.N.O.S.","Kerby","Kirpich(C.C.P.)","US Corps Engineers","Kirpich Modificada","George Ribeiro","Pasini","Ventura","Rossi","Giandoff","John Collins","Ven Te Chow"};
       static std::array<std::string,7> ArrMetodosCalculoQ = {"Racional ","Racional Corrigido ","I Pai Wu ","Ven Te Chow ","McMath ","Kokei Uehara "," Hidrograma Triangular Sintético "};
 
       steBuffer << "RELATÓRIO DAS BACIAS HIDROGRAFICAS:" << std::endl;
@@ -1064,8 +1064,8 @@ void CEstRel::GeraRelatorio(std::strstream& steBuffer, int IDRelatorio, bool Ter
 				          << "Altura do talvegue principal = " <<  DadosBacia.h << std::endl
                   << "Coeficiente de Compacidade = " << DadosBacia.Kc << std::endl
                   << "Fator de Forma = " << DadosBacia.Kf << std::endl
-                  << "Comprimento Total dos Talvegues (Lt) (m) = " << DadosBacia.Lt << std::endl
-                  << "Densidade de Drenagem (m/m2) = " << DadosBacia.Dd << std::endl
+                  << "Comprimento Total dos Talvegues (Lt) (m) = " << DadosBacia.Lt << std::endl;
+        steBuffer << "Densidade de Drenagem (m/m2) = " << DadosBacia.Dd << std::endl
                   << "Percurso Médio de Escoamento (L) (m) =" << DadosBacia.L << std::endl
                   << "DADOS HIDROLÓGICOS:" << std::endl
                   << "Intensidade da Chuva (i) = " << DadosBacia.i << std::endl
@@ -1075,8 +1075,9 @@ void CEstRel::GeraRelatorio(std::strstream& steBuffer, int IDRelatorio, bool Ter
                   << "Coeficiente de Escoamento Superficial (C) = " << DadosBacia.C << std::endl
                   << "Coeficiente Volumétrico de Escoamento (C2) = " << DadosBacia.C2 << std::endl
                   << "Declividade média da bacia (I) = " << DadosBacia.I << std::endl 
-                  << "Volume de Escoamento do Hidrograma (V) (m3) = " << DadosBacia.V << std::endl
-                  << "Declividade Equivalente (S) (m/m) = " << DadosBacia.S << std::endl
+                  << "Volume de Escoamento do Hidrograma (V) (m3) = " << DadosBacia.V << std::endl;
+
+                 steBuffer << "Declividade Equivalente (S) (m/m) = " << DadosBacia.S << std::endl
                   << "Vazão de Cheia (Q) (m3/s) = " << DadosBacia.Q << std::endl
                   << "Tempo de Concentração (Tc) (min) =  " << DadosBacia.Tc << std::endl
                   << "Vazão Máxima de Projeto (Qp) (m3/s) = " << DadosBacia.Qp << std::endl
@@ -1085,7 +1086,8 @@ void CEstRel::GeraRelatorio(std::strstream& steBuffer, int IDRelatorio, bool Ter
                   << "Declividade Mádia da Bacia (i) (m/m) = " << DadosBacia.i << std::endl
                   << "Vazão (Equação da Continuidade) (Q) (m3/s) = " << DadosBacia.Q << std::endl
                   << "Velocidade Mádia (Manning) (V) (m/s) = " << DadosBacia.V << std::endl
-                  << "Vazão (Manning e continuidade) (Q) (m3/s) = " << DadosBacia.Q << std::endl
+                  << "Vazão (Manning e continuidade) (Q) (m3/s) = " << DadosBacia.Q << std::endl;
+                  steBuffer 
                   << "Fator de deflúivio (X) (Ven Te Chow) = " << DadosBacia.Fator_X << std::endl
                   << "Fator climático (Y) (Ven Te Chow) = "<< DadosBacia.Fator_Y << std::endl
                   << "Fator de Redução do tempo (Ven te Chow) = " << DadosBacia.Fator_Z << std::endl
@@ -1097,7 +1099,9 @@ void CEstRel::GeraRelatorio(std::strstream& steBuffer, int IDRelatorio, bool Ter
                   << "Intensidade máxima (Im) (Kokei Uehara) = " << DadosBacia.Im << std::endl
                   << "Tempo Retardamento (Tr) (Kokei Uehara) = " << DadosBacia.Tr << std::endl
                   << "Tempo de duração da chuva (Td) (Kokei Uehara) = " << DadosBacia.Td << std::endl 
-                  << "Intensidade Máxima da chuva (h1) (Kokei Uehara) = " << DadosBacia.h1 << std::endl         
+                  << "Intensidade Máxima da chuva (h1) (Kokei Uehara) = " << DadosBacia.h1 << std::endl         ;
+                  steBuffer 
+
                   << "Intensidade Máxima da chuva corrijida (h1c) (Kokei Uehara) = " << DadosBacia.h1c << std::endl       
                   << "Altura exedente de escoamento (Hexc) (Kokei Uehara) = " << DadosBacia.Hexc << std::endl    
                   << "Volume de escoamento (Vesc)(kokei Uehara) = " << DadosBacia.Vesc << std::endl  
@@ -1107,9 +1111,12 @@ void CEstRel::GeraRelatorio(std::strstream& steBuffer, int IDRelatorio, bool Ter
                   << "Declividade do canal na foz  = " << DadosBacia.I_Canal << std::endl
                   << "Coeficiente de Rugosidade do canal na foz(n) = " << DadosBacia.n << std::endl
                   << "Area molhada do canal = " << DadosBacia.Am <<  std::endl 
-                  << "Foz = " << itBH->PegaFoz().x << ' ' << itBH->PegaFoz().y << ' ' << itBH->PegaFoz().z << std::endl
-                  << "Método de cálculo do tempo de concentração (Tc) = " << ArrMetodosCalculoTc[DadosBacia.MetodoCalculoTc-1] << std::endl
-                  << "Método de cálculo da vazão (Q) = " << ArrMetodosCalculoQ[DadosBacia.MetodoCalculoQ-1] << std::endl
+                  << "Foz = " << itBH->PegaFoz().x << ' ' << itBH->PegaFoz().y << ' ' << itBH->PegaFoz().z << std::endl;
+                  steBuffer
+                  << "Método de cálculo do tempo de concentração (Tc) = " << ArrMetodosCalculoTc[DadosBacia.MetodoCalculoTc-1] << std::endl;
+                  steBuffer
+                  << "Método de cálculo da vazão (Q) = " << ArrMetodosCalculoQ[DadosBacia.MetodoCalculoQ-1] << std::endl;
+                  steBuffer
                   << "Centro de Gravidade (CG) =  " << itBH->CG().x  << " " << itBH->CG().y << " ";
 
         if (itBH->CG().z != INFINITO) steBuffer << itBH->CG().z << std::endl;

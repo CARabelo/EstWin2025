@@ -3815,6 +3815,7 @@ void DesPontosGeomView::OnLButtonDown(UINT nFlags, CPoint	point)
                   }
                   else
                   {
+                    ItBaciaAtual->RemoveFoz();
                     ItBaciaAtual->Calculada() = false;
                   }
                 }
@@ -9563,7 +9564,6 @@ bool DesPontosGeomView::LePontosCotadosSuperf()
   return true;
 };
 
-
 void DesPontosGeomView::OnDesMuro() { ObjetoAtual = CAciTopografico::MURO; OnMouseMove(0, PonMousePixelsAtual); }
 void DesPontosGeomView::OnNa() { ObjetoAtual = CAciTopografico::N_A; OnMouseMove(0, PonMousePixelsAtual); }
 void DesPontosGeomView::OnNaPeriodico() { ObjetoAtual = CAciTopografico::N_A_PER; OnMouseMove(0, PonMousePixelsAtual); }
@@ -9661,8 +9661,8 @@ void DesPontosGeomView::CriaPenaRestriçao(CPen* PenaObjeto, unsigned int Objeto)
     case CAciTopografico::PLANTACAO: lb.lbColor = RGB(0, 127, 0); PenaObjeto->CreatePen(Style | PS_DASHDOTDOT, 1,&lb); break;
     case CAciTopografico::OFF_SETS: PenaObjeto->CreatePen(PS_DOT, 1, Cores[CORCN]); break;
     case CAciTopografico::TERRAPLANAGEM: PenaObjeto->CreatePen(PS_DASHDOTDOT, 1, Cores[CORCN]); break;
-    case CAciTopografico::TALVEGUE: lb.lbColor = RGB(0, 0, 191); PenaObjeto->CreatePen(Style | PS_SOLID, 3,&lb); break;
-    case CAciTopografico::ESPIGAO: lb.lbColor = RGB(/*255, 128, 64*/164,16,16); PenaObjeto->CreatePen(Style | PS_SOLID, 4,&lb); break;
+    case CAciTopografico::TALVEGUE: lb.lbColor = RGB(30, 30, 160); PenaObjeto->CreatePen(Style | PS_SOLID, 3,&lb); break;
+    case CAciTopografico::ESPIGAO: lb.lbColor = RGB(164,16,16); PenaObjeto->CreatePen(Style | PS_SOLID, 4,&lb); break;
     case CAciTopografico::RAVINA: lb.lbColor = RGB(128, 0, 64); PenaObjeto->CreatePen(Style | PS_DASHDOTDOT, 2, &lb); break;
     case CAciTopografico::PVELETRICA: lb.lbColor = RGB(255,0,0 ); PenaObjeto->CreatePen(Style | PS_SOLID, 1, &lb); break;
     case CAciTopografico::PVESGOTO: lb.lbColor = RGB(128, 0, 64); PenaObjeto->CreatePen(Style | PS_SOLID, 1, &lb); break;
@@ -11776,7 +11776,7 @@ void DesPontosGeomView::DesenhaRestricoes(CSuperficie* pSuperficieAtual, CDC* pD
   pDC->SelectObject(*pPenaRestricoes);
   const LLDeltaSup& ListaRestAtual(pSuperficieAtual->PegaListaRestricoes());
 
-   for (ItCLLDeltaSup LDRestricaoAtual = ListaRestAtual.begin(); LDRestricaoAtual != ListaRestAtual.end(); ++LDRestricaoAtual)
+  for (ItCLLDeltaSup LDRestricaoAtual = ListaRestAtual.begin(); LDRestricaoAtual != ListaRestAtual.end(); ++LDRestricaoAtual)
   {
     Ponto Ppixels;
 
@@ -11801,7 +11801,6 @@ void DesPontosGeomView::DesenhaRestricoes(CSuperficie* pSuperficieAtual, CDC* pD
 
     if (Desenhar)
     {
-
       if (LDRestricaoAtual->size() != 0 && (!FiltrarAciTopog || TipoRestricao == ObjetoAtual))
       {
         if (TipoRestricao != CAciTopografico::FRONTEIRA || DesenharBordos)
@@ -16582,22 +16581,11 @@ void DesPontosGeomView::OnImportarBaciasHidrog()
     {
       SuavizaEspigao(&BaciaHidrografica);
 
-      CSimpPL::SimplificaXY(BaciaHidrografica);   //--- Não esta funcionando
+      CSimpPL::SimplificaXY(BaciaHidrografica);   
 
       if (*BaciaHidrografica.begin() == *BaciaHidrografica.rbegin())
       {
         Ponto IniTalvegue(*BaciaHidrografica.begin());
-
-        Ponto PBegin;
-        double deltax;
-        double deltay;
-
-        if (Superficie.PegaBaciasImportadas().size() > 0)
-        {
-          PBegin = *(Superficie.PegaBaciasImportadas().begin());
-          deltax = PBegin.x - IniTalvegue.x;
-          deltay = PBegin.y - IniTalvegue.y;
-        }
 
         if (Superficie.VerfBaciaImportada(IniTalvegue))
         {
@@ -16795,7 +16783,7 @@ void DesPontosGeomView::SerializaTalveguePrincipal(int Tipo)
 void DesPontosGeomView::DesenhaTalveguePrincipalBacia(CBacia& Bacia, CDC* ppDC)
 {
   CPen PenaTalveguePrincipal;
-  PenaTalveguePrincipal.CreatePen(PS_SOLID, 4, RGB(90, 90, 160));
+  PenaTalveguePrincipal.CreatePen(PS_SOLID, 4, RGB(0,0,140));
 
   if (Bacia.PegaItTalveguePrincipal() != Bacia.Talvegues.end() && Bacia.PegaItTalveguePrincipal()->size() > 0)
   {
@@ -17188,20 +17176,8 @@ void DesPontosGeomView::DefineTalveguePrincipalSIG(const Ponto& NascenteFoz)
     auto ItTalvOriginal(*Superficie.ItTalvFozSIG);
 
     ObjetoAtual = ItTalvOriginal.begin()->TipoObjeto;    //--- So pode ser talvegue
-
-    ItLLDeltaSup ItListaQuebrada(Superficie.PegaListaRestricoes().end());
-    QuebraLista(Superficie.PegaListaRestricoes(), Superficie.ItTalvFozSIG, --ItTalvegueFozAnt, &ItListaQuebrada, true);
-
-    //---  As listas são separadas mas tem um ponto em comum
-
-    ItListaQuebrada->push_front(FozSIG);
-    ItListaQuebrada->begin()->TipoObjeto = 29;
-    Superficie.ItTalvFozSIG->push_back(FozSIG);
-
-    Superficie.InsereListaNoMapa(ItListaQuebrada, ItListaQuebrada->begin()->TipoObjeto);
-
-    ItListaQuebrada->begin()->TipoObjeto = CAciTopografico::TALVEGUE;
-    CArvoreN ArvoreTalvegues(FozSIG);
+ 
+    CArvoreN ArvoreTalvegues(ItTalvOriginal.begin()->PegaPCentral());
     
     int Resposta(IDNO);
     
@@ -17230,8 +17206,7 @@ void DesPontosGeomView::DefineTalveguePrincipalSIG(const Ponto& NascenteFoz)
     }
 
     ItListaIniTalvPrincipal = Superficie.PegaListaRestricoes().end();
-    //TalveguePrincipal.clear();
-
+ 
     RedrawWindow();
   }
   else

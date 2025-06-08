@@ -67,7 +67,6 @@ class CBacia
   int CalculaAreaPelaCNVoltando(ItLPontos& itCNAtual, ItLPontos itCNAnterior, double& pAreaCNAtual, double& pExtensaoAtual, ittylstIntersecoes itInterEspigao, std::ofstream& pArqLog);
   int CalculaAreaPeloEspigao(double& pAreaCNAtual,double& pExtensaoAtual,ItLPontos& ItCNAtual,const Ponto& PontoInterInicial,const Ponto& PontoInterFinal,std::ofstream& pArqLog,int Direcao);
   bool CalculaCotaFoz(ItLDeltaSup itFoz, ItLLDeltaSup itIalvegue);
-  void RemoveFoz();
   int InsereFozNoEspigao(CAciTopografico& pEspigaoOrdenado, const Ponto& pFoz);
 
   ItLLDeltaSup ItTalveguePrincipal;
@@ -305,6 +304,8 @@ class CBacia
     LimpaIntersEspigao();
     LstPontosBacia.clear();
   }
+
+  void RemoveFoz();
 
   CArchive& operator<<(CArchive& ar);
   CArchive& operator>>(CArchive& ar);

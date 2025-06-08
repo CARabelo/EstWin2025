@@ -233,6 +233,7 @@ int CBacia::VerificaSaidas(void* voidpSuperficieAtual)
  //--- Verifica se a bacia tem apenas 1 saida de talvegue
 
   TotalSaidas = 0;
+  Ponto FozAnterior;
 
   citlstitsetPontos ItEspigaoPostFoz(EspigaoBacia.PegaLista().end());   //--- Para salvar a foz no espigão
 
@@ -243,8 +244,6 @@ int CBacia::VerificaSaidas(void* voidpSuperficieAtual)
 
     if (TipoRestricao == CAciTopografico::TALVEGUE)
     {
-      Ponto FozAnterior;
-
       //--- Verifica se o talvegue tem 1 saida da bacia
 
       ItLDeltaSup ItPAntTalvegue(ItTalvegueAtual->begin()), ItPAtualTalvegue(ItPAntTalvegue);
@@ -259,7 +258,12 @@ int CBacia::VerificaSaidas(void* voidpSuperficieAtual)
         {
           if (CLPontos::CalculaIntersecao(*(*ItEspigaoAnt), *(*ItEspigaoAtual), ItPAntTalvegue->PegaPCentral(), ItPAtualTalvegue->PegaPCentral(), Intersecao,true,1E-1) == TRUE)
           {
-            if (Mat.R_P(FozAnterior, Intersecao).y > 1.0)   //--- Acontece == quando o ponto do talvegue é o mesmo  do espigão
+            //--- Na definição da bacia a foz é inserida no espigão e o talvegue da foz é quebrado em 2.
+            //--- Caso se recalcule esta bacia por uma alteração nos talvegues por exemplo isso pode provocar
+            //--- que interseções ligeiramente diferentes sejam calculadas o que causaria mais que 1 saida (foz)
+            //--- na bacia. Porisso este if
+
+            if (Mat.R_P(FozAnterior, Intersecao).y > 1.0)   
             {
               ++ContaSaidas;
 
@@ -301,10 +305,6 @@ int CBacia::VerificaSaidas(void* voidpSuperficieAtual)
   if (TotalSaidas == 0)
   {
     Erro = SEM_SAIDA;
-  }
-  else
-  {
-    EspigaoBacia.InserePonto(ItEspigaoPostFoz,Foz);
   }
   
   return TotalSaidas;
@@ -1596,7 +1596,7 @@ bool CBacia::VerificaBacia(tylstIntersecoes& InterErro, std::ofstream& pArqLog)
 
   //--- Coloca a foz como o primeiro ponto do espigão (Espigão Normalizado)
 
-  while (((*ItIniEspigaoNormalizado)->Baliza2 & FOZ) != FOZ)   //--- Pga a foz
+  while (!(*ItIniEspigaoNormalizado)->Compara2D(Foz,1E-3))
   {
     ItIniEspigaoNormalizado++;
   }
@@ -1835,9 +1835,17 @@ void CBacia::RemoveFoz()
     if (**itPontoEspigao == Foz)
     {
       EspigaoBacia.LstItPontos.remove(*itPontoEspigao);
-      break;
     }
   }
+
+
+  auto ItFoz(EspigaoBacia.SetPontosAciTopog.find(Foz));
+
+  if (ItFoz != EspigaoBacia.SetPontosAciTopog.end())
+  {
+    EspigaoBacia.SetPontosAciTopog.erase(ItFoz);
+  }
+
   Foz = Ponto();
 }
 
