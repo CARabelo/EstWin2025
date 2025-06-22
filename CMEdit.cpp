@@ -15,6 +15,8 @@ void CMEdit::FormataPast()
 
   // Dump every line of text of the edit control.
 
+  Buffer.clear();
+
   for (int i = 0; i < nLineCount; i++)
   {
     int len(LineLength(LineIndex(i)));

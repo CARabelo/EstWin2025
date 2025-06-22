@@ -99,7 +99,7 @@ class DesPontosGeomView : public CView
 
   UINT m_nTimer;                        //--- timer para o evento onmousestop
 
-  std::string strTrechoAtual,ProjetoAtual,Projeto,strNomeSecAvulsa,NomeEquiAtual;
+  std::string strTrechoAtual,ProjetoAtual,Projeto,strNomeSecAvulsa,NomeEquiAtual,BufferPontosProcurados;
   
   int PrimeiroMovimento,         //--- Usado na movimentação de PIs e CCs, a primeira vez não apaga nada.       
     DesenharCirculo,             //--- Parametro : define se a cruz no ponto deve ser desenhada.
@@ -764,6 +764,7 @@ protected:
   afx_msg void OnUpdateButProjTerrap(CCmdUI* pCmdUI);
   afx_msg LRESULT FechouToolBar(WPARAM wParam, LPARAM lParam);
   afx_msg LRESULT AmpliarMapa(WPARAM wParam, LPARAM lParam);
+  afx_msg LRESULT MostraListaPontos(WPARAM WP, LPARAM LP);
   afx_msg void OnSincPontosControle();
   afx_msg void OnUpdateButSinPontosCtrl(CCmdUI* pCmdUI);
   afx_msg void OnBaixarMapa();

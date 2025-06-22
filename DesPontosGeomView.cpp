@@ -638,6 +638,7 @@ BEGIN_MESSAGE_MAP(DesPontosGeomView, CView)
   ON_COMMAND(ID_BUTIMPORTARTALVEGUES, &DesPontosGeomView::OnImportarTalvegues)
   ON_MESSAGE(WM_AMPLIAR_MAPA, &DesPontosGeomView::AmpliarMapa)     
   ON_MESSAGE(WM_CLOSE_TOOLBAR, DesPontosGeomView::FechouToolBar)
+  ON_MESSAGE(WM_MOSTRAR_PONTOS_USUARIO, &DesPontosGeomView::MostraListaPontos)
   ON_MESSAGE(VUE_USRMSG_CLICOU_CROQUIS, &DesPontosGeomView::OnClicouCroquis)
   ON_UPDATE_COMMAND_UI(ID_BUTVISCROQUIS, OnUpdateButVisCroquis)
   ON_UPDATE_COMMAND_UI(ID_BUTROTACIONAR, OnUpdateButrotacionar)
@@ -7741,69 +7742,13 @@ void DesPontosGeomView::OnIrparaponto()
 {
   auto MF(((CMainFrame*)AfxGetMainWnd()));
 
-  CDCoordenadas DCoordenadas(this,MF->m_sNomeComp.GetBuffer());
+   CDCoordenadas *pDCoordenadas = new CDCoordenadas(this,MF->m_sNomeComp.GetBuffer(),&BufferPontosProcurados);
 
-  if (DCoordenadas.DoModal() == IDOK)
-  {
-    std::string Lixo;
+   pDCoordenadas->Create(IDD_ENTRACOORDXY, this);
 
-    std::stringstream StrStrPontos(DCoordenadas.Buffer);
+   pDCoordenadas->ShowWindow(SW_SHOW);
 
-    bool TrocarCoordenadasXY(DCoordenadas.BooTrocarXY);
-
-    LPontosProcurados.clear();
-
-    Ponto PAtual;
-
-    do
-    {
-      if(TrocarCoordenadasXY)
-        StrStrPontos >> PAtual.x >> PAtual.y;
-      else
-        StrStrPontos >> PAtual.y >> PAtual.x;
-
-      if(std::find(LPontosProcurados.begin(), LPontosProcurados.end(),PAtual) == LPontosProcurados.end())
-      {
-        LPontosProcurados.emplace_back(PAtual);
-      }
-
-      std::getline(StrStrPontos,Lixo);
-    }
-    while(StrStrPontos.good());
-
-    Ponto P;
-    CString NomePonto(DCoordenadas.m_Nome);
-
-    if (DCoordenadas.bPorNome)
-    {
-      if (NomePonto.GetLength() > 0)
-      {
-        ItSSuperficie itPonto(Superficie.PegaPontoPorNome(NomePonto));
-
-        if (itPonto != Superficie.pSuperficieAtual->end())
-        {
-          Ponto PSuperficie(Superficie.PegaPontoPorNome(NomePonto)->PegaPCentral());
-
-          P.x = PSuperficie.x;
-          P.y = PSuperficie.y;
-        }
-        else
-        {
-          monolog.mensagem(-1,"Ponto não encontrado na superfície.");
-          return;
-        }
-      }
-    }
-
-    Deltas[X] = LPontosProcurados.begin()->x;
-    Deltas[Y] = LPontosProcurados.begin()->y;
-
-    DeltasReais.x = Deltas[X] -= LarguraVideo / 2.0;
-    DeltasReais.y = Deltas[Y] -= AlturaVideo / 2.0;
-
-    OnArrastouDesenho();
-    RedrawWindow();
-  }
+  
 }
 
 BOOL DesPontosGeomView::PreCreateWindow(CREATESTRUCT& cs)
@@ -17244,4 +17189,67 @@ void DesPontosGeomView::SuavizaEspigao(lstPontos* plstEspigao)
 
     plstEspigao->push_back(*plstEspigao->begin());
   }
+}
+
+LRESULT DesPontosGeomView::MostraListaPontos(WPARAM WP, LPARAM LP)
+{
+  std::string Lixo;
+
+  std::stringstream StrStrPontos(BufferPontosProcurados);
+
+  bool TrocarCoordenadasXY(WP & 1);
+
+  LPontosProcurados.clear();
+
+  Ponto PAtual;
+
+  do
+  {
+    if(TrocarCoordenadasXY)
+      StrStrPontos >> PAtual.x >> PAtual.y;
+    else
+      StrStrPontos >> PAtual.y >> PAtual.x;
+
+    if(std::find(LPontosProcurados.begin(), LPontosProcurados.end(),PAtual) == LPontosProcurados.end())
+    {
+      LPontosProcurados.emplace_back(PAtual);
+    }
+
+    std::getline(StrStrPontos,Lixo);
+  }
+  while(StrStrPontos.good());
+
+  Ponto P;
+  CString NomePonto("");//DCoordenadas.m_Nome);
+
+  if (WP & 2)
+  {
+    if (NomePonto.GetLength() > 0)
+    {
+      ItSSuperficie itPonto(Superficie.PegaPontoPorNome(NomePonto));
+
+      if (itPonto != Superficie.pSuperficieAtual->end())
+      {
+        Ponto PSuperficie(Superficie.PegaPontoPorNome(NomePonto)->PegaPCentral());
+
+        P.x = PSuperficie.x;
+        P.y = PSuperficie.y;
+      }
+      else
+      {
+        monolog.mensagem(-1,"Ponto não encontrado na superfície.");
+
+        return 0;
+      }
+    }
+  }
+
+  Deltas[X] = LPontosProcurados.begin()->x;
+  Deltas[Y] = LPontosProcurados.begin()->y;
+
+  DeltasReais.x = Deltas[X] -= LarguraVideo / 2.0;
+  DeltasReais.y = Deltas[Y] -= AlturaVideo / 2.0;
+
+  OnArrastouDesenho();
+  RedrawWindow();
 }

@@ -3,9 +3,10 @@
 
 class CMEdit :  public CEdit
 {
+  public:
+
   std::string& Buffer;
 
-public:
   CMEdit(std::string& pBuffer) : Buffer(pBuffer){};
   void FormataPast();
 

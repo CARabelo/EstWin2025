@@ -8,20 +8,25 @@
 
 class CDCoordenadas : public CDialog
 {
-  std::string Projeto;
+  std::string Projeto,*pBufferPontosProcurados;
+
+  void FormatarPontos();
+  void DesformatarPontos();
+
   // Construction
 public:
-  CDCoordenadas(CWnd* pParent,std::string pProjeto);   // standard constructor
+  CDCoordenadas(CWnd* pParent,std::string pProjeto,std::string* pBufPontosProc);   // standard constructor
   ~CDCoordenadas();
 
   bool bPorNome;
+  std::string BufferPontos;
 
   // Dialog Data
   //{{AFX_DATA(CDCoordenadas)
   enum { IDD = IDD_ENTRACOORDXY };
   //}}AFX_DATA
 
-  std::string Buffer,Bufferx,Buffery;
+  std::string Buffer,Bufferx;
 
   // Overrides
   // ClassWizard generated virtual function overrides
@@ -45,7 +50,7 @@ public:
   afx_msg void OnClickedChecoordenadas();
   afx_msg void OnClickedChenome();
   virtual BOOL OnInitDialog();
-  CMEdit CEditCoordx,CEditCoordy;
+  CMEdit CEditCoordx;
   BOOL BooTrocarXY,BooCoordenadas;
 };
 

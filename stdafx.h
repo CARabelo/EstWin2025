@@ -12,6 +12,7 @@
 #define	WM_CLOSE_TOOLBAR (WM_APP+100)
 #define	WM_AMPLIAR_MAPA (WM_APP+101)
 #define WM_BUTUP_LISTBOX_PROJETOS (WM_APP+102)
+#define WM_MOSTRAR_PONTOS_USUARIO (WM_APP+103)
 
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 
