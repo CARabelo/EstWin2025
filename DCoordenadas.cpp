@@ -23,7 +23,6 @@ static std::string CaracNumericos("01234567890. \r\n");
 
 CDCoordenadas::CDCoordenadas(CWnd* pParent,std::string pProjeto,std::string* pBufPontosProc) : CDialog(CDCoordenadas::IDD, pParent), CEditCoordx(Bufferx), Projeto(pProjeto), pBufferPontosProcurados(pBufPontosProc)
 
-, BooTrocarXY(FALSE)
 {
   //{{AFX_DATA_INIT(CDCoordenadas)
   m_Nome = _T("");
@@ -34,14 +33,11 @@ void CDCoordenadas::DoDataExchange(CDataExchange* pDX)
 {
   CDialog::DoDataExchange(pDX);
   //{{AFX_DATA_MAP(CDCoordenadas)
-  DDX_Text(pDX, IDC_EDINOME, m_Nome);
-  DDV_MaxChars(pDX, m_Nome, 50);
   DDX_Control(pDX, IDC_CHECOORDENADAS, m_cheCoordenadas);
   DDX_Control(pDX, IDC_CHENOME, m_cheNome);
   DDX_Control(pDX, IDC_COORDN, CEditCoordx);
   DDX_Check(pDX, IDC_CHETROCARXY, BooTrocarXY);
   //}}AFX_DATA_MAP
-
 }
 
 BEGIN_MESSAGE_MAP(CDCoordenadas, CDialog)
@@ -50,6 +46,7 @@ BEGIN_MESSAGE_MAP(CDCoordenadas, CDialog)
   ON_BN_CLICKED(IDC_CHECOORDENADAS, &CDCoordenadas::OnClickedChecoordenadas)
   ON_BN_CLICKED(IDC_CHENOME, &CDCoordenadas::OnClickedChenome)
   ON_WM_COPYDATA()
+  ON_BN_CLICKED(IDCANCEL, &CDCoordenadas::OnBnClickedCancel)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -58,6 +55,8 @@ END_MESSAGE_MAP()
 void CDCoordenadas::OnOK() 
 {
   Bufferx.clear();
+  Buffer.clear();
+  pBufferPontosProcurados->clear();
 
   CEditCoordx.FormataPast();
 
@@ -71,21 +70,25 @@ void CDCoordenadas::OnOK()
   {
     OK = true;
 
-    while (C++ < 2 && OK)
-    {
-      std::stringstream BufferDigitado(C == 1 ? Bufferx : Bufferx);
-
-      BufferDigitado << std::right << std::fixed << std::setfill(' ') << std::setprecision(2);
-
-      std::string Numero;
-
-      while (BufferDigitado.good() && OK)
+    if(BooCoordenadas)
+    { 
+      while (C++ < 2 && OK)
       {
-        BufferDigitado >> Numero;
+        std::stringstream BufferDigitado(C == 1 ? Bufferx : Bufferx);
 
-        OK = Mat.ENumero(Numero);
+        BufferDigitado << std::right << std::fixed << std::setfill(' ') << std::setprecision(2);
+
+        std::string Numero;
+
+        while (BufferDigitado.good() && OK)
+        {
+          BufferDigitado >> Numero;
+
+          OK = Mat.ENumero(Numero);
+        }
       }
     }
+    else OK = true;
 
     if (OK)
     {
@@ -93,19 +96,14 @@ void CDCoordenadas::OnOK()
 
       Buffer = Bufferx;
       Buffer += " ";
-
-      *pBufferPontosProcurados = Buffer;
-
-      int Config(m_cheNome.GetCheck() == BST_CHECKED + (BooTrocarXY << 1));
-
-      GetParent()->SendMessageToDescendants(WM_MOSTRAR_PONTOS_USUARIO, Config, 0);
-
-      return;
     }
-  }
-  else return;
 
-  AfxMessageBox("Dados Inválidos, apenas números são aceitos nos campos de coordenadas");
+    *pBufferPontosProcurados = Buffer;
+  }
+
+  int Config((BooCoordenadas == false) | (BooTrocarXY << TipoBusca::TROCARXY));
+
+  GetParent()->SendMessageToDescendants(WM_MOSTRAR_PONTOS_USUARIO, Config, 0);
 }
 
 void CDCoordenadas::OnClickedChecoordenadas()
@@ -113,26 +111,23 @@ void CDCoordenadas::OnClickedChecoordenadas()
   if(m_cheCoordenadas.GetCheck() == BST_CHECKED)
   {
     m_cheNome.SetCheck(BST_UNCHECKED);
+
+    BooCoordenadas = true;
+    bPorNome = false;
      
-    GetDlgItem(IDC_STANOMEPONTO)->EnableWindow(false);
-    GetDlgItem(IDC_EDINOME)->EnableWindow(false);
     GetDlgItem(IDC_COORDN)->EnableWindow(true);
-    GetDlgItem(IDC_COORDE)->EnableWindow(true);
-    GetDlgItem(IDC_STACOORDN)->EnableWindow(true);
-    GetDlgItem(IDC_STACOORDE)->EnableWindow(true);
     GetDlgItem(IDC_STACOORDPONTO)->EnableWindow(true);
   }
   else
   {
     m_cheNome.SetCheck(BST_CHECKED);
 
-     GetDlgItem(IDC_STANOMEPONTO)->EnableWindow(true);
-     GetDlgItem(IDC_EDINOME)->EnableWindow(true);
-     GetDlgItem(IDC_COORDN)->EnableWindow(false);
-     GetDlgItem(IDC_COORDE)->EnableWindow(false);
-     GetDlgItem(IDC_STACOORDN)->EnableWindow(false);
-     GetDlgItem(IDC_STACOORDE)->EnableWindow(false);
-     GetDlgItem(IDC_STACOORDPONTO)->EnableWindow(false);
+    BooCoordenadas = false;
+    bPorNome = true;
+
+    GetDlgItem(IDC_COORDN)->EnableWindow(true);
+    GetDlgItem(IDC_STACOORDN)->EnableWindow(false);
+    GetDlgItem(IDC_STACOORDPONTO)->EnableWindow(false);
   }
 }
 
@@ -156,9 +151,10 @@ BOOL CDCoordenadas::OnInitDialog()
   std::stringstream strstrBuffer(Buffer);
   char Virgula;
   int CheCoordenadas(0), TrocarXY(0);
-
+ 
   strstrBuffer >> CheCoordenadas >> Virgula >> TrocarXY;
-    
+
+     
   BooCoordenadas = CheCoordenadas;
   BooTrocarXY = TrocarXY;
   if(!BooCoordenadas)  m_cheNome.SetCheck(BST_CHECKED);
@@ -179,55 +175,49 @@ BOOL CDCoordenadas::OnInitDialog()
 CDCoordenadas::~CDCoordenadas()
 {
   CString CSDados;
-  std::string NomeArquivo = Projeto + std::string(".ini");
+  std::string NomeArquivo(Projeto + std::string(".ini")); 
 
-  CSDados.Format("%d,%d",BooCoordenadas, BooTrocarXY);
+  CSDados.Format("%d,%d %s",BooCoordenadas, BooTrocarXY,BufferPontos.c_str());
 
 ::WritePrivateProfileString(_T("DadosDesenhos"), _T("DadosLocalizar"), CSDados, NomeArquivo.c_str());
 }
 
-
 void CDCoordenadas::DesformatarPontos()
 {
-  // if (Coordenadas)
+  int C(0);
+  size_t QtdPontos(CEditCoordx.GetLineCount());
+  CEditCoordx.FormataPast();
+  std::stringstream BufferFormatado, BufferOrigem;
+
+  UpdateData(true);
+
+  std::string PontoAtual;
+
+  BufferFormatado << std::right << std::fixed << std::setfill('0') << std::setprecision(3);
+
+  BufferOrigem = std::stringstream(CEditCoordx.Buffer);//BufferPontos);
+
+  do
   {
-    int C(0);
-    size_t QtdPontos(CEditCoordx.GetLineCount());
-    CEditCoordx.FormataPast();
-    std::stringstream BufferFormatado, BufferOrigem;
+    std::getline(BufferOrigem, PontoAtual);
+    PontoAtual += '\n';
 
-    UpdateData(true);
+    int Pos(PontoAtual.find(':'));
 
-    std::string PontoAtual;
-
-    BufferFormatado << std::right << std::fixed << std::setfill('0') << std::setprecision(3);
-
-    BufferOrigem = std::stringstream(CEditCoordx.Buffer);//BufferPontos);
-
-    do
+    if (Pos != std::string::npos)
     {
-      std::getline(BufferOrigem, PontoAtual);
-      PontoAtual += '\n';
+      PontoAtual.erase(0, ++Pos);
+    }
 
-      int Pos(PontoAtual.find('-'));
+    if (PontoAtual.size() > 1) BufferFormatado << PontoAtual;
+  } while (++C < QtdPontos);
 
-      if (Pos != std::string::npos)
-      {
-        PontoAtual.erase(0, ++Pos);
-      }
+  BufferPontos = BufferFormatado.str();
 
-      //PontoAtual.erase(PontoAtual.find(13));
+  CEditCoordx.SetWindowText(BufferPontos.c_str());
+  CEditCoordx.Buffer = BufferPontos;
 
-      if (PontoAtual.size() > 1) BufferFormatado << PontoAtual;
-    } while (++C < QtdPontos);
-
-    BufferPontos = BufferFormatado.str();
-
-    CEditCoordx.SetWindowText(BufferPontos.c_str());
-    CEditCoordx.Buffer = BufferPontos;
-
-    UpdateData(false);
-  }
+  UpdateData(false);
 }
 
 void CDCoordenadas::FormatarPontos()
@@ -240,7 +230,7 @@ void CDCoordenadas::FormatarPontos()
 
   UpdateData(true);
 
-  if (1)//Coordenadas)
+  if (BooCoordenadas)
   {
     for (std::string::iterator It = BufferPontos.begin(); It != BufferPontos.end();)
     {
@@ -268,7 +258,7 @@ void CDCoordenadas::FormatarPontos()
         NumCoordN = atof(CoordN.c_str());
         NumCoordE = atof(CoordE.c_str());
 
-        BufferFormatado << "  " << C << " - " << NumCoordN << "   " << NumCoordE << "\r\n";
+        BufferFormatado << "  " << C << " : " << NumCoordN << "   " << NumCoordE << "\r\n";
       }
 
     } while (C != QtdPontos);
@@ -292,7 +282,7 @@ void CDCoordenadas::FormatarPontos()
       BufferOrigem2 >> NomePonto;
 
       if (NomePonto.size())
-        BufferFormatado << "  " << C << " - " << NomePonto << "\r\n";
+        BufferFormatado << "  " << C << " : " << NomePonto << "\r\n";
 
     } while (C != QtdPontos);
 
@@ -300,4 +290,9 @@ void CDCoordenadas::FormatarPontos()
 
     CEditCoordx.SetWindowText(BufferPontos.c_str());
   }
+}
+
+void CDCoordenadas::OnBnClickedCancel()
+{
+  delete this;
 }

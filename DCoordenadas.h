@@ -18,6 +18,8 @@ public:
   CDCoordenadas(CWnd* pParent,std::string pProjeto,std::string* pBufPontosProc);   // standard constructor
   ~CDCoordenadas();
 
+  enum TipoBusca{NENHUM,NOME,COORDENADAS,TROCARXY};
+
   bool bPorNome;
   std::string BufferPontos;
 
@@ -52,6 +54,7 @@ public:
   virtual BOOL OnInitDialog();
   CMEdit CEditCoordx;
   BOOL BooTrocarXY,BooCoordenadas;
+  afx_msg void OnBnClickedCancel();
 };
 
 //{{AFX_INSERT_LOCATION}}

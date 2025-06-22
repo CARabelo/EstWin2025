@@ -1315,10 +1315,10 @@ void DesPontosGeomView::OnDraw(CDC* ppDC)
 
   if(SetPontoCotadosSuperf.size()) DesenhaPontosCotadosSuperf(pDC);
   if(ListaAJuntar.size()) DesenhaEspigaoAIncluir(pDC);
-  if(LPontosProcurados.size()) DesenhaPontosProcurados(pDC);
   if(TalvegueMontado.size()) DesenhaTalvegueMontado(pDC);
   if(TalveguePrincipal.size()) DesenhaTalveguePrincipal(pDC);
 
+  DesenhaPontosProcurados(pDC);
   DesenhaEspigaoMarcado(pDC);
 
   pDC->SelectObject(pPenaAnterior);
@@ -7742,13 +7742,11 @@ void DesPontosGeomView::OnIrparaponto()
 {
   auto MF(((CMainFrame*)AfxGetMainWnd()));
 
-   CDCoordenadas *pDCoordenadas = new CDCoordenadas(this,MF->m_sNomeComp.GetBuffer(),&BufferPontosProcurados);
+   CDCoordenadas *pDCoordenadas(new CDCoordenadas(this, MF->m_sNomeComp.GetBuffer(), &BufferPontosProcurados));
 
    pDCoordenadas->Create(IDD_ENTRACOORDXY, this);
 
    pDCoordenadas->ShowWindow(SW_SHOW);
-
-  
 }
 
 BOOL DesPontosGeomView::PreCreateWindow(CREATESTRUCT& cs)
@@ -17197,59 +17195,66 @@ LRESULT DesPontosGeomView::MostraListaPontos(WPARAM WP, LPARAM LP)
 
   std::stringstream StrStrPontos(BufferPontosProcurados);
 
-  bool TrocarCoordenadasXY(WP & 1);
+  bool PorNome(WP & (1 << CDCoordenadas::TipoBusca::NOME)),PorCoordenadas(WP & (1 << CDCoordenadas::TipoBusca::COORDENADAS)),TrocarXY(WP & (1 << CDCoordenadas::TipoBusca::TROCARXY));
 
   LPontosProcurados.clear();
 
   Ponto PAtual;
 
-  do
+  if(BufferPontosProcurados.size())
   {
-    if(TrocarCoordenadasXY)
-      StrStrPontos >> PAtual.x >> PAtual.y;
+    if(!PorNome)
+    {
+      do
+      {
+        if(TrocarXY)
+          StrStrPontos >> PAtual.x >> PAtual.y;
+        else
+          StrStrPontos >> PAtual.y >> PAtual.x;
+
+        if(std::find(LPontosProcurados.begin(), LPontosProcurados.end(),PAtual) == LPontosProcurados.end())
+        {
+          LPontosProcurados.emplace_back(PAtual);
+        }
+ 
+        std::getline(StrStrPontos,Lixo);
+      }
+      while(StrStrPontos.good());
+    }
     else
-      StrStrPontos >> PAtual.y >> PAtual.x;
-
-    if(std::find(LPontosProcurados.begin(), LPontosProcurados.end(),PAtual) == LPontosProcurados.end())
     {
-      LPontosProcurados.emplace_back(PAtual);
+      do
+      {
+        std::string NomePonto("");
+
+        StrStrPontos >> NomePonto;
+
+        if (StrStrPontos.good() && NomePonto.size() > 0)
+        {
+          ItSSuperficie ItPonto(Superficie.PegaPontoPorNome(NomePonto.c_str()));
+
+          if (ItPonto != Superficie.pSuperficieAtual->end())
+          {
+            LPontosProcurados.push_back(ItPonto->PegaPCentral());
+          }
+          else
+          {
+            monolog.mensagem(-1,"Ponto não encontrado na superfície.");
+
+            return 0;
+          }
+        }
+      }while(StrStrPontos.good());
     }
 
-    std::getline(StrStrPontos,Lixo);
-  }
-  while(StrStrPontos.good());
+    Deltas[X] = LPontosProcurados.begin()->x;
+    Deltas[Y] = LPontosProcurados.begin()->y;
 
-  Ponto P;
-  CString NomePonto("");//DCoordenadas.m_Nome);
+    DeltasReais.x = Deltas[X] -= LarguraVideo / 2.0;
+    DeltasReais.y = Deltas[Y] -= AlturaVideo / 2.0;
 
-  if (WP & 2)
-  {
-    if (NomePonto.GetLength() > 0)
-    {
-      ItSSuperficie itPonto(Superficie.PegaPontoPorNome(NomePonto));
-
-      if (itPonto != Superficie.pSuperficieAtual->end())
-      {
-        Ponto PSuperficie(Superficie.PegaPontoPorNome(NomePonto)->PegaPCentral());
-
-        P.x = PSuperficie.x;
-        P.y = PSuperficie.y;
-      }
-      else
-      {
-        monolog.mensagem(-1,"Ponto não encontrado na superfície.");
-
-        return 0;
-      }
-    }
+    OnArrastouDesenho();
   }
 
-  Deltas[X] = LPontosProcurados.begin()->x;
-  Deltas[Y] = LPontosProcurados.begin()->y;
-
-  DeltasReais.x = Deltas[X] -= LarguraVideo / 2.0;
-  DeltasReais.y = Deltas[Y] -= AlturaVideo / 2.0;
-
-  OnArrastouDesenho();
   RedrawWindow();
 }
