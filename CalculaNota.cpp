@@ -351,25 +351,29 @@ void CalculaNota::AplicaSuperElevacao(Perfil& SecaoAtual,double Gradiente)   //-
 {
   int LadoCurva(NENHUM);
   Perfil SecaoRasc = SecaoAtual;
-  if((SE = CurvasHorizontais.BuscaSuperElevacao(SecaoRasc.Estaca,LadoCurva)) == INFINITO) return;  //--- busca a super-elevaçao, se na tangente não faz nada
-  if( LadoCurva == DIREITO) SE *= -1.0;
-  POSITION PGradiente(SecaoRasc.GetHeadPosition());  //--- Inicializa o atual
+  SE = CurvasHorizontais.BuscaSuperElevacao(SecaoRasc.Estaca,LadoCurva);  //--- busca a super-elevaçao, se na tangente não faz nada
 
-  //--- Marca o gradiente.
+  if(SE != INFINITO && LadoCurva == DIREITO) SE *= -1.0;
+
+  POSITION PGradiente(SecaoRasc.GetHeadPosition());  
+
+  //--- Applica o gradiente.
 
   while(PGradiente && SecaoRasc.GetAt(PGradiente).x < Gradiente)  SecaoRasc.GetNext(PGradiente);
 
   Ponto PonGradiente(SecaoRasc.GetAt(PGradiente));
 
-  if (PonGradiente.y != 0.0)                    //---- O y do gradiente tem que ser 0.00
+  if (PonGradiente.x != 0.0)                    //---- O gradiente esta fora do eixo?
   {
     for (POSITION Atual = SecaoRasc.GetHeadPosition(); Atual != NULL; SecaoRasc.GetNext(Atual))
     {
-      SecaoRasc.GetAt(Atual).y -= PonGradiente.y;    //--- Ajusta a seção para aplicação do gradiente
+      SecaoRasc.GetAt(Atual).y += -PonGradiente.y;    //--- Ajusta a seção para aplicação do gradiente
     }
-	
+
     SecaoAtual = SecaoRasc;
   }
+
+  if (SE == INFINITO) return;    //--- Não tem superelevação
 
   //--- O cálculo é feito por lado a partir do 0,0.
 

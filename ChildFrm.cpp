@@ -651,7 +651,6 @@ int CChildFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
         m_wndToolBarDes.SetButtonInfo(12, ID_BUTSECAVULSASECOES, TBBS_CHECKBOX, 12);
         m_wndToolBarDes.SetButtonInfo(13, ID_BUTTALVEGUES, TBBS_CHECKBOX, 13);
         m_wndToolBarDes.SetButtonInfo(14, ID_BUTHIPSOGRAMA, TBBS_CHECKBOX, 14);
-        m_wndToolBarDes.SetButtonInfo(15, ID_BUTX10, TBBS_CHECKBOX, 15);
 
         //--- Salva os ponteiros para os tools bars para poder mostrar/esconder 
         //--- através do botão configurar

@@ -320,7 +320,6 @@ BEGIN_MESSAGE_MAP(DesSecaoView, CView)
   ON_COMMAND(ID_BUTPARTICIONAR, &DesSecaoView::OnButParticionar)
   ON_COMMAND(ID_BUTHIPSOGRAMA, &DesSecaoView::OnButHistograma)
   ON_UPDATE_COMMAND_UI(ID_BUTHIPSOGRAMA, &DesSecaoView::OnUpdateButTalvegues)
-  ON_COMMAND(ID_BUTX10, &DesSecaoView::OnButX10)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1021,6 +1020,7 @@ void DesSecaoView::OnInitialUpdate()
   MainFrame->ShowControlBar(MainFrame->PegaBarra(2),Escalas, FALSE);	
   MainFrame->ShowControlBar(MainFrame->PegaBarra(3),Procurar, FALSE);	
   MainFrame->ShowControlBar(MainFrame->PegaBarra(4),Ferramentas, FALSE);	
+  MainFrame->ShowControlBar(MainFrame->PegaBarra(7),FALSE,FALSE);
 
   //--- dialogo dos volumes 
 
@@ -3697,7 +3697,8 @@ void DesSecaoView::OnButTalvegues()
     {
       int CurSel(0);
 
-      if(UltimoTalvegue.GetLength()) ((CComboProcurarDesSecao*)pComboFind)->PosicionaTexto(UltimoTalvegue);
+      if(UltimoTalvegue.GetLength()) 
+        ((CComboProcurarDesSecao*)pComboFind)->PosicionaTexto(UltimoTalvegue);
 
       (((CComboProcurarDesSecao*)pComboFind)->GetLBText(CurSel,UltimoTalvegue));
 
@@ -3947,7 +3948,6 @@ void  DesSecaoView::PreencheComboProcurar(void* pChildFrame)
 
     if (EstacaAtual->Find("INF") == -1)
     {
-      EstacaAtual->TrimLeft();
       ((CChildFrame*)pChildFrame)->PegaComboProcurarDesSecao().AddString(CString((*EstacaAtual)) + CString(" ") + EstacaAtual->Descricao);
     }
   }
@@ -4126,24 +4126,6 @@ void DesSecaoView::OnButHistograma()
 void DesSecaoView::OnUpdateButTalvegues(CCmdUI* pCmdUI)
 {
   pCmdUI->Enable(BaciasHidrograficas.size() > 0);
-}
-
-void DesSecaoView::OnButX10()
-{
-  EscalaX10 = !EscalaX10;
-  double Fator(0.0);
-
-  if(EscalaX10) 
-    ((CChildFrame*)GetParentFrame())->Deslizantes.MudarRazao(Fator=0.1);
-  else
-    ((CChildFrame*)GetParentFrame())->Deslizantes.MudarRazao(Fator=1.0);
-  
-  RazaoHV = Fator;
-  Escala[X] = Escala[Y] * Fator;
-
-  CalculaParametros();
-
-  RedrawWindow();
 }
 
 void DesSecaoView::SalvaPerfilTalvegue()

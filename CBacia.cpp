@@ -1596,11 +1596,14 @@ bool CBacia::VerificaBacia(tylstIntersecoes& InterErro, std::ofstream& pArqLog)
 
   //--- Coloca a foz como o primeiro ponto do espigão (Espigão Normalizado)
 
-  while (!(*ItIniEspigaoNormalizado)->Compara2D(Foz,1E-3))
+  while (ItIniEspigaoNormalizado != EspigaoBacia.PegaLista().end() && !(*ItIniEspigaoNormalizado)->Compara2D(Foz,1E-3))
   {
     ItIniEspigaoNormalizado++;
   }
-  
+
+  //--- Apenas nos projetos SIG o espigão vem com a foz
+  //--- Se esta sem, a foz sera inserida posteriormente
+
   auto ItFozNormalizado(ItIniEspigaoNormalizado);
 
   lstPontos EspigaoNormalizado;
@@ -1830,21 +1833,29 @@ bool CBacia::CalculaCotaFoz(ItLDeltaSup itFoz,ItLLDeltaSup itIalvegue)
 
 void CBacia::RemoveFoz()
 {
-  for (itlstitsetPontos itPontoEspigao = EspigaoBacia.LstItPontos.begin() ; itPontoEspigao != EspigaoBacia.LstItPontos.end() ; itPontoEspigao++)
+  itlstitsetPontos itPontoEspigao(EspigaoBacia.LstItPontos.begin());
+  bool Achou(false);
+
+  while(!Achou && itPontoEspigao != EspigaoBacia.LstItPontos.end())
   {
     if (**itPontoEspigao == Foz)
     {
       EspigaoBacia.LstItPontos.remove(*itPontoEspigao);
+
+      Achou = true;
     }
+    else
+      itPontoEspigao++;
   }
 
-
+  /*
   auto ItFoz(EspigaoBacia.SetPontosAciTopog.find(Foz));
 
   if (ItFoz != EspigaoBacia.SetPontosAciTopog.end())
   {
     EspigaoBacia.SetPontosAciTopog.erase(ItFoz);
   }
+  */
 
   Foz = Ponto();
 }

@@ -7,6 +7,7 @@
 #include "CMEdit.h"
 #include "DCoordenadas.h"
 #include "Mat.h"
+#include <iostream>  
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -95,7 +96,6 @@ void CDCoordenadas::OnOK()
       UpdateData(true);
 
       Buffer = Bufferx;
-      Buffer += " ";
     }
 
     *pBufferPontosProcurados = Buffer;
@@ -143,20 +143,36 @@ BOOL CDCoordenadas::OnInitDialog()
 
   char Buffer[64] = { 0 };
   CString Default;
-  std::string NomeArquivo(Projeto + std::string(".ini"));
+  std::string NomeArquivo(Projeto + ".ini");
 
-  Default.Format("%d,%d",1,0);
+  Default.Format("%d,%d,",1,0);
   ::GetPrivateProfileString(_T("DadosDesenhos"), _T("DadosLocalizar"), Default, Buffer, 64, NomeArquivo.c_str());
 
   std::stringstream strstrBuffer(Buffer);
   char Virgula;
   int CheCoordenadas(0), TrocarXY(0);
- 
+  std::string StrBufferPontos;
+
+  std::ifstream ArqPontos(Projeto + "Lst.pon", std::fstream::in);
+
+  ArqPontos.unsetf(std::ios_base::skipws);
+
+  if(ArqPontos.good())
+  {
+    ArqPontos >> StrBufferPontos;
+  }
+
   strstrBuffer >> CheCoordenadas >> Virgula >> TrocarXY;
 
-     
+  std::replace(StrBufferPontos.begin(), StrBufferPontos.end(), ';', '\r');
+  std::replace(StrBufferPontos.begin(), StrBufferPontos.end(), '@', '\n');
+
   BooCoordenadas = CheCoordenadas;
   BooTrocarXY = TrocarXY;
+  //strncpy(&Buffer[0], StrBufferPontos.c_str(),sizeof(Buffer)-1);
+
+  CEditCoordx.SetWindowText(StrBufferPontos.c_str());
+
   if(!BooCoordenadas)  m_cheNome.SetCheck(BST_CHECKED);
   else m_cheCoordenadas.SetCheck(BST_CHECKED);
 
@@ -177,7 +193,18 @@ CDCoordenadas::~CDCoordenadas()
   CString CSDados;
   std::string NomeArquivo(Projeto + std::string(".ini")); 
 
-  CSDados.Format("%d,%d %s",BooCoordenadas, BooTrocarXY,BufferPontos.c_str());
+  std::replace(BufferPontos.begin(),BufferPontos.end(),'\r',';');
+  std::replace(BufferPontos.begin(), BufferPontos.end(), '\n','@');
+
+  std::ofstream ArqPontos(Projeto + "Lst.pon",std::fstream::trunc | std::fstream::out);
+
+  ArqPontos.unsetf(std::ios_base::skipws);
+
+  ArqPontos << BufferPontos;
+
+  ArqPontos.close();
+
+  CSDados.Format("%d,%d",BooCoordenadas, BooTrocarXY);
 
 ::WritePrivateProfileString(_T("DadosDesenhos"), _T("DadosLocalizar"), CSDados, NomeArquivo.c_str());
 }
@@ -258,7 +285,7 @@ void CDCoordenadas::FormatarPontos()
         NumCoordN = atof(CoordN.c_str());
         NumCoordE = atof(CoordE.c_str());
 
-        BufferFormatado << "  " << C << " : " << NumCoordN << "   " << NumCoordE << "\r\n";
+        BufferFormatado << C << " : " << NumCoordN << "   " << NumCoordE << "\r\n";
       }
 
     } while (C != QtdPontos);
@@ -294,5 +321,9 @@ void CDCoordenadas::FormatarPontos()
 
 void CDCoordenadas::OnBnClickedCancel()
 {
+  pBufferPontosProcurados->clear();
+
+  GetParent()->SendMessageToDescendants(WM_MOSTRAR_PONTOS_USUARIO,0,0);
+
   delete this;
 }

@@ -17249,12 +17249,16 @@ LRESULT DesPontosGeomView::MostraListaPontos(WPARAM WP, LPARAM LP)
 
     Deltas[X] = LPontosProcurados.begin()->x;
     Deltas[Y] = LPontosProcurados.begin()->y;
-
+  
     DeltasReais.x = Deltas[X] -= LarguraVideo / 2.0;
     DeltasReais.y = Deltas[Y] -= AlturaVideo / 2.0;
-
-    OnArrastouDesenho();
   }
 
+  OnArrastouDesenho();
+
+  MudarEscala(Escala[X] * 100.0);    //--- Acerta o mapa
+
   RedrawWindow();
+
+  return 0;
 }

@@ -68,10 +68,11 @@ typedef tyditsetNomeArquivos ittysetNomes;
 static std::ifstream& operator>>(std::ifstream& ifs,std::string& str)  
 {
   register size_t Size(-1);
+  char Espaco;
 
   str.clear();
 
-  ifs >> Size;
+  ifs >> Size >> Espaco;
 
   str.reserve(Size);
 
@@ -89,7 +90,7 @@ static std::ifstream& operator>>(std::ifstream& ifs,std::string& str)
 
 static std::ofstream& operator<<(std::ofstream& ofs,std::string& str)  
 {
-  ofs << str.size();
+  ofs << str.size() << ' ';
 
   for (register std::string::iterator it = str.begin() ; it != str.end() ; ++it) 
   {

@@ -348,7 +348,6 @@ protected:
   afx_msg void OnUpdatePropagar(CCmdUI* pCmdUI);
   afx_msg void OnUpdateButTalvegues(CCmdUI* pCmdUI);
 
-
   //}}AFX_MSG
   DECLARE_MESSAGE_MAP()
   virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
@@ -368,8 +367,6 @@ public:
   afx_msg void OnButTalvegues();
   afx_msg void OnButParticionar();
   afx_msg void OnButHistograma();
-  afx_msg void OnButX10();
-
 };
 
 /////////////////////////////////////////////////////////////////////////////
