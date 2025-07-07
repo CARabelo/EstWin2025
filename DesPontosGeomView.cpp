@@ -1,4 +1,5 @@
 // DesPontosGeomView.cpp : implementation file
+// DesPontosGeomView.cpp : implementation file
 #include "stdafx.h"
 #include "est.h"
 #include "afxtempl.h"
@@ -131,6 +132,7 @@
 #include "COAC.h"
 #include "CArqOAE.h"
 #include "COAE.h"
+#include <vector>
 #include "DesPerfilView.h"
 #include "CMensagem.h"
 #include "CDDiaNomePerfAvulso.h"
@@ -146,6 +148,9 @@
 #include "CDSelecionarCNs.h"
 #include "CDImportarArqSIG.h"
 #include "CDiaIniciaTalvPrincipal.h"
+
+//#include "projpsimpl/psimpl.h"
+//#include "Projpsimpl/psimpl_reference.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -7995,6 +8000,8 @@ void DesPontosGeomView::OnUpdateButSecAvulsa(CCmdUI* pCmdUI)
 
 void DesPontosGeomView::OnTipoCN()
 {
+  Teste();
+
   DesCNTopograficas = !DesCNTopograficas;
   CChildFrame* CCFrm = (CChildFrame*)GetParentFrame();
   CCFrm->m_wndToolBarPonGeo.CheckDlgButton(ID_BUTCNTOPOGRAF, DesCNTopograficas);
@@ -17261,4 +17268,29 @@ LRESULT DesPontosGeomView::MostraListaPontos(WPARAM WP, LPARAM LP)
   RedrawWindow();
 
   return 0;
+}
+
+
+void DesPontosGeomView::Teste()
+{
+/*
+  std::vector <double> generatedPoints, mSimplifiedCoords;
+
+  int x = 0;
+
+
+  for (int i = 1; i < 101; i++)
+  {
+    generatedPoints.push_back(sin(x) * 10);
+
+    x += 3.14 / 20.0;
+
+  }
+
+  double dist = 4.0;
+
+  std::vector <double>::const_iterator begin = generatedPoints.begin();
+  std::vector <double>::const_iterator end = generatedPoints.end();
+   psimpl::simplify_reumann_witkam <2>(begin, end,dist, std::back_inserter(mSimplifiedCoords));
+*/
 }

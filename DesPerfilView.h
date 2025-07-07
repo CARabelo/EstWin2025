@@ -25,6 +25,8 @@ class DesPerfilView : public CView
 
   std::string Trecho,TrechoAnterior,Projeto;
 
+  tylstpontos GreideSimplificado;
+
   CXYGreide* MouseXYGre;     //--- Ponteiro para o diálogo das coordenadas do mouse
   CListaSecoes& Secoes;      //--- Referencia às Secoes, para pegar as cotas dos eixos.  
   double Escala[2],          //--- Escala em pixels por metro; 
@@ -129,6 +131,7 @@ public:
   bool AlterouProjeto() {return AlterouGreide;}; 
   void CalculaCota(CEstaca& Estaca) {CurvasVerticais.CalculaCota(Estaca);};
   void MostrarApagarSecao(bool Mostrar);
+  void OnTeste();
   const std::string& PegaRua() const { return Trecho; }
   
   // Overrides

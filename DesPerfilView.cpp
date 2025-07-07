@@ -9,7 +9,6 @@
 #include "cponto.h" 
 #include "clpontos.h" 
 #include "perfil.h"
-#include "afxtempl.h"
 #include "supercstring.h"
 #include "carqcanteiros.h"
 #include "ccanteiros.h"
@@ -42,7 +41,6 @@
 #include "listamedicoes.h"
 #include "dvolumes.h"
 #include "calcnota.h"
-#include <string>
 #include "meleditbox.h"
 #include "cdpopuppontos.h"
 #include "carqalargamentos.h"
@@ -84,7 +82,6 @@
 #include "DesCroquisView.h"
 #include "MainFrm.h"
 #include "diapontosgeom.h"
-#include "meleditbox.h"
 #include "CArqOAC.h"
 #include "coac.h"
 #include "CArqOAE.h"
@@ -92,7 +89,6 @@
 #include "CMemDC.h"
 #include "DesPerfilView.h"
 #include "dentraponto.h" 
-#include "math.h"
 #include "ddeslizantes.h"
 #include "deslizantesgeom.h"
 #include "palette.h"
@@ -102,11 +98,13 @@
 #include <iomanip> 
 #include <strstream>   // for sstream
 #include <vector>
-#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include "dialogo.h"
 #include "monologo.h"
+
+#include "projpsimpl\psimpl_reference.h"
+#include "projpsimpl\psimpl.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -404,6 +402,39 @@ void DesPerfilView::OnDraw(CDC* ppDC)
   CPen Pena[TOTALPENAS];                      //--- Penas do projeto e do terreno.
 
   CMainFrame* CMF((CMainFrame*)AfxGetMainWnd());
+
+  //--------------------------------------------------------------------------------------
+
+  CPen PenaE;
+  
+  PenaE.CreatePen(PS_DASH, 2, Cores[CORPAVIMENTO]);
+
+  pDC->SelectObject(&PenaE);
+
+  if(GreideSimplificado.size())
+  {
+    CPoint P;
+
+    ittylstpontos It = GreideSimplificado.begin();
+
+    P.x = (int)(Deltas[X] + (It->x * Escala[X]/*+Resolucao[X]*/));
+    P.y = (int)(Deltas[Y] + (Resolucao[Y] - (It->y - HLimpeza.BuscaH(It->x)) * Escala[Y]));
+
+    pDC->MoveTo(P);
+
+    for(It++ ; It != GreideSimplificado.end() ; It++)
+    {
+      {
+        P.x = (int)(Deltas[X] + (It->x * Escala[X]/*+Resolucao[X]*/));
+        P.y = (int)(Deltas[Y] + (Resolucao[Y] - (It->y - HLimpeza.BuscaH(It->x)) * Escala[Y]));
+        pDC->LineTo(P);                              //--- Desenha a linha.
+      }
+    }
+  }
+
+
+  //-------------------------------------------------------------------------------------------
+
 
   if(DesenharTerreno && Secoes.GetCount())
   {
@@ -1808,6 +1839,8 @@ void DesPerfilView::OnEnquadrar()
 {
   //--- Passa as escalas e os deltas para o default
 
+  OnTeste();
+
   Escala[X] = EscalaDefault[X];
   Escala[Y] = EscalaDefault[Y];
 
@@ -2079,3 +2112,66 @@ void DesPerfilView::MostrarApagarSecao(bool Mostrar)
   if (!CWDesSecao ) return;
   CWDesSecao->GetParentFrame()->ShowWindow(Mostrar ? SW_SHOW : SW_HIDE);   
 }
+
+void DesPerfilView::OnTeste()
+{
+  std::vector <double> PerfilOriginal;
+  std::vector <double> PerfilSimplificado;
+
+  if (DesenharTerreno && Secoes.GetCount())
+  {
+    POSITION SecAtual(Secoes.GetHeadPosition());
+
+    CEstaca* EstacaAtual(&Secoes.GetNext(SecAtual).Terreno.Estaca);  //--- Estaca que abrigará as estacas das secoes.
+
+    //--- Procura pela primeira estaca que tenha terreno.
+
+    while (SecAtual && (EstacaAtual->EstVirtual == INFINITO || EstacaAtual->Cota == INFINITO))
+      EstacaAtual = &Secoes.GetNext(SecAtual).Terreno.Estaca;
+
+    if (EstacaAtual->EstVirtual != INFINITO) //--- Se achou pelo menos uma inicia o desenho da polyline 
+    {
+      CPoint P(EstacaAtual->EstVirtual, EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
+
+      PerfilOriginal.push_back(EstacaAtual->EstVirtual);
+      PerfilOriginal.push_back(EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
+
+      //--- Indere os pontos restantes.
+
+      while (SecAtual)
+      {
+        EstacaAtual = &Secoes.GetNext(SecAtual).Terreno.Estaca;
+        if (EstacaAtual->Cota != INFINITO && EstacaAtual->Cota > 1.0)   //--- A estaca pode estar sem terreno.
+        {
+          PerfilOriginal.push_back(EstacaAtual->EstVirtual);
+          PerfilOriginal.push_back(EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
+        }
+      }
+    }
+  }
+
+  //-----------------------------------------------------------------------------------
+
+  double dist = 2.0;
+
+  std::vector <double>::const_iterator ggbegin = PerfilOriginal.begin();
+  std::vector <double>::const_iterator ggend = PerfilOriginal.end();
+  psimpl::simplify_reumann_witkam <2>(ggbegin, ggend, dist, std::back_inserter(PerfilSimplificado));
+
+  double Estaca,Cota;
+
+  GreideSimplificado.clear();
+
+  for (std::vector <double>::const_iterator It = PerfilSimplificado.begin(); 
+  It != PerfilSimplificado.end() ;
+  It++)
+  {
+    Estaca = *It++;
+    Cota = *It;
+
+    GreideSimplificado.emplace_back(Estaca,Cota);
+  }
+
+  int i = 0;
+}
+
