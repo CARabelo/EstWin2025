@@ -634,6 +634,7 @@ BEGIN
     BUTTON      ID_CALCVOLUMES
     BUTTON      ID_BUTARRASTAR
     BUTTON      ID_BUTDESPERFGEO
+    BUTTON      ID_BUTENSAIARGREIDE
 END
 
 IDR_TOOLDESENHAR2 TOOLBAR 16, 20
@@ -732,7 +733,7 @@ CAPTION " VU&E - Diálogo"
 FONT 9, "Century Gothic", 400, 0, 0x0
 BEGIN
     CTEXT           "Static",IDC_STATIC,0,3,222,14
-    CTEXT           "Static",IDC_STATIC1,0,24,222,14
+    CTEXT           "Static",IDC_STATIC1,0,18,222,20
     CONTROL         "Reseccionar o terreno",IDC_RAD_SECCIONAR,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE | WS_TABSTOP,69,43,92,10
     PUSHBUTTON      "Sim",IDOK,24,57,35,15
     PUSHBUTTON      "Não",IDCANCEL,93,57,35,15
@@ -3296,6 +3297,25 @@ BEGIN
     CTEXT           "Confirma a reinicialização da definição do talvegue principal desta bacia? (O Talvegue atual ser será removido)",IDC_STATIC,22,20,265,21
 END
 
+IDD_DIAENSAIARGREIDE DIALOGEX 0, 0, 185, 133
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "VU&E - Ensaiar Greide"
+FONT 8, "Century Gothic", 400, 0, 0x0
+BEGIN
+    PUSHBUTTON      "Cancelar",IDCANCEL,35,112,50,14
+    COMBOBOX        IDC_COMMETODO,50,14,117,56,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Algorítimo:",IDC_STATIC,11,16,36,8
+    EDITTEXT        IDC_EDIPARAM_1_ENSAIARGREIDE,74,36,40,14,ES_AUTOHSCROLL
+    LTEXT           "Parâmetro 1:",IDC_STATIC,26,40,46,8
+    PUSHBUTTON      "Ensaiar",IDC_BUTEXECUTAR,67,84,50,14
+    EDITTEXT        IDC_EDIPARAM_2_ENSAIARGREIDE,74,56,40,14,ES_AUTOHSCROLL
+    LTEXT           "Parâmetro 2:",IDC_STATIC_2,26,60,46,8
+    PUSHBUTTON      "Referência",IDC_BUTPADRAO,128,45,50,14
+    PUSHBUTTON      "Ajuda",IDC_BUTAJUDA,99,112,50,14
+    PUSHBUTTON      "Adotar",IDC_BUTADOTAR,6,84,50,14
+    PUSHBUTTON      "Remover",IDC_BUTREMOVER,128,84,50,14
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -4197,6 +4217,14 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 65
     END
+
+    IDD_DIAENSAIARGREIDE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 178
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 126
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -4597,6 +4625,11 @@ BEGIN
 END
 
 IDD_DIAREINICIARTALVPRINCIPAL AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIAENSAIARGREIDE AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
@@ -5183,6 +5216,11 @@ BEGIN
     ID_TALVEGUEPRINCIPAL_SAIR "Sair Deste Menu"
     ID_BUTIMPORTARTALVEGUES "Importar Talvegues \n Importar Talvegues"
     ID_DESDXBACIASHIDROG    "Gerar DXF Bacias Hidrográficas."
+END
+
+STRINGTABLE
+BEGIN
+    ID_BUTENSAIARGREIDE     "Ensaiar Projeto Greide\nEnsaiar Greide"
 END
 
 #endif    // Português (Brasil) resources

@@ -213,6 +213,7 @@
 #define IDD_DIAINITALVEGUEPRINCIPAL     463
 #define IDR_MENU8                       465
 #define IDD_DIAREINICIARTALVPRINCIPAL   466
+#define IDD_DIAENSAIARGREIDE            468
 #define IDW_VER_PROCURAR                501
 #define IDM_VER_ESCALAS                 502
 #define IDD_INICIO_RELATORIOS           600
@@ -922,6 +923,15 @@
 #define IDC_BUTPEGARMAPASIG             1470
 #define IDC_BUTPEGARPCT                 1471
 #define IDC_EDIEQUIDISCN                1472
+#define IDC_COMMETODO                   1474
+#define IDC_BUTEXECUTAR                 1475
+#define IDC_EDIPARAMENSAIARGREIDE       1476
+#define IDC_EDIPARAM_1_ENSAIARGREIDE    1476
+#define IDC_EDIPARAM_2_ENSAIARGREIDE    1477
+#define IDC_STATIC_2                    1478
+#define IDC_BUTAJUDA                    1479
+#define IDC_BUTADOTAR                   1480
+#define IDC_BUTREMOVER                  1481
 #define IDC_PROGRESSO                   10070
 #define IDC_DESBORDOS                   10071
 #define IDC_REMOVE2                     10072
@@ -1376,6 +1386,7 @@
 #define ID_TALVEGUEPRINCIPAL_SAIR       33437
 #define ID_BUTIMPORTARTALVEGUES         33438
 #define ID_DESDXBACIASHIDROG            33439
+#define ID_BUTENSAIARGREIDE             33440
 #define IDS_SELECT_ENTRY_TO_BE_UPDATED  57656
 #define IDS_SELECT_ENTRY_TO_BE_REMOVED  57657
 #define IDS_BLANK_CHARS_NOT_ALLOWED     57658
@@ -1392,9 +1403,9 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        468
-#define _APS_NEXT_COMMAND_VALUE         33440
-#define _APS_NEXT_CONTROL_VALUE         1473
+#define _APS_NEXT_RESOURCE_VALUE        470
+#define _APS_NEXT_COMMAND_VALUE         33441
+#define _APS_NEXT_CONTROL_VALUE         1482
 #define _APS_NEXT_SYMED_VALUE           147
 #endif
 #endif

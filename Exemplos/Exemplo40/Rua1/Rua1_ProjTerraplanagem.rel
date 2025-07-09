@@ -1,13 +1,13 @@
-====> 28/6/2025 18:54:0 ====> Início do cálculo do projeto: 
+====> 30/6/2025 15:24:9 ====> Início do cálculo do projeto: 
 Lendo o arquivo de Alinhamentos...
 Lendo arquivos de terreno...
-Lendo arquivo de pontos=> Definindo as curvas de nível...
+Lendo arquivo de pontoDefinindo as curvas de nível...
 Definindo a simbologia da terraplanagem.
 O Projeto de terraplanagem foi gerado com êxito.
-ntos=> C:\Users\Carlos A. Rabelo\Documents\ViasUrbanas & Estradas\Exemplo40\Caderneta1.xyz
-Lendo arquivo de pontos=> C:\Users\Carlos A. Rabelo\Documents\ViasUrbanas & Estradas\Exemplo40\Caderneta2.xyz
-Lendo arquivo de pontos=> C:\Users\Carlos A. Rabelo\Documents\ViasUrbanas & Estradas\Exemplo40\Caderneta3.xyz
-Lendo arquivo de pontos=> C:\Users\Carlos A. Rabelo\Documents\ViasUrbanas & Estradas\Exemplo40\Exemplo40_PonInsSec_Rua1.xyz
+ntos=> F:\Users\Carlo.Rabelo\source\repos\EstWin2025\Exemplos\Exemplo40\Caderneta1.xyz
+Lendo arquivo de pontos=> F:\Users\Carlo.Rabelo\source\repos\EstWin2025\Exemplos\Exemplo40\Caderneta2.xyz
+Lendo arquivo de pontos=> F:\Users\Carlo.Rabelo\source\repos\EstWin2025\Exemplos\Exemplo40\Caderneta3.xyz
+Lendo arquivo de pontos=> F:\Users\Carlo.Rabelo\source\repos\EstWin2025\Exemplos\Exemplo40\Exemplo40_PonInsSec_Rua1.xyz
 Gravando o arquivo de saída...
 O projeto foi executado com exito.
-====> 28/6/2025 18:54:2 ====> Fim do cálculo do projeto de terraplanagem.
+====> 30/6/2025 15:24:11 ====> Fim do cálculo do projeto de terraplanagem.

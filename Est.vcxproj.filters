@@ -240,6 +240,7 @@
     <ClCompile Include="CArvoreN.cpp" />
     <ClCompile Include="CNoArvoreN.cpp" />
     <ClCompile Include="DGerarDXFBaciasHidrog.cpp" />
+    <ClCompile Include="CDEnsaiarGreide.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CadLib\Interface\VC\CadLib.h" />
@@ -486,6 +487,7 @@
     <ClInclude Include="CArvoreN.h" />
     <ClInclude Include="CNoArvoreN.h" />
     <ClInclude Include="DGerarDXFBaciasHidrog.h" />
+    <ClInclude Include="CDEnsaiarGreide.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="est.rc" />

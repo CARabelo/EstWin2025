@@ -43,7 +43,9 @@ class DesPerfilView : public CView
          LimiteEsq,          //--- Limites do terreno
          LimiteDir,
          LimiteSup,
-         LimiteInf;
+         LimiteInf,
+         ParametroEnsaio1,
+         ParametroEnsaio2;
   CPoint InicioArrast,  //--- Usados nas operações de arrastar.
          InicioZoom,
          FimZoom,
@@ -86,7 +88,8 @@ class DesPerfilView : public CView
   int EquiMalhaX,
       EquiMalhaY,
       EquiCotas,
-      Cotar;
+      Cotar,
+      MetodoEnsaio;
 
   CFont CurrierNewVertical;              //--- Fonte para escrita vertical
   CFont CurrierNewHorizontal;            //--- Fonte para escrita horizontal
@@ -108,6 +111,8 @@ class DesPerfilView : public CView
   void DefineParametros();
   void Zoom();
   void DesenhaPerfisGeologicos(CMMemDC* pDC);
+  LRESULT EnsaiarGreide(WPARAM WP, LPARAM LP);
+  void AdotarEnsaioAtual();
 
   CDC* pDC;                
 
@@ -131,7 +136,6 @@ public:
   bool AlterouProjeto() {return AlterouGreide;}; 
   void CalculaCota(CEstaca& Estaca) {CurvasVerticais.CalculaCota(Estaca);};
   void MostrarApagarSecao(bool Mostrar);
-  void OnTeste();
   const std::string& PegaRua() const { return Trecho; }
   
   // Overrides
@@ -192,6 +196,7 @@ public:
   afx_msg void OnButarrastar();
   afx_msg void OnClose();
   afx_msg void OnButdesperfgeo();
+  afx_msg void OnButensaiargreide();
   afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 };
 

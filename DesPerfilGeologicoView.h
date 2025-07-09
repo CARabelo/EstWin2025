@@ -318,6 +318,7 @@ public:
   afx_msg void OnRestEsteTrechoTerreno();
   afx_msg void OnPopupVisualizarperfilselecionado();
   afx_msg void OnButdesperfgeo();
+  afx_msg void OnButensaiargreide();
   afx_msg void OnSetFocus(CWnd* pOldWnd);
 };
 

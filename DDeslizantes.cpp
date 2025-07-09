@@ -82,6 +82,7 @@
 #include "CArqOAE.h"
 #include "COAE.h"
 #include "CMemDC.h"
+#include "CDEnsaiarGreide.h"
 #include "desperfilview.h"
 #include "CEquipDrenagem.h"
 #include "superficie.h"

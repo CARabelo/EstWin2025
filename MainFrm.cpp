@@ -115,6 +115,7 @@
 #include "COAC.H"
 #include "COAE.H"
 #include "CMemDC.h"
+#include "CDEnsaiarGreide.h"
 #include "DesPerfilView.h"
 #include "CDCalcTerraplProjeto.h"
 #include "ConvUTMGDC\ConvUTMGDC\Gdc_Coord_3d.h"

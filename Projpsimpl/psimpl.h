@@ -1427,6 +1427,7 @@ namespace psimpl
             unsigned n,
             unsigned& remaining)
         {
+#undef min
             n = std::min (n, remaining);
             Advance (it, n);
             remaining -= n;

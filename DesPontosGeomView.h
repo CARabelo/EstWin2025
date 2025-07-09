@@ -621,6 +621,7 @@ protected:
   void  GetLine(std::ifstream& ifs, std::string& Buffer, const std::string& strDelim);
   void CalculaCotasTalveguesSIG();
   void SuavizaEspigao(lstPontos* plstEspigao);
+  void AdotarEnsaioAtual();
       
   DECLARE_DYNCREATE(DesPontosGeomView)
 
@@ -765,7 +766,6 @@ protected:
   afx_msg LRESULT FechouToolBar(WPARAM wParam, LPARAM lParam);
   afx_msg LRESULT AmpliarMapa(WPARAM wParam, LPARAM lParam);
   afx_msg LRESULT MostraListaPontos(WPARAM WP, LPARAM LP);
-  void Teste();
   afx_msg void OnSincPontosControle();
   afx_msg void OnUpdateButSinPontosCtrl(CCmdUI* pCmdUI);
   afx_msg void OnBaixarMapa();

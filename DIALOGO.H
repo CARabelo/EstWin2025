@@ -3,7 +3,8 @@
 /////////////////////////////////////////////////////////////////////////////
 // dialogo dialog
 
-#include "afxwin.h"
+//#include "afxwin.h"
+//#include "stdafx.h"
 class dialogo : public CDialog
 {
   int NumeroMensagem;

@@ -96,6 +96,7 @@
 #include "CArqOAE.h"
 #include "COAE.h"
 #include "CMemDC.h"
+#include "CDEnsaiarGreide.h"
 #include "desperfilview.h"
 #include <stdlib.h>
 #include <stdio.h>

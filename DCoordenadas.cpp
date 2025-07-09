@@ -323,7 +323,7 @@ void CDCoordenadas::OnBnClickedCancel()
 {
   pBufferPontosProcurados->clear();
 
-  GetParent()->SendMessageToDescendants(WM_MOSTRAR_PONTOS_USUARIO,0,0);
+  GetParent()->SendMessageToDescendants(WM_MOSTRAR_PONTOS_USUARIO,-1,0);
 
   delete this;
 }

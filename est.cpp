@@ -211,6 +211,8 @@ END_MESSAGE_MAP()
 
 CEstApp::CEstApp() : pDiaProgresso(NULL), pMainFrame(nullptr), ErroImportacaoArquivos(0)
 {
+  //setlocale(LC_ALL, "pt_BR.UTF-8");
+  //setlocale(LC_ALL, "");   estraga tudo!!!!  verificar
   // TODO: add construction code here
   // Place all significant initialization in InitInstance
    #ifndef DEMOVER

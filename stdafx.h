@@ -13,6 +13,7 @@
 #define	WM_AMPLIAR_MAPA (WM_APP+101)
 #define WM_BUTUP_LISTBOX_PROJETOS (WM_APP+102)
 #define WM_MOSTRAR_PONTOS_USUARIO (WM_APP+103)
+#define WM_ENSAIARGREIDE (WM_APP+104)
 
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 
@@ -221,8 +222,10 @@ static std::string Versao(std::string& Texto)
  // std::string coment("achar o caminho do talvegue principal");
 
 
-  return "3.01.00 10_08_2024";
-  Texto = "Inclusão cálculo TCs DENIT";
+  //return "3.01.00 10_08_2024";
+  //Texto = "Inclusão cálculo TCs DENIT";
+  return "3.02.00 01_07_2025";
+  Texto = "Acertos cálculo bacias hidrologicas";
 }
 
 static bool EEspaco(char Carac)

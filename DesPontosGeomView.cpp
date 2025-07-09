@@ -1,5 +1,4 @@
 // DesPontosGeomView.cpp : implementation file
-// DesPontosGeomView.cpp : implementation file
 #include "stdafx.h"
 #include "est.h"
 #include "afxtempl.h"
@@ -82,7 +81,6 @@
 #include "dconfdesgeom.h"
 #include "deditacurhoriz.h"
 #include "drotacionar.h"
-#include <algorithm>    
 #include <functional>   
 #include <iomanip> 
 #include <iostream>
@@ -112,7 +110,6 @@
 #include "CFuroSondagem.h"
 #include "FurosSondagem.h"
 #include "CArqFurosSondagem.h"
-#include <algorithm>
 #include "CPerfilGeologico.h"
 #include "dessecaoview.h"
 #include "CMEdit.h"
@@ -132,7 +129,7 @@
 #include "COAC.h"
 #include "CArqOAE.h"
 #include "COAE.h"
-#include <vector>
+#include "CDEnsaiarGreide.h"
 #include "DesPerfilView.h"
 #include "CMensagem.h"
 #include "CDDiaNomePerfAvulso.h"
@@ -200,6 +197,7 @@ static char THIS_FILE[] = __FILE__;
 extern class monologo monolog;
 extern class dialogo dialogar;
 extern class Matem Mat;
+CDCoordenadas* pDCoordenadas = nullptr;
 
 void inline TransladaPontoPlano(double* x, double* y, double NovaOrigemX, double NovaOrigemY)
 {
@@ -485,6 +483,7 @@ DesPontosGeomView::~DesPontosGeomView()
 
   Destruindo = true;
 
+  if (pDCoordenadas) delete(pDCoordenadas);
   CMainFrame* MainFrame((CMainFrame*)AfxGetMainWnd());
   MainFrame->DesPontosGeo = NULL;
   std::string NomeProjBase(Projeto),NomeArquivo;
@@ -740,6 +739,7 @@ void DesPontosGeomView::OnDraw(CDC* ppDC)
 
   if (DesenharMapa)   //--- O georeferenciamento foi removido
   {
+    pDC->SetBkMode(TRANSPARENT);
     m_cPicture.Draw(pDC, CPoint(m_nX, m_nY), m_nRatio);
       //m_cPicture.Draw(pDC, CPoint(0,0), m_nRatio);
 
@@ -1818,6 +1818,7 @@ void DesPontosGeomView::OnMouseMove(UINT nFlags, CPoint point)
                     
                     if (((CMainFrame*)AfxGetMainWnd())->TipoSuperficie != SUPERF_DRONES || VarrerCN)
                     {
+                      if (!SaltarCNs || fabs(fmod(PonSobMouse.z, SaltarCNs + 1)) == 0)
                       DPopUpPonto.MostraDescricao(PonScreenCoor.x, PonScreenCoor.y, PreparaDescricao(&PonSobMouse, false, PegaTipoPonto(PonSobMouse)));
                     }
                   }
@@ -7747,7 +7748,7 @@ void DesPontosGeomView::OnIrparaponto()
 {
   auto MF(((CMainFrame*)AfxGetMainWnd()));
 
-   CDCoordenadas *pDCoordenadas(new CDCoordenadas(this, MF->m_sNomeComp.GetBuffer(), &BufferPontosProcurados));
+   pDCoordenadas = new CDCoordenadas(this, MF->m_sNomeComp.GetBuffer(), &BufferPontosProcurados);
 
    pDCoordenadas->Create(IDD_ENTRACOORDXY, this);
 
@@ -8000,8 +8001,6 @@ void DesPontosGeomView::OnUpdateButSecAvulsa(CCmdUI* pCmdUI)
 
 void DesPontosGeomView::OnTipoCN()
 {
-  Teste();
-
   DesCNTopograficas = !DesCNTopograficas;
   CChildFrame* CCFrm = (CChildFrame*)GetParentFrame();
   CCFrm->m_wndToolBarPonGeo.CheckDlgButton(ID_BUTCNTOPOGRAF, DesCNTopograficas);
@@ -8258,6 +8257,7 @@ void  DesPontosGeomView::DesenhaMalha(CDC* pDC)
   if (LPontosCoordX.size() > 1 && abs((*itPrim).Pontos.first.y - (*itSec).Pontos.first.y) < 3 &&
     abs((*itPrim).Pontos.first.x - (*itSec).Pontos.first.x) < 3) return;    //--- Tem que ter pelo menos um pixel entre as coordenadas
 
+  pDC->SetBkMode(TRANSPARENT);
   register itlistPontosMalha it(LPontosCoordX.begin());
 
    for (; it != LPontosCoordX.end(); it++)
@@ -9611,7 +9611,7 @@ void DesPontosGeomView::CriaPenaRestriçao(CPen* PenaObjeto, unsigned int Objeto)
     case CAciTopografico::PLANTACAO: lb.lbColor = RGB(0, 127, 0); PenaObjeto->CreatePen(Style | PS_DASHDOTDOT, 1,&lb); break;
     case CAciTopografico::OFF_SETS: PenaObjeto->CreatePen(PS_DOT, 1, Cores[CORCN]); break;
     case CAciTopografico::TERRAPLANAGEM: PenaObjeto->CreatePen(PS_DASHDOTDOT, 1, Cores[CORCN]); break;
-    case CAciTopografico::TALVEGUE: lb.lbColor = RGB(30, 30, 160); PenaObjeto->CreatePen(Style | PS_SOLID, 3,&lb); break;
+     case CAciTopografico::TALVEGUE: lb.lbColor = RGB(0, 100, 255); PenaObjeto->CreatePen(Style | PS_SOLID, 2, &lb); break;
     case CAciTopografico::ESPIGAO: lb.lbColor = RGB(164,16,16); PenaObjeto->CreatePen(Style | PS_SOLID, 4,&lb); break;
     case CAciTopografico::RAVINA: lb.lbColor = RGB(128, 0, 64); PenaObjeto->CreatePen(Style | PS_DASHDOTDOT, 2, &lb); break;
     case CAciTopografico::PVELETRICA: lb.lbColor = RGB(255,0,0 ); PenaObjeto->CreatePen(Style | PS_SOLID, 1, &lb); break;
@@ -11202,7 +11202,7 @@ bool DesPontosGeomView::OnMouseMoveTerrap(Ponto& PSobMouse, POINT& PonScreenCoor
           {
             DesSecaoView* pDesSecao((DesSecaoView*)((CMainFrame*)AfxGetMainWnd())->PegaDesenhoSecoes());
 
-            if (pDesSecao) pDesSecao->Posiciona(PonSobMouse.S);
+            if (SincronizarSecoes && pDesSecao) pDesSecao->Posiciona(PonSobMouse.S);
           }
         }
       }
@@ -16733,7 +16733,7 @@ void DesPontosGeomView::SerializaTalveguePrincipal(int Tipo)
 void DesPontosGeomView::DesenhaTalveguePrincipalBacia(CBacia& Bacia, CDC* ppDC)
 {
   CPen PenaTalveguePrincipal;
-  PenaTalveguePrincipal.CreatePen(PS_SOLID, 4, RGB(0,0,140));
+  PenaTalveguePrincipal.CreatePen(PS_SOLID, 4, RGB(0,120,255));
 
   if (Bacia.PegaItTalveguePrincipal() != Bacia.Talvegues.end() && Bacia.PegaItTalveguePrincipal()->size() > 0)
   {
@@ -17198,6 +17198,8 @@ void DesPontosGeomView::SuavizaEspigao(lstPontos* plstEspigao)
 
 LRESULT DesPontosGeomView::MostraListaPontos(WPARAM WP, LPARAM LP)
 {
+  if (WP != -1)
+  {
   std::string Lixo;
 
   std::stringstream StrStrPontos(BufferPontosProcurados);
@@ -17225,8 +17227,7 @@ LRESULT DesPontosGeomView::MostraListaPontos(WPARAM WP, LPARAM LP)
         }
  
         std::getline(StrStrPontos,Lixo);
-      }
-      while(StrStrPontos.good());
+        } while (StrStrPontos.good());
     }
     else
     {
@@ -17266,31 +17267,8 @@ LRESULT DesPontosGeomView::MostraListaPontos(WPARAM WP, LPARAM LP)
   MudarEscala(Escala[X] * 100.0);    //--- Acerta o mapa
 
   RedrawWindow();
+}
+  else pDCoordenadas = nullptr;    //--- Chamou Destruindo DCoordenadas
 
   return 0;
-}
-
-
-void DesPontosGeomView::Teste()
-{
-/*
-  std::vector <double> generatedPoints, mSimplifiedCoords;
-
-  int x = 0;
-
-
-  for (int i = 1; i < 101; i++)
-  {
-    generatedPoints.push_back(sin(x) * 10);
-
-    x += 3.14 / 20.0;
-
-  }
-
-  double dist = 4.0;
-
-  std::vector <double>::const_iterator begin = generatedPoints.begin();
-  std::vector <double>::const_iterator end = generatedPoints.end();
-   psimpl::simplify_reumann_witkam <2>(begin, end,dist, std::back_inserter(mSimplifiedCoords));
-*/
 }

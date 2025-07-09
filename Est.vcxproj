@@ -1512,6 +1512,7 @@ copy ..\CalcVL\Debug\CalcVL.dll .
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="CDEnsaiarGreide.cpp" />
     <ClCompile Include="CDFormatarRelatorio.cpp" />
     <ClCompile Include="CDiaAmpliarMapa.cpp" />
     <ClCompile Include="CDiaAreaPerimetro.cpp" />
@@ -4259,6 +4260,7 @@ copy ..\CalcVL\Debug\CalcVL.dll .
     <ClInclude Include="CDDEfineFronteira.h" />
     <ClInclude Include="CDDiaNomePerfAvulso.h" />
     <ClInclude Include="CDEditarSecAvulsa.h" />
+    <ClInclude Include="CDEnsaiarGreide.h" />
     <ClInclude Include="CDFormatarRelatorio.h" />
     <ClInclude Include="CDiaAmpliarMapa.h" />
     <ClInclude Include="CDiaAreaPerimetro.h" />

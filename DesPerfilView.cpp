@@ -87,6 +87,7 @@
 #include "CArqOAE.h"
 #include "coae.h"
 #include "CMemDC.h"
+#include "CDEnsaiarGreide.h"
 #include "DesPerfilView.h"
 #include "dentraponto.h" 
 #include "ddeslizantes.h"
@@ -133,6 +134,7 @@ static char THIS_FILE[] = __FILE__;
 extern class dialogo dialogar;
 extern class monologo monolog;    
 
+CDEnsaiarGreide* pDEnsaiarGreide = nullptr;
 /////////////////////////////////////////////////////////////////////////////
 // DesPerfilView
 IMPLEMENT_DYNCREATE(DesPerfilView, CView)
@@ -148,7 +150,8 @@ HLimpeza(CString(((CMainFrame*) AfxGetMainWnd())->PegaProjetoAtual()),CString(".
 LimiteEsq(INFINITO),LimiteDir(-INFINITO),LimiteSup(-INFINITO),LimiteInf(INFINITO),PonMousePixelAtual(0,0),
 OACs(CString(((CMainFrame*) AfxGetMainWnd())->PegaProjetoAtual())),OAEs(CString(((CMainFrame*) AfxGetMainWnd())->PegaProjetoAtual())),CursorAtual(IDC_HAND),
 PermitirArrastar(true),CircularPontos(true),PerfilGeologico(CString(((CMainFrame*) AfxGetMainWnd())->PegaProjetoAtual()).GetBuffer()),
-DesenharPerfGeol(false),Trecho(((CMainFrame*) AfxGetMainWnd())->PegaRuaAtual()),Projeto(((CMainFrame*) AfxGetMainWnd())->PegaProjetoAtual())
+DesenharPerfGeol(false),Trecho(((CMainFrame*) AfxGetMainWnd())->PegaRuaAtual()),Projeto(((CMainFrame*) AfxGetMainWnd())->PegaProjetoAtual()),
+MetodoEnsaio(-1),ParametroEnsaio1(INFINITO), ParametroEnsaio2(INFINITO)
 {
   Resolucao[X] = 1024.0 ; Resolucao[Y] = 768.0;
   Escala[X] = Escala[Y] = 100.0;
@@ -209,7 +212,8 @@ DesenharPerfGeol(false),Trecho(((CMainFrame*) AfxGetMainWnd())->PegaRuaAtual()),
 
 DesPerfilView::~DesPerfilView()
 {
-  CMainFrame* MainFrame = (CMainFrame*) AfxGetMainWnd();
+  if (pDEnsaiarGreide) delete(pDEnsaiarGreide);
+  CMainFrame* MainFrame((CMainFrame*)AfxGetMainWnd());
   std::string NomeArquivo(MainFrame->PegaProjetoAtual() + std::string(".ini"));
 
   //--- Grava os parametros atuais da janela
@@ -284,6 +288,7 @@ BEGIN_MESSAGE_MAP(DesPerfilView, CView)
   ON_COMMAND(ID_BUTLOCK,OnTrancarGreide)
   ON_COMMAND(ID_ENQUADRAR, OnEnquadrar)
   ON_COMMAND(ID_CALCVOLUMES, OnCalcVolumes)
+  ON_MESSAGE(WM_ENSAIARGREIDE,EnsaiarGreide)
   //}}AFX_MSG_MAP
   ON_WM_KEYUP()
   ON_WM_MOUSEWHEEL()
@@ -291,6 +296,7 @@ BEGIN_MESSAGE_MAP(DesPerfilView, CView)
   ON_COMMAND(ID_BUTARRASTAR, &DesPerfilView::OnButarrastar)
   ON_WM_CLOSE()
   ON_COMMAND(ID_BUTDESENHARPERFGEOLOGICOS, &DesPerfilView::OnButdesperfgeo)
+  ON_COMMAND(ID_BUTENSAIARGREIDE, &DesPerfilView::OnButensaiargreide)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1839,8 +1845,6 @@ void DesPerfilView::OnEnquadrar()
 {
   //--- Passa as escalas e os deltas para o default
 
-  OnTeste();
-
   Escala[X] = EscalaDefault[X];
   Escala[Y] = EscalaDefault[Y];
 
@@ -2105,6 +2109,13 @@ void DesPerfilView::OnButdesperfgeo()
   RedrawWindow();
 }
 
+void DesPerfilView::OnButensaiargreide()
+{
+ std::string NomeProj(CString(((CMainFrame*)AfxGetMainWnd())->PegaProjetoAtual()));
+  pDEnsaiarGreide = new CDEnsaiarGreide(this,NomeProj , MetodoEnsaio, ParametroEnsaio1, ParametroEnsaio2);
+  pDEnsaiarGreide->Create(IDD_DIAENSAIARGREIDE, this);
+  pDEnsaiarGreide->ShowWindow(SW_SHOW);
+}
 void DesPerfilView::MostrarApagarSecao(bool Mostrar) 
 {
   CMainFrame* MainFrame((CMainFrame*) AfxGetMainWnd());
@@ -2113,65 +2124,137 @@ void DesPerfilView::MostrarApagarSecao(bool Mostrar)
   CWDesSecao->GetParentFrame()->ShowWindow(Mostrar ? SW_SHOW : SW_HIDE);   
 }
 
-void DesPerfilView::OnTeste()
+LRESULT DesPerfilView::EnsaiarGreide(WPARAM WP, LPARAM LP)
 {
-  std::vector <double> PerfilOriginal;
-  std::vector <double> PerfilSimplificado;
-
-  if (DesenharTerreno && Secoes.GetCount())
+  if (WP != CDEnsaiarGreide::Ensaios::TERMINAR_ENSAIOS)
   {
-    POSITION SecAtual(Secoes.GetHeadPosition());
-
-    CEstaca* EstacaAtual(&Secoes.GetNext(SecAtual).Terreno.Estaca);  //--- Estaca que abrigará as estacas das secoes.
-
-    //--- Procura pela primeira estaca que tenha terreno.
-
-    while (SecAtual && (EstacaAtual->EstVirtual == INFINITO || EstacaAtual->Cota == INFINITO))
-      EstacaAtual = &Secoes.GetNext(SecAtual).Terreno.Estaca;
-
-    if (EstacaAtual->EstVirtual != INFINITO) //--- Se achou pelo menos uma inicia o desenho da polyline 
+    if (WP != CDEnsaiarGreide::Ensaios::REMOVER_ENSAIO_ATUAL)
     {
-      CPoint P(EstacaAtual->EstVirtual, EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
-
-      PerfilOriginal.push_back(EstacaAtual->EstVirtual);
-      PerfilOriginal.push_back(EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
-
-      //--- Indere os pontos restantes.
-
-      while (SecAtual)
+      if (WP != CDEnsaiarGreide::Ensaios::ADOTAR_ENSAIO_ATUAL)
       {
-        EstacaAtual = &Secoes.GetNext(SecAtual).Terreno.Estaca;
-        if (EstacaAtual->Cota != INFINITO && EstacaAtual->Cota > 1.0)   //--- A estaca pode estar sem terreno.
+
+        UpdateData(true);
+
+        std::vector <double> PerfilOriginal;
+        std::vector <double> PerfilSimplificado;
+
+        if (DesenharTerreno && Secoes.GetCount())
         {
-          PerfilOriginal.push_back(EstacaAtual->EstVirtual);
-          PerfilOriginal.push_back(EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
+          POSITION SecAtual(Secoes.GetHeadPosition());
+
+          CEstaca* EstacaAtual(&Secoes.GetNext(SecAtual).Terreno.Estaca);  //--- Estaca que abrigará as estacas das secoes.
+
+          //--- Procura pela primeira estaca que tenha terreno.
+
+          while (SecAtual && (EstacaAtual->EstVirtual == INFINITO || EstacaAtual->Cota == INFINITO))
+            EstacaAtual = &Secoes.GetNext(SecAtual).Terreno.Estaca;
+
+          if (EstacaAtual->EstVirtual != INFINITO) //--- Se achou pelo menos uma inicia o desenho da polyline 
+          {
+            CPoint P(EstacaAtual->EstVirtual, EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
+
+            PerfilOriginal.push_back(EstacaAtual->EstVirtual);
+            PerfilOriginal.push_back(EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
+
+            //--- Insere os pontos restantes.
+
+            while (SecAtual)
+            {
+              EstacaAtual = &Secoes.GetNext(SecAtual).Terreno.Estaca;
+              if (EstacaAtual->Cota != INFINITO && EstacaAtual->Cota > 1.0)   //--- A estaca pode estar sem terreno.
+              {
+                PerfilOriginal.push_back(EstacaAtual->EstVirtual);
+                PerfilOriginal.push_back(EstacaAtual->Cota - HLimpeza.BuscaH(*EstacaAtual));
+              }
+            }
+          }
+        }
+
+        std::vector <double>::const_iterator begin = PerfilOriginal.begin();
+        std::vector <double>::const_iterator end = PerfilOriginal.end();
+
+        switch (MetodoEnsaio)
+        {
+        case CDEnsaiarGreide::Ensaios::ENESIMO_PONTO:
+        {
+          psimpl::simplify_nth_point <2>(begin, end, ParametroEnsaio1, std::back_inserter(PerfilSimplificado));
+        }
+        break;
+        case CDEnsaiarGreide::Ensaios::DISTANCIA_PERPENDICULAR:
+        {
+          psimpl::simplify_perpendicular_distance <2>(begin, end, ParametroEnsaio1, std::back_inserter(PerfilSimplificado));
+        }
+        break;
+        case CDEnsaiarGreide::Ensaios::DISTANCIA_RADIAL:
+        {
+          psimpl::simplify_radial_distance<2>(begin, end, ParametroEnsaio1, std::back_inserter(PerfilSimplificado));
+        }
+        break;
+        case CDEnsaiarGreide::Ensaios::DOUGLAS_PEUCKER_VARIANTE:
+        {
+          psimpl::simplify_douglas_peucker_n<2>(begin, end, ParametroEnsaio1, std::back_inserter(PerfilSimplificado));
+        }
+        break;
+        case CDEnsaiarGreide::Ensaios::DOUGLAS_PEUCKER:
+        {
+          psimpl::simplify_douglas_peucker<2>(begin, end, ParametroEnsaio1, std::back_inserter(PerfilSimplificado));
+        }
+        break;
+        case CDEnsaiarGreide::Ensaios::LANG:
+        {
+          psimpl::simplify_lang<2>(begin, end, ParametroEnsaio1, ParametroEnsaio2, std::back_inserter(PerfilSimplificado));
+        }
+        break;
+        case CDEnsaiarGreide::Ensaios::OPHEIM:
+        {
+          psimpl::simplify_opheim<2>(begin, end, ParametroEnsaio1, ParametroEnsaio2, std::back_inserter(PerfilSimplificado));
+        }
+        break;
+        case CDEnsaiarGreide::Ensaios::REUMANN_WITKAM:
+        {
+          psimpl::simplify_reumann_witkam <2>(begin, end, ParametroEnsaio1, std::back_inserter(PerfilSimplificado));
+        }
+        break;
+        case CDEnsaiarGreide::Ensaios::CARLOS_RABELO:
+        {
+
+        }
+        break;
+        }
+
+        double Estaca, Cota;
+        GreideSimplificado.clear();
+
+        for (std::vector <double>::const_iterator It = PerfilSimplificado.begin(); It != PerfilSimplificado.end(); It++)
+        {
+          Estaca = *It++;
+          Cota = *It;
+
+          GreideSimplificado.emplace_back(Estaca, Cota);
         }
       }
+      else AdotarEnsaioAtual();
     }
+    else GreideSimplificado.clear();
+
+    RedrawWindow();
+
   }
+  else pDEnsaiarGreide = nullptr;   //--- Chamou Destruindo CDEnsaiarGreide
 
-  //-----------------------------------------------------------------------------------
+  return 0;
+}
 
-  double dist = 2.0;
+void DesPerfilView::AdotarEnsaioAtual()
+{
+  CurvasVerticais.LCurvasVerticais.RemoveAll();
 
-  std::vector <double>::const_iterator ggbegin = PerfilOriginal.begin();
-  std::vector <double>::const_iterator ggend = PerfilOriginal.end();
-  psimpl::simplify_reumann_witkam <2>(ggbegin, ggend, dist, std::back_inserter(PerfilSimplificado));
-
-  double Estaca,Cota;
+  for (auto& PIAtual : GreideSimplificado)
+  {
+    CurvasVerticais.InsOrdenada(CurVertical(PIAtual.x,PIAtual.y, 0, 1, 1, "PIV"));   //--- Cria o PIV com 2 de Y
+  }
 
   GreideSimplificado.clear();
 
-  for (std::vector <double>::const_iterator It = PerfilSimplificado.begin(); 
-  It != PerfilSimplificado.end() ;
-  It++)
-  {
-    Estaca = *It++;
-    Cota = *It;
-
-    GreideSimplificado.emplace_back(Estaca,Cota);
-  }
-
-  int i = 0;
+  RedrawWindow();
 }
-
