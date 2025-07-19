@@ -62,7 +62,6 @@
 #include "CPerfilGeologico.h"
 #include "calculanota.h"
 #include "CalcNota.h"
-#include <map> 
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

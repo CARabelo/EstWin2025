@@ -857,6 +857,7 @@
 #define IDC_STAEQUIDIS                  1411
 #define IDC_STAMETROS                   1412
 #define IDC_EDIARQMALHATRIANG           1413
+#define IDC_STAEQUIDIS2                 1413
 #define IDC_BUTPEGARARQMALHA            1414
 #define IDC_EDIARQACITOPOG              1415
 #define IDC_EDIDESCPONTO                1415
@@ -932,6 +933,7 @@
 #define IDC_BUTAJUDA                    1479
 #define IDC_BUTADOTAR                   1480
 #define IDC_BUTREMOVER                  1481
+#define IDC_CHEPONCTRLVIRTUAIS          1483
 #define IDC_PROGRESSO                   10070
 #define IDC_DESBORDOS                   10071
 #define IDC_REMOVE2                     10072
@@ -1405,7 +1407,7 @@
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        470
 #define _APS_NEXT_COMMAND_VALUE         33441
-#define _APS_NEXT_CONTROL_VALUE         1482
+#define _APS_NEXT_CONTROL_VALUE         1484
 #define _APS_NEXT_SYMED_VALUE           147
 #endif
 #endif
