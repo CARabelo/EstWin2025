@@ -872,37 +872,37 @@ int CChildFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
               EnableDocking(CBRS_ALIGN_ANY);
               DockControlBar(&m_wndToolBarAciTopograficos);
               MainFrame->mpToolBoxDesenhar = &m_wndToolBarAciTopograficos;
+
+              if (!CriaToolBar(m_wndToolBarEquiDrenagem, IDR_TOOLEQUIDRENAGEM))
+              {
+                TRACE0("Failed to create toolbar\n");
+                return -1;      // fail to create
+              }
+
+              m_wndToolBarEquiDrenagem.SetWindowText(_T("Equipamentos Drenagem"));
+
+              m_wndToolBarEquiDrenagem.SetButtonInfo(0, ID_DES_EQUI_BUEIROCIRC, TBBS_CHECKGROUP, 0);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(1, ID_DES_EQUI_BUEIRORETANG, TBBS_CHECKGROUP, 1);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(2, ID_DES_EQUI_SARJETATN, TBBS_CHECKGROUP, 2);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(3, ID_DES_EQUI_SARJETAOFF, TBBS_CHECKGROUP, 3);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(4, ID_DES_EQUI_DESCIDA_DAGUA, TBBS_CHECKGROUP, 4);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(5, ID_DES_EQUI_CAIXA_COLETORA, TBBS_CHECKGROUP, 5);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(6, ID_DES_EQUI_BACIA_DISSIPACAO, TBBS_CHECKGROUP, 6);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(7, ID_DES_EQUI_SARJETA, TBBS_CHECKGROUP, 7);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(8, ID_DES_EQUI_TUBULACAO, TBBS_CHECKGROUP, 8);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(9, ID_DES_EQUI_DRENO_PROFUNDO, TBBS_CHECKGROUP, 9);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(10, ID_DES_EQUI_CANALETA, TBBS_CHECKGROUP, 10);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(11, ID_DES_EQUI_CANALETATERRAP, TBBS_CHECKGROUP, 11);
+              m_wndToolBarEquiDrenagem.SetButtonInfo(12, ID_DES_MOVI_DRENAGEM, TBBS_CHECKGROUP, 12);
+
+              m_wndToolBarEquiDrenagem.EnableDocking(CBRS_ALIGN_ANY);
+              EnableDocking(CBRS_ALIGN_ANY);
+              DockControlBar(&m_wndToolBarEquiDrenagem);
+              MainFrame->mpCToolBarEquiDrenagem = &m_wndToolBarEquiDrenagem;
+
+              // TODO: Delete these three lines if you don't want the toolbar to
+              //  be dockable
             }
-
-            if (!CriaToolBar(m_wndToolBarEquiDrenagem, IDR_TOOLEQUIDRENAGEM))
-            {
-              TRACE0("Failed to create toolbar\n");
-              return -1;      // fail to create
-            }
-
-            m_wndToolBarEquiDrenagem.SetWindowText(_T("Equipamentos Drenagem"));
-
-            m_wndToolBarEquiDrenagem.SetButtonInfo(0,ID_DES_EQUI_BUEIROCIRC,TBBS_CHECKGROUP,0);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(1,ID_DES_EQUI_BUEIRORETANG,TBBS_CHECKGROUP,1);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(2,ID_DES_EQUI_SARJETATN,TBBS_CHECKGROUP,2);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(3,ID_DES_EQUI_SARJETAOFF,TBBS_CHECKGROUP,3);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(4,ID_DES_EQUI_DESCIDA_DAGUA,TBBS_CHECKGROUP,4);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(5,ID_DES_EQUI_CAIXA_COLETORA,TBBS_CHECKGROUP,5);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(6,ID_DES_EQUI_BACIA_DISSIPACAO, TBBS_CHECKGROUP,6);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(7,ID_DES_EQUI_SARJETA, TBBS_CHECKGROUP,7);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(8,ID_DES_EQUI_TUBULACAO, TBBS_CHECKGROUP,8);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(9,ID_DES_EQUI_DRENO_PROFUNDO, TBBS_CHECKGROUP,9);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(10, ID_DES_EQUI_CANALETA, TBBS_CHECKGROUP,10);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(11, ID_DES_EQUI_CANALETATERRAP, TBBS_CHECKGROUP,11);
-            m_wndToolBarEquiDrenagem.SetButtonInfo(12, ID_DES_MOVI_DRENAGEM,TBBS_CHECKGROUP,12);
-
-            m_wndToolBarEquiDrenagem.EnableDocking(CBRS_ALIGN_ANY);
-            EnableDocking(CBRS_ALIGN_ANY);
-            DockControlBar(&m_wndToolBarEquiDrenagem);
-            MainFrame->mpCToolBarEquiDrenagem = &m_wndToolBarEquiDrenagem;
-
-            // TODO: Delete these three lines if you don't want the toolbar to
-            //  be dockable
 
             m_wndToolBarGre.EnableDocking(CBRS_ALIGN_ANY);
             EnableDocking(CBRS_ALIGN_ANY);

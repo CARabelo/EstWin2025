@@ -33,7 +33,7 @@ extern monologo monolog;
 
 IMPLEMENT_DYNAMIC(CDiaImportarArqCtrlDrones, CDialogEx)
 
-CDiaImportarArqCtrlDrones::CDiaImportarArqCtrlDrones(setPontos& pSetPontosSoltos,CWnd* pParent,const std::string& NomeProj,bool bPontosControle,tylstUtm_Coord_3d* pLstPonCtrl,int pTipoArq,unsigned int& pEquidisCN)
+CDiaImportarArqCtrlDrones::CDiaImportarArqCtrlDrones(setPontos& pSetPontosSoltos,CWnd* pParent,const std::string& NomeProj,bool bPontosControle,tylstUtm_Coord_3d* pLstPonCtrl,int pTipoArq,unsigned int& pEquidisCN,unsigned int& pPCTRLVirt)	
 	: CDialogEx(IDD_DIAIMPORTARARQCTRLDRONES, pParent),
   NomeProjeto(NomeProj),
   TemPontosControle(bPontosControle),
@@ -42,9 +42,9 @@ CDiaImportarArqCtrlDrones::CDiaImportarArqCtrlDrones(setPontos& pSetPontosSoltos
   pLstPontosControle(pLstPonCtrl),
   TipoArquivo(pTipoArq),
   SetPontosSoltos(pSetPontosSoltos),
-  EquidisCN(pEquidisCN)
+  EquidisCN(pEquidisCN),
+  PonCTRLVirtuais(pPCTRLVirt)
 {
-  EquidisCN = 1;
 
   CConfigProj ConfigProj(NULL, NomeProjeto.c_str());
 
@@ -75,6 +75,7 @@ BEGIN_MESSAGE_MAP(CDiaImportarArqCtrlDrones, CDialogEx)
   ON_EN_SETFOCUS(IDC_EDCAMINHOCN, &CDiaImportarArqCtrlDrones::OnEnSetfocusEdcaminhocn)
   ON_BN_KILLFOCUS(IDC_BUTPEGARARQ, &CDiaImportarArqCtrlDrones::OnBnKillfocusButpegararq)
   ON_EN_KILLFOCUS(IDC_EDI_EQUIS_CN, &CDiaImportarArqCtrlDrones::OnEnKillfocusEdiEquisCn)
+  ON_BN_CLICKED(IDC_CHEPONCTRLVIRTUAIS, &CDiaImportarArqCtrlDrones::OnClickedCheponctrlvirtuais)
 END_MESSAGE_MAP()
 
 void CDiaImportarArqCtrlDrones::OnBnClickedButtestar()
@@ -315,15 +316,13 @@ BOOL CDiaImportarArqCtrlDrones::OnInitDialog()
 {
   CDialogEx::OnInitDialog();
 
-  ComboDatum.InsertString(0, "SIRGAS2000");
+  ComboDatum.InsertString(0, "SIRGAS2000 / (WGS-84)");
   ComboDatum.InsertString(1, "Córrego Alegre");
   ComboDatum.InsertString(2, "WGS72");
   ComboDatum.InsertString(3, "South America 1969");
   ComboDatum.InsertString(4, "GRS80");
 
   ComboDatum.SetCurSel(0);
-
-  ComboDatum.EnableWindow(false);
 
   if (!TemPontosControle)
   {
@@ -750,8 +749,6 @@ void CDiaImportarArqCtrlDrones::OnEnSetfocusEdcaminhocn()
   std::string CopiaNomeArq(CEdCaminhoPCT);
 
   std::transform(CopiaNomeArq.begin(), CopiaNomeArq.end(), CopiaNomeArq.begin(), ::toupper);
-
-  ComboDatum.EnableWindow(CopiaNomeArq.find(".KML") != std::string::npos);
 }
 
 void CDiaImportarArqCtrlDrones::OnBnKillfocusButpegararq()
@@ -1566,4 +1563,9 @@ void CDiaImportarArqCtrlDrones::OnEnKillfocusEdiEquisCn()
 
   if (CEdCaminhoPCT.GetLength() > 5 && CEdCaminhoCN.GetLength() > 5 && EquidisCN > 0)
     GetDlgItem(IDOK)->EnableWindow(true);
+}
+void CDiaImportarArqCtrlDrones::OnClickedCheponctrlvirtuais()
+{
+  PonCTRLVirtuais = (((CButton*)GetDlgItem(IDC_CHEPONCTRLVIRTUAIS))->GetCheck() == TRUE);
+  (((CButton*)GetDlgItem(IDC_CHEPONCTRLVIRTUAIS))->SetCheck(PonCTRLVirtuais));
 }

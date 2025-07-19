@@ -2699,14 +2699,16 @@ BEGIN
     COMBOBOX        IDC_COMDATUM2,98,144,106,77,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "Progresso: ",IDC_STATIC,7,170,290,39
     GROUPBOX        "Observações: ",IDC_STATIC,7,211,290,37
-    CTEXT           "",IDC_STAOBSERVACOES,17,222,260,19
+    CTEXT           "",IDC_STAOBSERVACOES,17,223,260,18
     DEFPUSHBUTTON   "OK",IDOK,65,255,50,14
     PUSHBUTTON      "Cancelar",IDCANCEL,126,255,50,14
     PUSHBUTTON      "Importar ",IDC_BUTTESTAR,187,255,50,14
-    LTEXT           "Equidistância das Curvas de Nível : ",IDC_STAEQUIDIS,68,92,115,8
-    EDITTEXT        IDC_EDI_EQUIS_CN,184,89,21,14,ES_AUTOHSCROLL
-    LTEXT           "m",IDC_STAMETROS,210,91,23,8
+    LTEXT           "Equidistância das Curvas de Nível : ",IDC_STAEQUIDIS,68,86,115,8
+    EDITTEXT        IDC_EDI_EQUIS_CN,184,83,21,14,ES_AUTOHSCROLL
+    LTEXT           "m",IDC_STAMETROS,210,85,23,8
     CONTROL         "",IDC_PROGRESS1,"msctls_progress32",PBS_SMOOTH | WS_BORDER,68,183,166,14,WS_EX_TRANSPARENT
+    LTEXT           "Pontos de Controle Virtuais : ",IDC_STAEQUIDIS2,76,103,115,8,NOT WS_VISIBLE
+    CONTROL         "",IDC_CHEPONCTRLVIRTUAIS,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,191,101,16,10
 END
 
 IDD_DIAFORMATARRELAT DIALOGEX 0, 0, 161, 68
@@ -3160,7 +3162,7 @@ BEGIN
     CTEXT           "Criar um projeto :",IDC_STATIC,23,11,149,12
     CTEXT           "Entrada de Dados :",IDC_STATIC,237,11,149,12
     PUSHBUTTON      "Topografia Tradicional",IDC_BUTTOPTRADICIONAL,15,22,155,37,BS_FLAT
-    CTEXT           "Deverão ser fornecido um ou mais arquivos texto  contento os pontos levantados pela equipe de topografia (Arquivo .xyz). A partir deste arquivos a superfície será definida e você poderá escolher o tipo de triangulação entre os 3 tipos de triangulação ofer",IDC_STATIC,183,23,250,22
+    CTEXT           "Deverão ser fornecidos um ou mais arquivos texto  contento os pontos levantados pela equipe de topografia (Arquivo .xyz). A partir deste arquivos a superfície será definida e você poderá escolher o tipo de triangulação entre os 3 tipos de triangulação ofer",IDC_STATIC,183,23,250,22
     CTEXT           "triangulação oferecidos pelo Vias Urbanas & Estradas.",IDC_STATIC,179,47,250,8
     PUSHBUTTON      "...",IDC_BUTMAISTOPTRADI,443,32,23,14,BS_FLAT
     PUSHBUTTON      "Topografia Importada do AutoCad",IDC_BUTTOPACAD,15,68,155,37,BS_FLAT
@@ -3185,9 +3187,9 @@ BEGIN
     PUSHBUTTON      "A - Z",IDC_BUTORDENARPROJ,482,11,23,12,BS_FLAT
     CTEXT           "Abrir um Projeto Existente :",IDC_STATIC,527,14,84,12
     PUSHBUTTON      ". . .",IDC_BUTPROCURARPROJ,624,11,23,12,BS_FLAT
-    LISTBOX         IDC_LISPROJEXISTENTE,477,34,169,200,LBS_HASSTRINGS | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LISPROJEXISTENTE,477,34,169,176,LBS_HASSTRINGS | LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
     CONTROL         "Iniciar com o desenho da superfície",IDC_CHEINIDESSUPERF,
-                    "Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,535,293,104,10
+                    "Button",BS_AUTOCHECKBOX | BS_FLAT | WS_TABSTOP,510,255,136,10
     PUSHBUTTON      "OK",IDOK,510,278,50,14
     PUSHBUTTON      "Cancelar",IDCANCEL,578,278,50,14
     CTEXT           "Urbanas && Estradas, neste caso as curvas de nível serão ajustadas para a triangulação escolhida.",IDC_STATIC,175,90,256,16
@@ -4578,7 +4580,7 @@ BEGIN
     50, 50, 0, 0,
     50, 50, 0, 0,
     50, 50, 0, 0,
-    0, 0, 0, 0,
+    50, 50, 0, 0,
     50, 50, 0, 0,
     50, 50, 0, 0,
     50, 50, 0, 0

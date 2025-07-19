@@ -26,7 +26,7 @@ Gdc_To_Utm_Converter::poly4b,
 Gdc_To_Utm_Converter::poly5b;
 
 // CreateConstants(6378137, 298.257223563); // default to wgs 84 (Sirgas2000)
-//CreateConstants(6378388, 297.0);         // corrego Alegre
+//CreateConstants(6378388, 297.0);          // corrego Alegre
                                          // CreateConstants(6378135, 297.0);         // WGS72
                                          // CreateConstants(6378160, 298.25);        // South America 1969
                                          // 6.378.137 298.257 222 100          //--- GRS80
@@ -45,11 +45,11 @@ Gdc_To_Utm_Converter::Gdc_To_Utm_Converter(int iDatum) : Datum{ typairdouble{637
 
 //void Gdc_To_Utm_Converter::Init()
 //{
- // CreateConstants(6378137, 298.257223563); // default to wgs 84 (Sirgas2000)
+//  CreateConstants(6378137, 298.257223563); // default to wgs 84 (Sirgas2000)
 //  CreateConstants(6378388, 297.0);         // corrego Alegre
- // CreateConstants(6378135, 297.0);         // WGS72
- // CreateConstants(6378160, 298.25);        // South America 1969
- // 6.378.137 298.257 222 100          //--- GRS80
+//  CreateConstants(6378135, 297.0);         // WGS72
+//  CreateConstants(6378160, 298.25);        // South America 1969
+//  6.378.137 298.257 222 100          //--- GRS80
 //}
 
 void Gdc_To_Utm_Converter::CreateConstants(double a, double f)

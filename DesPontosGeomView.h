@@ -198,7 +198,7 @@ class DesPontosGeomView : public CView
     AlterouBacias,
     DefinindoTalveguePrincipal;
 
-  unsigned int EquidisCN;
+  unsigned int EquidisCN, PCTRLVirtuais;
 
   double AnguloRotacaoAnterior,
     AnguloRotacao,
@@ -923,8 +923,8 @@ public:
   afx_msg void OnUpdatePopupCriarTalvPrincipal(CCmdUI* pCmdUI);
   afx_msg void OnPopupFinTalvPrincipal();
   afx_msg void OnImportarTalvegues();
-
-
+  afx_msg void OnPonctrlvirtuais();
+  afx_msg void OnCheponctrlvirtuais();
 };
 /////////////////////////////////////////////////////////////////////////////
 

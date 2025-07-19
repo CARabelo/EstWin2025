@@ -67,7 +67,6 @@
 #include "CDiaImportarArqCtrlDrones.h"
 #include "despontosgeomview.h"
 #include "xymouse.h"
-#include "xygreide.h"
 #include "palette.h"
 #include "ddeslizantes.h"
 #include "deslizantesgeom.h"
@@ -361,7 +360,8 @@ DesPontosGeomView::DesPontosGeomView(const std::string& pTrecho) :
   AlterouBacias(false),
   DefinindoTalveguePrincipal(false),
   ItBaciaMarcada(Superficie.PegaBacias().end()),
-  ItListaIniTalvPrincipal(Superficie.PegaListaRestricoes().end())//,
+  ItListaIniTalvPrincipal(Superficie.PegaListaRestricoes().end()),
+  PCTRLVirtuais(false)
 {
   Escala[X] = Escala[Y] = 30.0;
   Escala[X] = Escala[Y] = 30.0;
@@ -722,6 +722,7 @@ BEGIN_MESSAGE_MAP(DesPontosGeomView, CView)
   ON_COMMAND(ID_MENUBACIASAIR, &DesPontosGeomView::OnMenubaciasair)
   ON_COMMAND(ID_POPUP_CRIARTALVPRINCIPAL, &DesPontosGeomView::OnPopupCriarTalvPrincipal)
   ON_UPDATE_COMMAND_UI(ID_POPUP_CRIARTALVPRINCIPAL, &DesPontosGeomView::OnUpdatePopupCriarTalvPrincipal)
+  ON_COMMAND(IDC_CHEPONCTRLVIRTUAIS, &DesPontosGeomView::OnCheponctrlvirtuais)
   END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1801,6 +1802,7 @@ void DesPontosGeomView::OnMouseMove(UINT nFlags, CPoint point)
                 }
               }
 
+              SobreAlgumPonto = false;
               if (!MostrarRadar || RadarTodosPontos || (RadarPontosInteresse && SetPontosRadarInteresse.find(DeltaSupSobMouse) != SetPontosRadarInteresse.end()))
               {
                 if (DeltaSupAnterior == Superficie.pSuperficieAtual->end() || DeltaSupAnterior != DeltaSupSobMouse)
@@ -1818,14 +1820,16 @@ void DesPontosGeomView::OnMouseMove(UINT nFlags, CPoint point)
                     
                     if (((CMainFrame*)AfxGetMainWnd())->TipoSuperficie != SUPERF_DRONES || VarrerCN)
                     {
-                      if (!SaltarCNs || fabs(fmod(PonSobMouse.z, SaltarCNs + 1)) == 0)
+                      if (DesenharCN && VarrerCN && (!SaltarCNs || fabs(fmod(PonSobMouse.z, (SaltarCNs + 1) * EquidisCN)) == 0.0))
                       DPopUpPonto.MostraDescricao(PonScreenCoor.x, PonScreenCoor.y, PreparaDescricao(&PonSobMouse, false, PegaTipoPonto(PonSobMouse)));
+                      else DeltaSupSobMouse = Superficie.pSuperficieAtual->end();
                     }
                   }
 
                   DeltaSupAnterior = DeltaSupSobMouse;  //--- Atualiza a anterior
+                  //--- Infuencia do if anterior 
+                  SobreAlgumPonto = (DeltaSupSobMouse != Superficie.pSuperficieAtual->end());
                 }
-                SobreAlgumPonto = true;
               }
             }
             else
@@ -2090,7 +2094,7 @@ void DesPontosGeomView::OnMouseMove(UINT nFlags, CPoint point)
                   //  for (register ItSetItLPontos ItPonCNAtual = itSetPontoCNAnterior; ItPonCNAtual != pSuperfAtual->SetPontosCurvasNivel.end(); ItPonCNAtual++)
                   for (register ItSetItLPontos ItPonCNAtual = itSetPontoCNAnterior; ItPonCNAtual != itSetPontoCNPosterior; ItPonCNAtual++)
                   {
-                    if (SaltarCNs && fabs(fmod((*ItPonCNAtual)->z, SaltarCNs + 1))) continue;
+                    if (SaltarCNs && fabs(fmod((*ItPonCNAtual)->z, (SaltarCNs + 1) * EquidisCN)) != 0.0) continue;
 
                     DistanciaAtual = pow((*ItPonCNAtual)->x - PSobMouse.x, 2) + pow((*ItPonCNAtual)->y - PSobMouse.y, 2);
 
@@ -2241,8 +2245,12 @@ void DesPontosGeomView::OnLButtonUp(UINT nFlags, CPoint point)
 
               ((CChildFrame*)GetParentFrame())->DeslizanteGeom.m_CEEscala.EnableWindow(false);
 
+              if(PCTRLVirtuais == TRUE)
+              {
               if (AjustaDeclinacao() == true) AjustaTranslacao();
               else Desistiu = true;
+              }
+              else m_nX = m_nY= 0.0;
 
               ((CChildFrame*)GetParentFrame())->DeslizanteGeom.m_CEEscala.EnableWindow(true);
             }
@@ -2781,7 +2789,7 @@ void DesPontosGeomView::OnInitialUpdate()
 
   std::string NomeProjetoBasico(((CMainFrame*)AfxGetMainWnd())->PegaProjetoBase());
 
-  CDiaImportarArqCtrlDrones DialogoArqDrones(SetPontosSoltos,this, NomeProjetoBasico, true, &LstPontosGeoRef,3,EquidisCN);
+  CDiaImportarArqCtrlDrones DialogoArqDrones(SetPontosSoltos,this, NomeProjetoBasico, true, &LstPontosGeoRef,3,EquidisCN,PCTRLVirtuais);
 
   std::string Formato("n N E C O");
 
@@ -3423,6 +3431,23 @@ void DesPontosGeomView::OnLButtonDown(UINT nFlags, CPoint	point)
     (((CMainFrame*)AfxGetMainWnd())->TipoSuperficie == SUPERF_SIG);
   // PegouPonto &= !EsbocandoObjetos;  //--- Verificar a necessidade  de verificar o PegouPontoInseridoUsuario e o PegouPontoInserido
 
+  if (PegouPonto && (((CMainFrame*)AfxGetMainWnd())->TipoSuperficie == SUPERF_SIG))
+  {
+    if(DeltaSupSobMouse->PCentral.AcidenteTopografico != CAciTopografico::TALVEGUE &&
+       DeltaSupSobMouse->PCentral.AcidenteTopografico != CAciTopografico::ESPIGAO)
+    {
+      //--- Superficie SIG: Os pontos de terreno são pontos de CN
+      //--- So pega o ponto se estiver mostrando e varrendo as CN e
+      //--- se ele estiver na faixa de cotas que estiver sendo mostrada
+
+      PegouPonto = false;
+
+      if (VarrerCN && DesenharCN)
+      {
+        PegouPonto = ((DeltaSupSobMouse->PCentral.z != INFINITO && SaltarCNs && fabs(fmod(DeltaSupSobMouse->PCentral.z, (SaltarCNs + 1) * Superficie.PegaEquidisCN())) == 0.0));
+      }
+    }
+  }
   if ((!ArrastandoPI && !ArrastandoCC) && PegouPonto)
   {
     if (DesenhandoObjetos || EsbocandoObjetos || ObjetosDrenagem)
@@ -4722,7 +4747,7 @@ ItSSuperficie DesPontosGeomView::PegaPontoMaisProximo(Ponto PMouse,
 
   if(((TipoSuperf ==  SUPERF_GOOGLEEARTH || TipoSuperf == SUPERF_TRADICIONAL || TipoSuperf == SUPERF_TOPOG_ACAD) && (ObjetosDrenagem || VarrerTerreno)) ||
      (TipoSuperf == SUPERF_DRONES && (ObjetosDrenagem || VarrerCN)) ||
-     (TipoSuperf == SUPERF_GERENMAPAS || TipoSuperf == SUPERF_SIG) && (ObjetosDrenagem || VarrerCN || EsbocandoObjetos || DefinindoTalveguePrincipal))
+     (TipoSuperf == SUPERF_GERENMAPAS || TipoSuperf == SUPERF_SIG) && (ObjetosDrenagem || (VarrerCN && DesenharCN) || EsbocandoObjetos || DefinindoTalveguePrincipal))
   {
     ItSSuperficie itDSupFinal(Superficie.pSuperficieAtual->end()), itDSupAtual(itDSupFinal);
 
@@ -4766,7 +4791,7 @@ ItSSuperficie DesPontosGeomView::PegaPontoMaisProximo(Ponto PMouse,
     {
       if (itPonMaisProximo->PCentral.z != INFINITO)
       {
-        if (SaltarCNs == 0 || fabs(fmod(itPonMaisProximo->PCentral.z, (SaltarCNs + 1.0) * Superficie.PegaEquidisCN())) != 0)
+        if (SaltarCNs == 0 || fabs(fmod(itPonMaisProximo->PCentral.z, (SaltarCNs + 1.0) * Superficie.PegaEquidisCN())) != 0.0)
         {
           if (((CMainFrame*)AfxGetMainWnd())->TipoSuperficie != SUPERF_DRONES || itPonMaisProximo->PCentral.Baliza2 & Ponto::PONTO_MARCADO_CN)
           {
@@ -5014,6 +5039,7 @@ ItSSuperficie DesPontosGeomView::PegaPontoMaisProximo(Ponto PMouse,
     Tipo = 5;
     MenorDistGeral = MenorDistanciaIns;
   }
+  else pItPontoInsMaisProximo = nullptr;
 
   /*
    if (MenorDistanciaPIS < MenorDistGeral)
@@ -5037,6 +5063,7 @@ ItSSuperficie DesPontosGeomView::PegaPontoMaisProximo(Ponto PMouse,
 
   if (pItPTerrap) *pItPTerrap = pSupTerr->end();
 
+  if(Tipo != 5) pItPontoInsMaisProximo = nullptr;
   if (MenorDistGeral < Toleranciax)
   {
     switch (Tipo)
@@ -7223,7 +7250,7 @@ void DesPontosGeomView::OnUpdateRedesenhar(CCmdUI* pCmdUI)
 
 void DesPontosGeomView::OnUpdateEnquadrar(CCmdUI* pCmdUI)
 {
-  pCmdUI->Enable(Superficie.pSuperficieAtual->size() > 0);
+  pCmdUI->Enable(Superficie.pSuperficieAtual->size() > 0 || GeoReferenciado());
 }
 
 void DesPontosGeomView::OnUpdateButProjTerrap(CCmdUI* pCmdUI)
@@ -11608,7 +11635,8 @@ void DesPontosGeomView::DesenhaCN(CSuperficie* pSuperficie, CDC* pDC,bool Simbol
     {
       for (ItLLPontos itLLCN = LLCN.begin(); itLLCN != LLCN.end(); itLLCN++)
       {
-        if (itLLCN->begin()->z != INFINITO && SaltarCNs && fabs(fmod(itLLCN->begin()->z, (SaltarCNs + 1) * Superficie.PegaEquidisCN()))) continue;
+        if (itLLCN->begin()->z != INFINITO && SaltarCNs && fabs(fmod(itLLCN->begin()->z, (SaltarCNs + 1) * Superficie.PegaEquidisCN())) != 0.0)
+          continue;
 
         if (itLLCN->begin()->z < AbaixoDaCota || itLLCN->begin()->z > AcimaDaCota) continue;
 
@@ -12032,13 +12060,13 @@ int DesPontosGeomView::CalculaUTMpRef(int Origem)
     break;
     case 2:
     {
-      CDiaImportarArqCtrlDrones DialogoArqDrones(SetPontosSoltos,this, NomeProjetoBasico, true, &LstPontosGeoRef, TipoGeoref,EquidisCN);
+      CDiaImportarArqCtrlDrones DialogoArqDrones(SetPontosSoltos,this, NomeProjetoBasico, true, &LstPontosGeoRef, TipoGeoref,EquidisCN,PCTRLVirtuais);
       if (DialogoArqDrones.DoModal() == IDCANCEL) return -1;
     }
     break;
     case 3:
     {
-      CDiaImportarArqCtrlDrones DialogoArqDrones(SetPontosSoltos,this, NomeProjetoBasico, true, &LstPontosGeoRef, TipoGeoref,EquidisCN);
+      CDiaImportarArqCtrlDrones DialogoArqDrones(SetPontosSoltos,this, NomeProjetoBasico, true, &LstPontosGeoRef, TipoGeoref,EquidisCN,PCTRLVirtuais);
       if (DialogoArqDrones.DoModal() == IDCANCEL) return -1;
     }
     break;
@@ -16520,6 +16548,7 @@ void DesPontosGeomView::OnImportarBaciasHidrog()
           else if (Label == "20")
           {
             PAtual.y = atof(Valor.c_str());
+            PAtual.AcidenteTopografico = CAciTopografico::ESPIGAO;
 
             BaciaHidrografica.emplace_back(PAtual);
           }
@@ -17271,4 +17300,9 @@ LRESULT DesPontosGeomView::MostraListaPontos(WPARAM WP, LPARAM LP)
   else pDCoordenadas = nullptr;    //--- Chamou Destruindo DCoordenadas
 
   return 0;
+}
+void DesPontosGeomView::OnCheponctrlvirtuais()
+{
+  PCTRLVirtuais = (((CButton*)GetDlgItem(IDC_CHEPONCTRLVIRTUAIS))->GetCheck() == TRUE);
+  (((CButton*)GetDlgItem(IDC_CHEPONCTRLVIRTUAIS))->SetCheck(PCTRLVirtuais));
 }

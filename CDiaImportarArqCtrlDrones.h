@@ -189,7 +189,7 @@ class CDiaImportarArqCtrlDrones : public CDialogEx
 
 public:
 
-  CDiaImportarArqCtrlDrones(setPontos& pSetPontosSoltos, CWnd* pParent, const std::string& NomeProj, bool bPontosControle, tylstUtm_Coord_3d* pLstPonCtrl, int pTipoArq,unsigned int& EquidisCN);
+  CDiaImportarArqCtrlDrones(setPontos& pSetPontosSoltos, CWnd* pParent, const std::string& NomeProj, bool bPontosControle, tylstUtm_Coord_3d* pLstPonCtrl, int pTipoArq, unsigned int& pEquidisCN, unsigned int& pPCTRLVirt);
 	virtual ~CDiaImportarArqCtrlDrones();
 
 // Janela de Dados
@@ -215,8 +215,10 @@ public:
   CComboBox ComboDatum;
   afx_msg void OnEnSetfocusEdcaminhocn();
   afx_msg void OnBnKillfocusButpegararq();
-  unsigned int& EquidisCN;
+  unsigned int& EquidisCN, &PonCTRLVirtuais;
   CStatic CStaObserv;
   CProgressCtrl Progress;
   afx_msg void OnEnKillfocusEdiEquisCn();
+  CButton PCTRL_Virtuais;
+  afx_msg void OnClickedCheponctrlvirtuais();
 };
